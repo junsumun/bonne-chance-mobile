@@ -41,8 +41,12 @@ struct SignInEmailView: View {
 
     var body: some View {
         VStack {
-            CommonBackButton {
-                dismiss()
+            HStack {
+                CommonBackButton {
+                    dismiss()
+                }
+                .padding(.top, 10)
+                Spacer()
             }
             VStack {
                 TextField("email address", text: $email)

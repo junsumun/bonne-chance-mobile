@@ -56,10 +56,16 @@ struct AuthenticationView: View {
     var body: some View {
         let _ = print("Authentication View: \(showSignInView)")
         VStack {
-            Text("Sign up or Log in")
-                .font(.title)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.bottom, 10)
+            HStack {
+                Text("Sign up")
+                    .font(.title)
+                Text("or")
+                    .font(.title3)
+                Text("Log in")
+                    .font(.title)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.bottom, 10)
             
             Text("Please confirm your email to continue.")
                 .font(.body)

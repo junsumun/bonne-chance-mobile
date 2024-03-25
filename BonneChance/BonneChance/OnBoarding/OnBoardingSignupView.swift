@@ -36,6 +36,7 @@ struct OnBoardingSignupView: View {
                 CommonBackButton {
                     handleBackButtonClicked()
                 }
+                .padding(.top, 10)
                 Spacer()
             }
 
@@ -74,7 +75,6 @@ extension OnBoardingSignupView {
             .cornerRadius(10)
             .foregroundColor(.white)
             .onTapGesture {
-                print(birthdate)
                 handleNextButtonClicked()
             }
             .disabled(buttonDisabled)
