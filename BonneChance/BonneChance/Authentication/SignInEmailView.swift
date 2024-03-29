@@ -34,11 +34,12 @@ final class SignInEmailViewModel: ObservableObject {
 struct SignInEmailView: View {
     
     @StateObject private var viewModel = SignInEmailViewModel()
-    @Binding var showsSignInView: Bool
     @Binding var email: String
     
     @Environment(\.dismiss) var dismiss
 
+    @AppStorage("signed_in") var currentUserSignedIn: Bool?
+    
     var body: some View {
         VStack {
             HStack {
@@ -70,7 +71,7 @@ struct SignInEmailView: View {
                         do {
                             viewModel.email = email
                             try await viewModel.signUp()
-                            showsSignInView = false
+                            currentUserSignedIn = true
                             return
                         } catch {
                             print("Error occurred during sign up")
@@ -80,7 +81,7 @@ struct SignInEmailView: View {
                         do {
                             viewModel.email = email
                             try await viewModel.signIn()
-                            showsSignInView = false
+                            currentUserSignedIn = true
                             return
                         } catch {
                             print("Error occurred during sing in")
@@ -113,7 +114,7 @@ struct SignInEmailView: View {
 struct SignInEmailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            SignInEmailView(showsSignInView: .constant(true), email: .constant(""))
+            SignInEmailView(email: .constant(""))
         }
     }
 }

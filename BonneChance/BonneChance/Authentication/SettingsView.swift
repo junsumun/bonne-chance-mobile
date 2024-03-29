@@ -40,7 +40,8 @@ final class SettingsViewModel: ObservableObject {
 struct SettingsView: View {
     
     @StateObject private var viewModel = SettingsViewModel()
-    @Binding var showSignInView: Bool
+    
+    @AppStorage("signed_in") var currentUserSignedIn: Bool?
     
     var body: some View {
         List {
@@ -48,7 +49,7 @@ struct SettingsView: View {
                 Task {
                     do {
                         try viewModel.signOut()
-                        showSignInView = true
+                        currentUserSignedIn = false
                     } catch {
                         print(error)
                     }
@@ -56,7 +57,6 @@ struct SettingsView: View {
             }
             
             if viewModel.authProviders.contains(.email) {
-                
                 emailSection
             }
         }
@@ -68,7 +68,7 @@ struct SettingsView: View {
 }
 
 #Preview {
-    SettingsView(showSignInView: .constant(true))
+    SettingsView()
 }
 
 

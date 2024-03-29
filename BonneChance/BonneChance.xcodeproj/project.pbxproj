@@ -13,8 +13,8 @@
 		823350942BAA771500D6AF37 /* OnBoardingSignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823350932BAA771500D6AF37 /* OnBoardingSignupView.swift */; };
 		823350972BAE436800D6AF37 /* CommonButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823350962BAE436800D6AF37 /* CommonButtonView.swift */; };
 		8247D2F52BAF74C8009CB70B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8247D2F42BAF74C8009CB70B /* GoogleService-Info.plist */; };
+		8247D2F82BB40468009CB70B /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8247D2F72BB40468009CB70B /* Gender.swift */; };
 		826686122B9FDC690007B599 /* BonneChanceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826686112B9FDC690007B599 /* BonneChanceApp.swift */; };
-		826686142B9FDC690007B599 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826686132B9FDC690007B599 /* ContentView.swift */; };
 		826686162B9FDC690007B599 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 826686152B9FDC690007B599 /* Assets.xcassets */; };
 		826686192B9FDC690007B599 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 826686182B9FDC690007B599 /* Preview Assets.xcassets */; };
 		8266865A2B9FEC3A0007B599 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 826686592B9FEC3A0007B599 /* FirebaseAnalytics */; };
@@ -25,7 +25,7 @@
 		826686932B9FF5740007B599 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826686922B9FF5740007B599 /* AuthenticationView.swift */; };
 		826686972B9FF73A0007B599 /* SignInEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826686962B9FF73A0007B599 /* SignInEmailView.swift */; };
 		826686992B9FFB230007B599 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826686982B9FFB230007B599 /* AuthenticationManager.swift */; };
-		8266869B2BA0FBEC0007B599 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8266869A2BA0FBEC0007B599 /* RootView.swift */; };
+		8266869B2BA0FBEC0007B599 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8266869A2BA0FBEC0007B599 /* ContentView.swift */; };
 		8266869D2BA0FDD50007B599 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8266869C2BA0FDD50007B599 /* SettingsView.swift */; };
 		826686A02BA1582C0007B599 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 8266869F2BA1582C0007B599 /* GoogleSignIn */; };
 		826686A22BA1582C0007B599 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 826686A12BA1582C0007B599 /* GoogleSignInSwift */; };
@@ -41,15 +41,15 @@
 		823350932BAA771500D6AF37 /* OnBoardingSignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingSignupView.swift; sourceTree = "<group>"; };
 		823350962BAE436800D6AF37 /* CommonButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonButtonView.swift; sourceTree = "<group>"; };
 		8247D2F42BAF74C8009CB70B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8247D2F72BB40468009CB70B /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		8266860E2B9FDC690007B599 /* BonneChance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BonneChance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		826686112B9FDC690007B599 /* BonneChanceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonneChanceApp.swift; sourceTree = "<group>"; };
-		826686132B9FDC690007B599 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		826686152B9FDC690007B599 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		826686182B9FDC690007B599 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		826686922B9FF5740007B599 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		826686962B9FF73A0007B599 /* SignInEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInEmailView.swift; sourceTree = "<group>"; };
 		826686982B9FFB230007B599 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
-		8266869A2BA0FBEC0007B599 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		8266869A2BA0FBEC0007B599 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8266869C2BA0FDD50007B599 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		826686A52BA1593F0007B599 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		826686A72BA400B60007B599 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -99,6 +99,14 @@
 			path = CommonViews;
 			sourceTree = "<group>";
 		};
+		8247D2F62BB40450009CB70B /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				8247D2F72BB40468009CB70B /* Gender.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 		826686052B9FDC680007B599 = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +126,7 @@
 		826686102B9FDC690007B599 /* BonneChance */ = {
 			isa = PBXGroup;
 			children = (
+				8247D2F62BB40450009CB70B /* Enums */,
 				8247D2F42BAF74C8009CB70B /* GoogleService-Info.plist */,
 				823350952BAE432E00D6AF37 /* CommonViews */,
 				823350902BAA579900D6AF37 /* OnBoarding */,
@@ -126,9 +135,8 @@
 				826686A62BA4008C0007B599 /* Utilities */,
 				826686A52BA1593F0007B599 /* Info.plist */,
 				826686912B9FF5580007B599 /* Authentication */,
-				8266869A2BA0FBEC0007B599 /* RootView.swift */,
+				8266869A2BA0FBEC0007B599 /* ContentView.swift */,
 				826686112B9FDC690007B599 /* BonneChanceApp.swift */,
-				826686132B9FDC690007B599 /* ContentView.swift */,
 				826686152B9FDC690007B599 /* Assets.xcassets */,
 				826686172B9FDC690007B599 /* Preview Content */,
 			);
@@ -248,13 +256,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				826686142B9FDC690007B599 /* ContentView.swift in Sources */,
 				8266869D2BA0FDD50007B599 /* SettingsView.swift in Sources */,
 				826686932B9FF5740007B599 /* AuthenticationView.swift in Sources */,
 				826686992B9FFB230007B599 /* AuthenticationManager.swift in Sources */,
 				826686AA2BA4E7160007B599 /* SignInGoogleHelper.swift in Sources */,
 				8233508F2BA822E200D6AF37 /* FortuneSelectionView.swift in Sources */,
-				8266869B2BA0FBEC0007B599 /* RootView.swift in Sources */,
+				8247D2F82BB40468009CB70B /* Gender.swift in Sources */,
+				8266869B2BA0FBEC0007B599 /* ContentView.swift in Sources */,
 				826686122B9FDC690007B599 /* BonneChanceApp.swift in Sources */,
 				826686A82BA400B60007B599 /* Utilities.swift in Sources */,
 				823350922BAA57AB00D6AF37 /* OnBoardingView.swift in Sources */,

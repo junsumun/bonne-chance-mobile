@@ -7,21 +7,14 @@
 
 import SwiftUI
 
-enum Gender {
-    case male
-    case female
-}
-
 struct OnBoardingSignupView: View {
-    @Binding var showSignInView: Bool
     
     @State var onboardingState: Int = 0
     
+    // User Profile Inputs
     @State var firstName: String = ""
     @State var lastName: String = ""
-    
     @State var gender: Gender?
-    
     @State var birthdate: Date = Date()
     
     @State private var currentStep: Int = 0
@@ -29,6 +22,11 @@ struct OnBoardingSignupView: View {
     @State private var onBoardingSignupSteps: Int = 5
     
     @Environment(\.dismiss) var dismiss
+    
+    @AppStorage("firstName") var currentUserFirstName: String?
+    @AppStorage("lastName") var currentUserLastName: String?
+    @AppStorage("gender") var currentUserGender: Gender?
+    @AppStorage("birthdate") var currentUserBirthdate: String?
     
     var body: some View {
         VStack {
@@ -45,7 +43,6 @@ struct OnBoardingSignupView: View {
                 case 0:
                     firstNamePromptView
                 case 1:
-//                    authenticationView
                     lastNamePromptView
                 case 2:
                     genderPromptView
@@ -247,12 +244,6 @@ extension OnBoardingSignupView {
             }
             .padding(.bottom, 24)
             
-            var dateClosedRange: ClosedRange<Date> {
-                let min = Calendar.current.date(byAdding: .day, value: -1, to: Date())!
-                let max = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
-                return min...max
-            }
-            
             DatePicker("", selection: $birthdate, displayedComponents: [.date])
                 .datePickerStyle(.wheel)
                 .labelsHidden()
@@ -268,13 +259,14 @@ extension OnBoardingSignupView {
     }
     
     private var authenticationView: some View {
-        AuthenticationView(showSignInView: $showSignInView)
+        AuthenticationView()
     }
 }
 
 extension OnBoardingSignupView {
     private func handleNextButtonClicked() {
         if (onboardingState < onBoardingSignupSteps - 1) {
+            storeUserProfile()
             withAnimation(.spring) {
                 onboardingState += 1
             }
@@ -304,9 +296,16 @@ extension OnBoardingSignupView {
     private func isGenderSelected() -> Bool {
         return gender != nil;
     }
+    
+    private func storeUserProfile() -> Void {
+        currentUserFirstName = firstName
+        currentUserLastName = lastName
+        currentUserGender = gender
+        currentUserBirthdate = DateFormatter().string(from: birthdate)
+    }
 }
 
 
 #Preview {
-    OnBoardingSignupView(showSignInView: .constant(true))
+    OnBoardingSignupView()
 }

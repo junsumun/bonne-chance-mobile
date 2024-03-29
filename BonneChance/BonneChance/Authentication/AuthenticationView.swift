@@ -9,9 +9,6 @@ import SwiftUI
 import GoogleSignIn
 import GoogleSignInSwift
 
-
-
-
 @MainActor
 final class AuthenticationViewModel: ObservableObject {
     
@@ -49,12 +46,12 @@ final class AuthenticationViewModel: ObservableObject {
 struct AuthenticationView: View {
     
     @StateObject private var viewModel = AuthenticationViewModel()
-    @Binding var showSignInView: Bool
     
     @State var email: String = ""
     
+    @AppStorage("signed_in") var currentUserSignedIn: Bool?
+    
     var body: some View {
-        let _ = print("Authentication View: \(showSignInView)")
         VStack {
             HStack {
                 Text("Sign up")
@@ -83,7 +80,7 @@ struct AuthenticationView: View {
                 )
             
             NavigationLink {
-                SignInEmailView(showsSignInView: $showSignInView, email: $email)
+                SignInEmailView(email: $email)
             } label: {
                 Text("Continue")
                     .foregroundColor(.white)
@@ -111,7 +108,7 @@ struct AuthenticationView: View {
                 Task {
                     do {
                         try await viewModel.signInGoogle()
-                        showSignInView = false
+                        currentUserSignedIn = true
                     } catch {
                         print(error)
                     }
@@ -151,9 +148,9 @@ struct AuthenticationView: View {
             .frame(height: 55)
             .onChange(of: viewModel.didSignInWithApple) {
                 if viewModel.didSignInWithApple == true {
-                    showSignInView = false
+                    currentUserSignedIn = true
                 } else {
-                    showSignInView = true
+                    currentUserSignedIn = false
                 }
             }
 
@@ -166,7 +163,7 @@ struct AuthenticationView: View {
 struct AuthenticationView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            AuthenticationView(showSignInView: .constant(true))
+            AuthenticationView()
         }
     }
 }

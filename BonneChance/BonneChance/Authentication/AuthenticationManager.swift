@@ -24,7 +24,6 @@ enum AuthProviderOption: String {
     case email = "password"
     case google = "google.com"
     case apple = "apple.com"
-    
 }
 
 final class AuthenticationManager {

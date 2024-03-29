@@ -1,41 +1,35 @@
 //
-//  ContentView.swift
+//  RootView.swift
 //  BonneChance
 //
-//  Created by Junsu Mun on 2024-03-11.
+//  Created by Junsu Mun on 2024-03-12.
 //
 
 import SwiftUI
-import Firebase
 
 struct ContentView: View {
     
-    @State var email = ""
-    @State var password = ""
+    @AppStorage("signed_in") var currentUserSignedIn: Bool = false
     
     var body: some View {
-        VStack {
-            TextField("Email",text: $email)
-            SecureField("Password", text: $password)
-            Button(action: { login() }) {
-                Text("Sign in")
+        ZStack {
+            if currentUserSignedIn {
+                FortuneSelectionView()
             }
         }
-        .padding()
-    }
-    
-    func login() {
-        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
-            if error != nil {
-                print(error?.localizedDescription ?? "")
-            } else {
-                print("success")
-            }
+        .onAppear {
+            let authUser = try? AuthenticationManager.shared.getAuthenticatedUser()
+            currentUserSignedIn = authUser == nil ? false : true
         }
+        .fullScreenCover(isPresented: Binding<Bool>(get: { !currentUserSignedIn }, set: { _ in })) {
+            OnBoardingView()
+        }
+        
     }
 }
 
-
-#Preview {
-    ContentView()
+struct RootView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
 }
