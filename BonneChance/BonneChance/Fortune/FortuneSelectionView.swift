@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct FortuneSelectionView: View {
-    @Binding var showSignInView: Bool
 
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
         NavigationStack {
-            NavigationLink(destination: SettingsView(showSignInView: $showSignInView)) {
+            NavigationLink(destination: SettingsView()) {
                 Text("test")
             }
         }
@@ -22,5 +21,5 @@ struct FortuneSelectionView: View {
 }
 
 #Preview {
-    FortuneSelectionView(showSignInView: .constant(true))
+    FortuneSelectionView()
 }

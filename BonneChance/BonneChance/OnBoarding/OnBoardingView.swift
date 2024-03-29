@@ -21,7 +21,6 @@ private let onBoardingSteps = [
 struct OnBoardingView: View {
     
     @State private var currentStep = 0
-    @Binding var showSignInView: Bool
     
     @Environment(\.dismiss) var dismiss
     
@@ -67,7 +66,7 @@ struct OnBoardingView: View {
                 .padding(.bottom, 24)
             
                 NavigationLink {
-                    OnBoardingSignupView(showSignInView: $showSignInView)
+                    OnBoardingSignupView()
                 } label: {
                     Text("Get Started!")
                         .padding(16)
@@ -82,7 +81,7 @@ struct OnBoardingView: View {
                 HStack {
                     Text("Already have an account?")
                     NavigationLink {
-                        AuthenticationView(showSignInView: $showSignInView)
+                        AuthenticationView()
                             
                     } label: {
                         Text("Log in")
@@ -99,5 +98,5 @@ struct OnBoardingView: View {
 }
 
 #Preview {
-    OnBoardingView(showSignInView: .constant(true))
+    OnBoardingView()
 }
