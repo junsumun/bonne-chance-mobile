@@ -9,16 +9,11 @@ import SwiftUI
 import GoogleSignIn
 import GoogleSignInSwift
 
-
-
-
 @MainActor
 final class AuthenticationViewModel: ObservableObject {
     
     @Published var didSignInWithApple: Bool = false
     let signInAppleHelper = SignInAppleHelper()
-    
-    
     
     func signInGoogle() async throws {
         let helper = SignInGoogleHelper()
@@ -54,7 +49,7 @@ struct AuthenticationView: View {
     
     @State var email: String = ""
     
-    @AppStorage("signed_in") var currentUserSignedIn: Bool = false
+    @AppStorage("signed_in") var currentUserSignedIn: Bool?
     
     var body: some View {
         VStack {

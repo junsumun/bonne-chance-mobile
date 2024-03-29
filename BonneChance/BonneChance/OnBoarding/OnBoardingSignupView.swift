@@ -302,10 +302,6 @@ extension OnBoardingSignupView {
         currentUserLastName = lastName
         currentUserGender = gender
         currentUserBirthdate = DateFormatter().string(from: birthdate)
-        print("current first name \(currentUserFirstName!)")
-        print("current last name \(currentUserLastName!)")
-        print("current gender \(currentUserGender ?? .female)")
-        print("current date \(currentUserBirthdate!)")
     }
 }
 

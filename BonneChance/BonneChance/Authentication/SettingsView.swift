@@ -41,7 +41,7 @@ struct SettingsView: View {
     
     @StateObject private var viewModel = SettingsViewModel()
     
-    @AppStorage("signed_in") var currentUserSignedIn: Bool = false
+    @AppStorage("signed_in") var currentUserSignedIn: Bool?
     
     var body: some View {
         List {

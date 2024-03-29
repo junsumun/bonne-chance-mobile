@@ -38,7 +38,7 @@ struct SignInEmailView: View {
     
     @Environment(\.dismiss) var dismiss
 
-    @AppStorage("signed_in") var currentUserSignedIn: Bool = false
+    @AppStorage("signed_in") var currentUserSignedIn: Bool?
     
     var body: some View {
         VStack {
