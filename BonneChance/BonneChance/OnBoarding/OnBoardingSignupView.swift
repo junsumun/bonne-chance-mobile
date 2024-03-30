@@ -19,7 +19,7 @@ struct OnBoardingSignupView: View {
     
     @State private var currentStep: Int = 0
     
-    @State private var onBoardingSignupSteps: Int = 5
+    @State private var onBoardingSignupSteps: Int = 4
     
     @Environment(\.dismiss) var dismiss
     
@@ -265,7 +265,7 @@ extension OnBoardingSignupView {
 
 extension OnBoardingSignupView {
     private func handleNextButtonClicked() {
-        if (onboardingState < onBoardingSignupSteps - 1) {
+        if (onboardingState <= onBoardingSignupSteps - 1) {
             storeUserProfile()
             withAnimation(.spring) {
                 onboardingState += 1

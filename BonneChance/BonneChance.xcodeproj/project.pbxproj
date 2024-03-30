@@ -157,9 +157,9 @@
 				826686922B9FF5740007B599 /* AuthenticationView.swift */,
 				826686962B9FF73A0007B599 /* SignInEmailView.swift */,
 				826686982B9FFB230007B599 /* AuthenticationManager.swift */,
-				8266869C2BA0FDD50007B599 /* SettingsView.swift */,
 				826686A92BA4E7160007B599 /* SignInGoogleHelper.swift */,
 				8233508B2BA7F1B500D6AF37 /* SignInAppleHelper.swift */,
+				8266869C2BA0FDD50007B599 /* SettingsView.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
