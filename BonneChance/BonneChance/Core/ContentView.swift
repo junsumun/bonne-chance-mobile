@@ -14,7 +14,9 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             if currentUserSignedIn {
-                FortuneSelectionView()
+                NavigationStack {
+                    ProfileView()
+                }
             }
         }
         .onAppear {
