@@ -14,6 +14,7 @@
 		823350972BAE436800D6AF37 /* CommonButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823350962BAE436800D6AF37 /* CommonButtonView.swift */; };
 		8247D2F52BAF74C8009CB70B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8247D2F42BAF74C8009CB70B /* GoogleService-Info.plist */; };
 		8247D2F82BB40468009CB70B /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8247D2F72BB40468009CB70B /* Gender.swift */; };
+		82661A5F2BBE8B250029FA9E /* AuthenticationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82661A5E2BBE8B250029FA9E /* AuthenticationError.swift */; };
 		826686122B9FDC690007B599 /* BonneChanceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826686112B9FDC690007B599 /* BonneChanceApp.swift */; };
 		826686162B9FDC690007B599 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 826686152B9FDC690007B599 /* Assets.xcassets */; };
 		826686192B9FDC690007B599 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 826686182B9FDC690007B599 /* Preview Assets.xcassets */; };
@@ -49,6 +50,7 @@
 		823350962BAE436800D6AF37 /* CommonButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonButtonView.swift; sourceTree = "<group>"; };
 		8247D2F42BAF74C8009CB70B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8247D2F72BB40468009CB70B /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
+		82661A5E2BBE8B250029FA9E /* AuthenticationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationError.swift; sourceTree = "<group>"; };
 		8266860E2B9FDC690007B599 /* BonneChance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BonneChance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		826686112B9FDC690007B599 /* BonneChanceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonneChanceApp.swift; sourceTree = "<group>"; };
 		826686152B9FDC690007B599 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -121,6 +123,14 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
+		82661A5D2BBE8B060029FA9E /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				82661A5E2BBE8B250029FA9E /* AuthenticationError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
 		826686052B9FDC680007B599 = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +151,7 @@
 		826686102B9FDC690007B599 /* BonneChance */ = {
 			isa = PBXGroup;
 			children = (
+				82661A5D2BBE8B060029FA9E /* Error */,
 				82A98B342BB8081C0014F782 /* Firestore */,
 				826686152B9FDC690007B599 /* Assets.xcassets */,
 				826686912B9FF5580007B599 /* Authentication */,
@@ -351,6 +362,7 @@
 				823350942BAA771500D6AF37 /* OnBoardingSignupView.swift in Sources */,
 				8233508C2BA7F1B500D6AF37 /* SignInAppleHelper.swift in Sources */,
 				826686972B9FF73A0007B599 /* SignInEmailView.swift in Sources */,
+				82661A5F2BBE8B250029FA9E /* AuthenticationError.swift in Sources */,
 				823350972BAE436800D6AF37 /* CommonButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -491,11 +503,13 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BonneChance/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -524,11 +538,13 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BonneChance/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

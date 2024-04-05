@@ -81,7 +81,7 @@ struct OnBoardingView: View {
                 HStack {
                     Text("Already have an account?")
                     NavigationLink {
-                        AuthenticationView()
+                        AuthenticationView(hasAccount: .constant(true))
                             
                     } label: {
                         Text("Log in")

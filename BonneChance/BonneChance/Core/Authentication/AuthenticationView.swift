@@ -15,16 +15,14 @@ struct AuthenticationView: View {
     
     @State var email: String = ""
     
+    @Binding var hasAccount: Bool
+    
     @AppStorage("signed_in") var currentUserSignedIn: Bool?
     
     var body: some View {
         VStack {
             HStack {
-                Text("Sign up")
-                    .font(.title)
-                Text("or")
-                    .font(.title3)
-                Text("Log in")
+                Text(hasAccount ? "Sign in" : "Sign up")
                     .font(.title)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -46,7 +44,7 @@ struct AuthenticationView: View {
                 )
             
             NavigationLink {
-                SignInEmailView(email: $email)
+                SignInEmailView(email: $email, hasAccount: $hasAccount)
             } label: {
                 Text("Continue")
                     .foregroundColor(.white)
@@ -102,7 +100,6 @@ struct AuthenticationView: View {
                 Task {
                     do {
                         try await viewModel.signInApple()
-                        
                     } catch {
                         print(error)
                     }
@@ -129,7 +126,7 @@ struct AuthenticationView: View {
 struct AuthenticationView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            AuthenticationView()
+            AuthenticationView(hasAccount: .constant(false))
         }
     }
 }

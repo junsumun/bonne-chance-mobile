@@ -41,6 +41,7 @@ struct OnBoardingSignupView: View {
             VStack {
                 switch onboardingState {
                 case 0:
+//                    birthdayPromptView
                     firstNamePromptView
                 case 1:
                     lastNamePromptView
@@ -259,7 +260,7 @@ extension OnBoardingSignupView {
     }
     
     private var authenticationView: some View {
-        AuthenticationView()
+        AuthenticationView(hasAccount: .constant(false))
     }
 }
 
@@ -301,7 +302,8 @@ extension OnBoardingSignupView {
         currentUserFirstName = firstName
         currentUserLastName = lastName
         currentUserGender = gender
-        currentUserBirthdate = DateFormatter().string(from: birthdate)
+        currentUserBirthdate = DateFormatter.localizedString(from: birthdate, dateStyle: .medium, timeStyle: .none)
+        print("Birthdate: \(String(describing: currentUserBirthdate))")
     }
 }
 

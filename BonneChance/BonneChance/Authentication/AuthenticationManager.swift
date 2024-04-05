@@ -62,19 +62,58 @@ final class AuthenticationManager {
     }
 }
 
+
 // MARK: SIGN IN EMAIL
 extension AuthenticationManager {
     
     @discardableResult
     func createUser(email: String, password: String) async throws -> AuthDataResultModel {
-        let authDataResult = try await Auth.auth().createUser(withEmail: email, password: password)
-        return AuthDataResultModel(user: authDataResult.user)
+        do {
+            let authDataResult = try await Auth.auth().createUser(withEmail: email, password: password)
+            return AuthDataResultModel(user: authDataResult.user)
+        } catch let error as NSError {
+            print("An error occurred while attempting to sign up the user")
+            if let firebaseAuthError = AuthErrorCode(_bridgedNSError: error) {
+                switch firebaseAuthError.code {
+                case .emailAlreadyInUse:
+                    print("Error: \(AuthenticationError.emailAlreadyInUse.errorDescription)")
+                    throw AuthenticationError.emailAlreadyInUse
+                case .weakPassword:
+                    print("Error: \(AuthenticationError.weakPassword.errorDescription)")
+                    throw AuthenticationError.weakPassword
+                case .invalidEmail:
+                    print("Error: \(AuthenticationError.invalidEmail.errorDescription)")
+                    throw AuthenticationError.invalidEmail
+                default:
+                    print(firebaseAuthError)
+                }
+            }
+            throw error
+        }
+        
     }
     
     @discardableResult
     func signInUser(email: String, password: String) async throws -> AuthDataResultModel {
-        let authDataResult = try await Auth.auth().signIn(withEmail: email, password: password)
-        return AuthDataResultModel(user: authDataResult.user)
+        do {
+            let authDataResult = try await Auth.auth().signIn(withEmail: email, password: password)
+            return AuthDataResultModel(user: authDataResult.user)
+        } catch let error as NSError {
+            print("An error occurred while attempting to sign in the user")
+            if let firebaseAuthError = AuthErrorCode(_bridgedNSError: error) {
+                switch firebaseAuthError.code {
+                case .invalidCredential:
+                    print("Error: \(AuthenticationError.invalidaCredential.errorDescription)")
+                    throw AuthenticationError.invalidaCredential
+                case .invalidEmail:
+                    print("Error: \(AuthenticationError.emailAlreadyInUse.errorDescription)")
+                    throw AuthenticationError.emailAlreadyInUse
+                default:
+                    print(firebaseAuthError)
+                }
+            }
+            throw error
+        }
     }
     
     func resetPassword(email: String) async throws {

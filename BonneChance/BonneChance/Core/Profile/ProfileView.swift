@@ -38,8 +38,11 @@ struct ProfileView: View {
         List {
             if let user = viewModel.user {
                 Text("UserId: \(user.userId)")
-                Text("Email: \(user.email ?? "User email")")
-                
+                Text("Email: \(user.email ?? "email address")")
+                Text("First name: \(user.firstName ?? "first name")")
+                Text("Last name: \(user.lastName ?? "last name")")
+                Text("Gender: \(user.gender?.rawValue ?? "gender")")
+                Text("Birthdate: \(user.birthdate ?? "birthdate")")
                 Button {
                  viewModel.togglePremiumStatus()
                     
