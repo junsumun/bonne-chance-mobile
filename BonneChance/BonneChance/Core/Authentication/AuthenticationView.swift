@@ -18,7 +18,14 @@ struct AuthenticationView: View {
     
     @Binding var hasAccount: Bool
     
+    // User Profile
+    @AppStorage("firstName") var currentUserFirstName: String?
+    @AppStorage("lastName") var currentUserLastName: String?
+    @AppStorage("gender") var currentUserGender: Gender?
+    @AppStorage("birthdate") var currentUserBirthdate: String?
+    
     @AppStorage("signed_in") var currentUserSignedIn: Bool?
+    
     
     var body: some View {
         VStack {
@@ -72,7 +79,15 @@ struct AuthenticationView: View {
             Button {
                 Task {
                     do {
-                        try await viewModel.signInGoogle()
+                        if (hasAccount) {
+                            try await viewModel.signInGoogle()
+                        } else {
+                            try await viewModel.signUpGoogle(
+                                firstName: currentUserFirstName,
+                                lastName: currentUserLastName,
+                                gender: currentUserGender,
+                                birthdate: currentUserBirthdate)
+                        }
                         currentUserSignedIn = true
                     } catch {
                         showSignInFailAlert = true
