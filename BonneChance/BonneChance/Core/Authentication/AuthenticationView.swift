@@ -14,6 +14,7 @@ struct AuthenticationView: View {
     @StateObject private var viewModel = AuthenticationViewModel()
     
     @State var email: String = ""
+    @State var showSignInFailAlert: Bool = false
     
     @Binding var hasAccount: Bool
     
@@ -74,7 +75,7 @@ struct AuthenticationView: View {
                         try await viewModel.signInGoogle()
                         currentUserSignedIn = true
                     } catch {
-                        print(error)
+                        showSignInFailAlert = true
                     }
                 }
             } label: {
@@ -95,6 +96,14 @@ struct AuthenticationView: View {
                         .stroke(Color.black, lineWidth: 0.5)
                 )
             }
+            .alert(isPresented: $showSignInFailAlert) {
+                Alert(
+                    title: Text("Sign in failed"),
+                    message: Text(AuthenticationError.invalidCredential.errorDescription + "\nPlease sign up first."),
+                    dismissButton: .default(Text("Close"))
+                )
+            }
+            
             
             Button(action: {
                 Task {

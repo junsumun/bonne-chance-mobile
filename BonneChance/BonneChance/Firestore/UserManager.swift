@@ -108,8 +108,19 @@ final class UserManager {
         try await userDocument(userId: auth.uid).setData(userData, merge: false)
     }
     
+    @discardableResult
     func getUser(userId: String) async throws -> DBUser {
-        try await userDocument(userId: userId).getDocument(as: DBUser.self)
+        do {
+            let document = try await userDocument(userId: userId).getDocument()
+            if document.exists {
+                let dbUser = try document.data(as: DBUser.self)
+                return dbUser
+            } else {
+                throw AuthenticationError.invalidCredential
+            }
+        } catch {
+            throw error
+        }
     }
     
     func updateUserPremiumStatus(user: DBUser) async throws {

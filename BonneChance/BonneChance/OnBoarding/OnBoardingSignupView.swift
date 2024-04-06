@@ -41,7 +41,6 @@ struct OnBoardingSignupView: View {
             VStack {
                 switch onboardingState {
                 case 0:
-//                    birthdayPromptView
                     firstNamePromptView
                 case 1:
                     lastNamePromptView

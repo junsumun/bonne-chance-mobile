@@ -103,8 +103,8 @@ extension AuthenticationManager {
             if let firebaseAuthError = AuthErrorCode(_bridgedNSError: error) {
                 switch firebaseAuthError.code {
                 case .invalidCredential:
-                    print("Error: \(AuthenticationError.invalidaCredential.errorDescription)")
-                    throw AuthenticationError.invalidaCredential
+                    print("Error: \(AuthenticationError.invalidCredential.errorDescription)")
+                    throw AuthenticationError.invalidCredential
                 case .invalidEmail:
                     print("Error: \(AuthenticationError.emailAlreadyInUse.errorDescription)")
                     throw AuthenticationError.emailAlreadyInUse

@@ -18,7 +18,13 @@ final class AuthenticationViewModel: ObservableObject {
         let tokens = try await helper.signIn()
         
         let authDataResult = try await AuthenticationManager.shared.signInWithGoogle(tokens: tokens)
-        try await UserManager.shared.createNewUser(auth: authDataResult)
+        do {
+            try await UserManager.shared.getUser(userId: authDataResult.uid)
+        } catch {
+            try AuthenticationManager.shared.signOut()
+            throw error
+        }
+//        try await UserManager.shared.createNewUser(auth: authDataResult)
     }
     
     func signInApple() async throws {
@@ -28,7 +34,7 @@ final class AuthenticationViewModel: ObservableObject {
                 Task {
                     do {
                         let authDataResult = try await AuthenticationManager.shared.signInWithApple(tokens: signInAppleResult)
-                        try await UserManager.shared.createNewUser(auth: authDataResult)
+//                        try await UserManager.shared.createNewUser(auth: authDataResult)
                         self.didSignInWithApple = true
                     } catch {
                         
