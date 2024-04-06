@@ -24,7 +24,6 @@ final class AuthenticationViewModel: ObservableObject {
             try AuthenticationManager.shared.signOut()
             throw error
         }
-//        try await UserManager.shared.createNewUser(auth: authDataResult)
     }
     
     func signUpGoogle(firstName: String?, lastName: String?, gender: Gender?, birthdate: String?) async throws {

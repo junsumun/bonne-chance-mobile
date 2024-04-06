@@ -92,22 +92,6 @@ final class UserManager {
         try await userDocument(userId: user.userId).setData(from: user, merge: false)
     }
     
-    func createNewUser(auth: AuthDataResultModel) async throws {
-        var userData: [String:Any] = [
-            "user_id" : auth.uid,
-            "date_created" : Timestamp(),
-        ]
-        
-        if let email = auth.email {
-            userData["email"] = email
-        }
-        if let photoUrl = auth.photoUrl {
-            userData["photo_url"] = photoUrl
-        }
-        
-        try await userDocument(userId: auth.uid).setData(userData, merge: false)
-    }
-    
     @discardableResult
     func getUser(userId: String) async throws -> DBUser {
         do {
