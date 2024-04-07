@@ -107,6 +107,19 @@ final class UserManager {
         }
     }
     
+    func userExists(userId: String) async throws -> Bool {
+        do {
+            let document = try await userDocument(userId: userId).getDocument()
+            if !document.exists {
+                return false;
+            } else {
+                return true;
+            }
+        } catch {
+            throw error
+        }
+    }
+    
     func updateUserPremiumStatus(user: DBUser) async throws {
         try await userDocument(userId: user.userId).setData(from: user, merge: true)
     }

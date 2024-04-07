@@ -11,6 +11,8 @@ import Foundation
 final class AuthenticationViewModel: ObservableObject {
     
     @Published var didSignInWithApple: Bool = false
+    @Published var showSignInFailAlert: Bool = false
+    
     let signInAppleHelper = SignInAppleHelper()
     
     func signInGoogle() async throws {
@@ -22,6 +24,7 @@ final class AuthenticationViewModel: ObservableObject {
             try await UserManager.shared.getUser(userId: authDataResult.uid)
         } catch {
             try AuthenticationManager.shared.signOut()
+            self.showSignInFailAlert = true
             throw error
         }
     }
@@ -31,14 +34,18 @@ final class AuthenticationViewModel: ObservableObject {
         let tokens = try await helper.signIn()
         
         let authDataResult = try await AuthenticationManager.shared.signInWithGoogle(tokens: tokens)
-        try await UserManager.shared.createNewUser(user: DBUser(
-            userId: authDataResult.uid,
-            email: authDataResult.email,
-            firstName: firstName,
-            lastName: lastName,
-            gender: gender,
-            birthdate: birthdate
-        ))
+        
+        let userExists = try await UserManager.shared.userExists(userId: authDataResult.uid)
+        if !userExists {
+            try await UserManager.shared.createNewUser(user: DBUser(
+                userId: authDataResult.uid,
+                email: authDataResult.email,
+                firstName: firstName,
+                lastName: lastName,
+                gender: gender,
+                birthdate: birthdate
+            ))
+        }
     }
     
     func signInApple() async throws {
@@ -48,13 +55,52 @@ final class AuthenticationViewModel: ObservableObject {
                 Task {
                     do {
                         let authDataResult = try await AuthenticationManager.shared.signInWithApple(tokens: signInAppleResult)
-//                        try await UserManager.shared.createNewUser(auth: authDataResult)
-                        self.didSignInWithApple = true
+                        
+                        let userExists = try await UserManager.shared.userExists(userId: authDataResult.uid)
+                        if !userExists {
+                            try AuthenticationManager.shared.signOut()
+                            self.showSignInFailAlert = true
+                            self.didSignInWithApple = false
+                        } else {
+                            self.didSignInWithApple = true
+                        }
+                        
+                        
                     } catch {
                         
                     }
                 }
             case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func signUpApple(firstName: String?, lastName: String?, gender: Gender?, birthdate: String?) async throws {
+        signInAppleHelper.startSignInWithAppleFlow { result in
+            switch result {
+            case.success(let signInAppleResult):
+                Task {
+                    do {
+                        let authDataResult = try await AuthenticationManager.shared.signInWithApple(tokens: signInAppleResult)
+                        
+                        let userExists = try await UserManager.shared.userExists(userId: authDataResult.uid)
+                        if !userExists {
+                            try await UserManager.shared.createNewUser(user: DBUser(
+                                userId: authDataResult.uid,
+                                email: authDataResult.email,
+                                firstName: firstName,
+                                lastName: lastName,
+                                gender: gender,
+                                birthdate: birthdate
+                            ))
+                        }
+                        self.didSignInWithApple = true
+                    } catch {
+                
+                    }
+                }
+            case.failure(let error):
                 print(error)
             }
         }

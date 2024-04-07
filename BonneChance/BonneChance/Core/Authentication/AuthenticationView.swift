@@ -14,7 +14,6 @@ struct AuthenticationView: View {
     @StateObject private var viewModel = AuthenticationViewModel()
     
     @State var email: String = ""
-    @State var showSignInFailAlert: Bool = false
     
     @Binding var hasAccount: Bool
     
@@ -90,7 +89,7 @@ struct AuthenticationView: View {
                         }
                         currentUserSignedIn = true
                     } catch {
-                        showSignInFailAlert = true
+                        print(error)
                     }
                 }
             } label: {
@@ -111,7 +110,7 @@ struct AuthenticationView: View {
                         .stroke(Color.black, lineWidth: 0.5)
                 )
             }
-            .alert(isPresented: $showSignInFailAlert) {
+            .alert(isPresented: Binding<Bool>(get: { viewModel.showSignInFailAlert }, set: { _ in })) {
                 Alert(
                     title: Text("Sign in failed"),
                     message: Text(AuthenticationError.invalidCredential.errorDescription + "\nPlease sign up first."),
@@ -123,7 +122,16 @@ struct AuthenticationView: View {
             Button(action: {
                 Task {
                     do {
-                        try await viewModel.signInApple()
+                        if hasAccount {
+                            try await viewModel.signInApple()
+                        } else {
+                            try await viewModel.signUpApple(
+                                firstName: currentUserFirstName,
+                                lastName: currentUserLastName,
+                                gender: currentUserGender,
+                                birthdate: currentUserBirthdate)
+                        }
+                        
                     } catch {
                         print(error)
                     }
@@ -139,6 +147,13 @@ struct AuthenticationView: View {
                 } else {
                     currentUserSignedIn = false
                 }
+            }
+            .alert(isPresented: Binding<Bool>(get: { viewModel.showSignInFailAlert }, set: { _ in })) {
+                Alert(
+                    title: Text("Sign in failed"),
+                    message: Text(AuthenticationError.invalidCredential.errorDescription + "\nPlease sign up first."),
+                    dismissButton: .default(Text("Close"))
+                )
             }
 
             Spacer()
