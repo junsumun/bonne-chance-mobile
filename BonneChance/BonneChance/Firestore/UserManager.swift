@@ -80,6 +80,7 @@ struct DBUser: Codable {
 final class UserManager {
 
     static let shared = UserManager()
+    
     private init() { }
     
     private let userCollection = Firestore.firestore().collection("users")

@@ -1,14 +1,14 @@
 //
-//  ProfileView.swift
+//  HomeViewModel.swift
 //  BonneChance
 //
-//  Created by Junsu Mun on 2024-03-30.
+//  Created by Junsu Mun on 2024-04-11.
 //
 
-import SwiftUI
+import Foundation
 
 @MainActor
-final class ProfileViewModel: ObservableObject {
+final class HomeViewModel: ObservableObject {
     
     @Published private(set) var user: DBUser? = nil
     
@@ -24,19 +24,6 @@ final class ProfileViewModel: ObservableObject {
             try await UserManager.shared.updateUserPremiumStatus(userId: user.userId, isPremium: !currentValue)
             self.user = try await UserManager.shared.getUser(userId: user.userId)
         }
-    
+        
     }
-}
-
-struct ProfileView: View {
-    
-    @StateObject private var viewModel = ProfileViewModel()
-    
-    var body: some View {
-        Text("Profile View")
-    }
-}
-
-#Preview {
-    ProfileView()
 }

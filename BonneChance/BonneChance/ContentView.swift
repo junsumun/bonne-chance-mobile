@@ -9,14 +9,14 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @State var showMenu = true
+    
     @AppStorage("signed_in") var currentUserSignedIn: Bool = false
     
     var body: some View {
         ZStack {
             if currentUserSignedIn {
-                NavigationStack {
-                    ProfileView()
-                }
+                HomeView()
             }
         }
         .onAppear {
