@@ -33,7 +33,36 @@ struct ProfileView: View {
     @StateObject private var viewModel = ProfileViewModel()
     
     var body: some View {
-        Text("Profile View")
+        HStack {
+            Spacer()
+            VStack {
+                Image(viewModel.user?.gender == Gender.male ? "profile_picture_man" : "profile_picture_woman")
+                    .resizable()
+                    .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
+                    .frame(width: 95, height: 95)
+                    .foregroundColor(.purple)
+                    // purple Hex code: #7E499D
+                HStack {
+                    Text(viewModel.user?.firstName ?? "Full")
+                    Text(viewModel.user?.lastName ?? "Name")
+                }
+                .font(.title2.bold())
+                
+                HStack {
+                    Image(systemName: "birthday.cake")
+                        .foregroundColor(.gray)
+                        .imageScale(.small)
+                    HStack {
+                        Text(viewModel.user?.birthdate ?? "Birthdate")
+                    }
+                    .font(.subheadline)
+                }
+            }
+            Spacer()
+        }
+        .task {
+            try? await viewModel.loadCurrentUser()
+        }
     }
 }
 

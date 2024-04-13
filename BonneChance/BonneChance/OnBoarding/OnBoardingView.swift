@@ -25,7 +25,7 @@ struct OnBoardingView: View {
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        NavigationStack {
+        NavigationView {
             VStack {
                 TabView(selection: $currentStep) {
                     ForEach(0..<onBoardingSteps.count, id: \.self) { index in

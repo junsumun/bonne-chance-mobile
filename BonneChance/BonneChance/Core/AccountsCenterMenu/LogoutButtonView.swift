@@ -19,7 +19,6 @@ struct LogoutButtonView: View {
                 do {
                     try accountsCenterViewModel.signOut()
                     currentUserSignedIn = false
-                    print("Completed signout \(currentUserSignedIn)")
                 } catch {
                     print(error)
                 }

@@ -9,39 +9,12 @@ import SwiftUI
 
 struct SideMenuView: View {
     
-    @StateObject private var profileViewModel = ProfileViewModel()
-    
     var body: some View {
         
         VStack (alignment: .leading) {
-            HStack {
-                Spacer()
-                VStack {
-                    Image(profileViewModel.user?.gender == Gender.male ? "profile_picture_man" : "profile_picture_woman")
-                        .resizable()
-                        .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
-                        .frame(width: 95, height: 95)
-                        .foregroundColor(.purple)
-                        // purple Hex code: #7E499D
-                    HStack {
-                        Text(profileViewModel.user?.firstName ?? "Full")
-                        Text(profileViewModel.user?.lastName ?? "Name")
-                    }
-                    .font(.title2.bold())
-                    
-                    HStack {
-                        Image(systemName: "birthday.cake")
-                            .foregroundColor(.gray)
-                            .imageScale(.small)
-                        HStack {
-                            Text(profileViewModel.user?.birthdate ?? "Birthdate")
-                        }
-                        .font(.subheadline)
-                    }
-                }
-                Spacer()
-            }
-            .padding(.top, 30)
+            
+            ProfileView()
+                .padding(.top, 30)
             
             
 //            Button {
@@ -68,9 +41,8 @@ struct SideMenuView: View {
             }
             .padding(.top, 50)
             
-            
-            
             Spacer()
+            
             HStack(alignment: .center) {
                 NavigationLink {
                     SettingsView()
@@ -110,10 +82,6 @@ struct SideMenuView: View {
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(.white)
-        .task {
-            try? await profileViewModel.loadCurrentUser()
-        }
-        
     }
 }
 
