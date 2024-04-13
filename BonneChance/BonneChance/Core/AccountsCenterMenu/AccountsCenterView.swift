@@ -34,7 +34,7 @@ struct AccountsCenterView: View {
 }
 
 #Preview {
-    NavigationView {
+    NavigationStack {
         AccountsCenterView()
     }
 }
