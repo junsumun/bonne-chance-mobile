@@ -14,14 +14,11 @@ struct SideMenuView: View {
         VStack (alignment: .leading) {
             
             ProfileView()
-                .padding(.top, 30)
+                .padding(.top, 10)
             
-            
-//            Button {
-//                profileViewModel.togglePremiumStatus()
-//            } label: {
-//                Text("User is premium: \((profileViewModel.user?.isPremium ?? false).description.capitalized)")
-//            }
+            PremiumStatusView()
+                .padding(.top, 10)
+
             
             HStack(alignment: .center) {
                 NavigationLink {
@@ -39,7 +36,7 @@ struct SideMenuView: View {
                         .imageScale(.small)
                 }
             }
-            .padding(.top, 50)
+            .padding(.top, 20)
             
             Spacer()
             
@@ -59,7 +56,6 @@ struct SideMenuView: View {
                         .imageScale(.small)
                 }
             }
-            .padding(.top, 15)
             HStack(alignment: .center) {
                 NavigationLink {
                     SettingsView()
@@ -76,8 +72,8 @@ struct SideMenuView: View {
                         .imageScale(.small)
                 }
             }
-            .padding(.top, 15)
-            .padding(.bottom, 30)
+            .padding(.top, 10)
+            .padding(.bottom, 20)
         }
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)

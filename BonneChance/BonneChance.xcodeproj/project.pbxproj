@@ -23,6 +23,11 @@
 		8248CC3E2BC9648D007FCEAF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 8248CC3D2BC9648D007FCEAF /* FirebaseAuth */; };
 		8248CC4A2BC9648D007FCEAF /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 8248CC492BC9648D007FCEAF /* FirebaseFirestore */; };
 		8248CC4E2BC9648D007FCEAF /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8248CC4D2BC9648D007FCEAF /* FirebaseFirestoreSwift */; };
+		825890EE2BCA1AEF00C95B5D /* Premium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825890ED2BCA1AEF00C95B5D /* Premium.swift */; };
+		825890F02BCA1FB800C95B5D /* DBUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825890EF2BCA1FB800C95B5D /* DBUser.swift */; };
+		825890F22BCA215F00C95B5D /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825890F12BCA215F00C95B5D /* ProfileViewModel.swift */; };
+		825890F42BCA221400C95B5D /* PremiumStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825890F32BCA221400C95B5D /* PremiumStatusView.swift */; };
+		825890F62BCA227500C95B5D /* PremiumStatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825890F52BCA227500C95B5D /* PremiumStatusViewModel.swift */; };
 		82661A5F2BBE8B250029FA9E /* AuthenticationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82661A5E2BBE8B250029FA9E /* AuthenticationError.swift */; };
 		826686122B9FDC690007B599 /* BonneChanceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826686112B9FDC690007B599 /* BonneChanceApp.swift */; };
 		826686162B9FDC690007B599 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 826686152B9FDC690007B599 /* Assets.xcassets */; };
@@ -42,7 +47,6 @@
 		826DA3E32BC777BA00CB433E /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826DA3E22BC777BA00CB433E /* SideMenuView.swift */; };
 		826DA3E62BC77C2E00CB433E /* FortuneHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826DA3E52BC77C2E00CB433E /* FortuneHomeView.swift */; };
 		826DA3E82BC7851E00CB433E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826DA3E72BC7851E00CB433E /* HomeView.swift */; };
-		826DA3EC2BC796E800CB433E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826DA3EB2BC796E800CB433E /* HomeViewModel.swift */; };
 		826DA3F12BC7ACC200CB433E /* LogoutButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826DA3F02BC7ACC200CB433E /* LogoutButtonView.swift */; };
 		826DA3F42BC7C8D600CB433E /* AccountsCenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826DA3F32BC7C8D600CB433E /* AccountsCenterView.swift */; };
 		827636C72BC7CD7700B2E86A /* DeleteAccountButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827636C62BC7CD7700B2E86A /* DeleteAccountButtonView.swift */; };
@@ -64,6 +68,11 @@
 		823350962BAE436800D6AF37 /* CommonButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonButtonView.swift; sourceTree = "<group>"; };
 		8247D2F42BAF74C8009CB70B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8247D2F72BB40468009CB70B /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
+		825890ED2BCA1AEF00C95B5D /* Premium.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Premium.swift; sourceTree = "<group>"; };
+		825890EF2BCA1FB800C95B5D /* DBUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBUser.swift; sourceTree = "<group>"; };
+		825890F12BCA215F00C95B5D /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		825890F32BCA221400C95B5D /* PremiumStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumStatusView.swift; sourceTree = "<group>"; };
+		825890F52BCA227500C95B5D /* PremiumStatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumStatusViewModel.swift; sourceTree = "<group>"; };
 		82661A5E2BBE8B250029FA9E /* AuthenticationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationError.swift; sourceTree = "<group>"; };
 		8266860E2B9FDC690007B599 /* BonneChance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BonneChance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		826686112B9FDC690007B599 /* BonneChanceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonneChanceApp.swift; sourceTree = "<group>"; };
@@ -80,7 +89,6 @@
 		826DA3E22BC777BA00CB433E /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
 		826DA3E52BC77C2E00CB433E /* FortuneHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneHomeView.swift; sourceTree = "<group>"; };
 		826DA3E72BC7851E00CB433E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		826DA3EB2BC796E800CB433E /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		826DA3F02BC7ACC200CB433E /* LogoutButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutButtonView.swift; sourceTree = "<group>"; };
 		826DA3F32BC7C8D600CB433E /* AccountsCenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsCenterView.swift; sourceTree = "<group>"; };
 		827636C62BC7CD7700B2E86A /* DeleteAccountButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountButtonView.swift; sourceTree = "<group>"; };
@@ -151,6 +159,24 @@
 				8247D2F72BB40468009CB70B /* Gender.swift */,
 			);
 			path = Enums;
+			sourceTree = "<group>";
+		};
+		825890EB2BCA1AC100C95B5D /* Premium */ = {
+			isa = PBXGroup;
+			children = (
+				825890EC2BCA1AE000C95B5D /* Enum */,
+				825890F32BCA221400C95B5D /* PremiumStatusView.swift */,
+				825890F52BCA227500C95B5D /* PremiumStatusViewModel.swift */,
+			);
+			path = Premium;
+			sourceTree = "<group>";
+		};
+		825890EC2BCA1AE000C95B5D /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				825890ED2BCA1AEF00C95B5D /* Premium.swift */,
+			);
+			path = Enum;
 			sourceTree = "<group>";
 		};
 		82661A5D2BBE8B060029FA9E /* Error */ = {
@@ -238,7 +264,6 @@
 			isa = PBXGroup;
 			children = (
 				826DA3E72BC7851E00CB433E /* HomeView.swift */,
-				826DA3EB2BC796E800CB433E /* HomeViewModel.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -265,6 +290,7 @@
 		82A98B272BB8037C0014F782 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				825890EB2BCA1AC100C95B5D /* Premium */,
 				826DA3F22BC7C8AE00CB433E /* AccountsCenterMenu */,
 				826DA3E12BC777A800CB433E /* SideMenu */,
 				8233508D2BA8224000D6AF37 /* Fortune */,
@@ -308,6 +334,7 @@
 			isa = PBXGroup;
 			children = (
 				82A98B322BB804CD0014F782 /* ProfileView.swift */,
+				825890F12BCA215F00C95B5D /* ProfileViewModel.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -316,6 +343,7 @@
 			isa = PBXGroup;
 			children = (
 				82A98B352BB8082E0014F782 /* UserManager.swift */,
+				825890EF2BCA1FB800C95B5D /* DBUser.swift */,
 			);
 			path = Firestore;
 			sourceTree = "<group>";
@@ -419,13 +447,17 @@
 				826686932B9FF5740007B599 /* AuthenticationView.swift in Sources */,
 				82A98B362BB8082E0014F782 /* UserManager.swift in Sources */,
 				826686992B9FFB230007B599 /* AuthenticationManager.swift in Sources */,
+				825890F62BCA227500C95B5D /* PremiumStatusViewModel.swift in Sources */,
 				826686AA2BA4E7160007B599 /* SignInGoogleHelper.swift in Sources */,
 				82A98B302BB804940014F782 /* SignInEmailViewModel.swift in Sources */,
 				82A98B2D2BB804450014F782 /* AuthenticationViewModel.swift in Sources */,
 				826DA3E62BC77C2E00CB433E /* FortuneHomeView.swift in Sources */,
 				82A98B2A2BB803F40014F782 /* SettingsViewModel.swift in Sources */,
 				8247D2F82BB40468009CB70B /* Gender.swift in Sources */,
+				825890F22BCA215F00C95B5D /* ProfileViewModel.swift in Sources */,
+				825890EE2BCA1AEF00C95B5D /* Premium.swift in Sources */,
 				8266869B2BA0FBEC0007B599 /* ContentView.swift in Sources */,
+				825890F42BCA221400C95B5D /* PremiumStatusView.swift in Sources */,
 				82A98B332BB804CD0014F782 /* ProfileView.swift in Sources */,
 				826686122B9FDC690007B599 /* BonneChanceApp.swift in Sources */,
 				826686A82BA400B60007B599 /* Utilities.swift in Sources */,
@@ -435,7 +467,7 @@
 				8233508C2BA7F1B500D6AF37 /* SignInAppleHelper.swift in Sources */,
 				826DA3F12BC7ACC200CB433E /* LogoutButtonView.swift in Sources */,
 				826DA3F42BC7C8D600CB433E /* AccountsCenterView.swift in Sources */,
-				826DA3EC2BC796E800CB433E /* HomeViewModel.swift in Sources */,
+				825890F02BCA1FB800C95B5D /* DBUser.swift in Sources */,
 				826686972B9FF73A0007B599 /* SignInEmailView.swift in Sources */,
 				82661A5F2BBE8B250029FA9E /* AuthenticationError.swift in Sources */,
 				826DA3E82BC7851E00CB433E /* HomeView.swift in Sources */,
