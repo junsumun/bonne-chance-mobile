@@ -58,12 +58,11 @@ struct SideMenuView: View {
             }
             HStack(alignment: .center) {
                 NavigationLink {
-                    SettingsView()
                 } label: {
                     Image(systemName: "questionmark.bubble")
                         .foregroundColor(.black)
                         .imageScale(.large)
-                    Text("Help")
+                    Text("Help and Feedback")
                         .font(.subheadline)
                         .foregroundColor(.black)
                     Spacer()

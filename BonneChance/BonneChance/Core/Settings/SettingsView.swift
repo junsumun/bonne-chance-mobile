@@ -12,7 +12,7 @@ struct SettingsView: View {
     
     var body: some View {
         List {
-            Button("Sign out") {
+            Button("Placeholder") {
                 Task {
                 }
             }
