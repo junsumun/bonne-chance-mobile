@@ -8,7 +8,7 @@
 import Foundation
 
 @MainActor
-final class SettingsViewModel: ObservableObject {
+final class AccountsCenterViewModel: ObservableObject {
     
     @Published var authProviders: [AuthProviderOption] = []
     

@@ -94,7 +94,7 @@ struct AuthenticationView: View {
                 }
             } label: {
                 HStack {
-                    Image("google-logo")
+                    Image("google_logo")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 15)

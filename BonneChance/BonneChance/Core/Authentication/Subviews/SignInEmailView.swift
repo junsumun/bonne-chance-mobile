@@ -60,7 +60,7 @@ struct SignInEmailView: View {
                                 viewModel.email = email
                                 try await viewModel.signIn()
                                 currentUserSignedIn = true
-                                return
+//                                return
                             } catch let error as AuthenticationError {
                                 errorMessage = error.errorDescription
                             }

@@ -17,14 +17,17 @@ struct ContentView: View {
         ZStack {
             if currentUserSignedIn {
                 HomeView()
+                let _ = print("Displayed HomeView")
             }
         }
         .onAppear {
             let authUser = try? AuthenticationManager.shared.getAuthenticatedUser()
             currentUserSignedIn = authUser == nil ? false : true
+            print("Checking auth user: \(currentUserSignedIn)")
         }
         .fullScreenCover(isPresented: Binding<Bool>(get: { !currentUserSignedIn }, set: { _ in })) {
             OnBoardingView()
+            let _ = print("OnBoardingView should be displayed")
         }
         
     }

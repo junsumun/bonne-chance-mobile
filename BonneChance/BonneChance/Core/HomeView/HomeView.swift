@@ -14,11 +14,11 @@ struct HomeView: View {
     @State var showMenu = false
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             GeometryReader { geometry in
                 ZStack(alignment: .leading) {
                     FortuneHomeView(showMenu: self.$showMenu)
-                
+                    
                     if self.showMenu {
                         SideMenuView()
                             .frame(width: geometry.size.width * 0.7)
@@ -29,18 +29,18 @@ struct HomeView: View {
                 .task {
                     try? await profileViewModel.loadCurrentUser()
                 }
+                .navigationBarItems(leading: (
+                    Button(action: {
+                        self.showMenu.toggle()
+                    }) {
+                        Image(systemName: self.showMenu ? "xmark" : "line.horizontal.3")
+                            .imageScale(.large)
+                            .foregroundColor(.purple)
+                    }
+                ))
             }
-            
-            .navigationBarItems(leading: (
-                Button(action: {
-                    self.showMenu.toggle()
-                }) {
-                    Image(systemName: self.showMenu ? "xmark" : "line.horizontal.3")
-                        .imageScale(.large)
-                        .foregroundColor(.purple)
-                }
-            ))
         }
+        .tint(.purple)
     }
 }
 
