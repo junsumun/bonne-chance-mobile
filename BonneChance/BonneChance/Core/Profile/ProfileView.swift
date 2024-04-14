@@ -15,7 +15,7 @@ struct ProfileView: View {
         HStack {
             Spacer()
             VStack {
-                Image(viewModel.user?.gender == Gender.male ? "profile_picture_man" : "profile_picture_woman")
+                Image(viewModel.user?.gender == Gender.male ? "man_profile" : "woman_profile")
                     .resizable()
                     .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
                     .frame(width: 95, height: 95)
