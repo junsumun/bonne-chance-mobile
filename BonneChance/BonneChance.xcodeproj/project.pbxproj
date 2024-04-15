@@ -14,6 +14,7 @@
 		8239AE1D2BCCC3E3000CB169 /* FortuneDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8239AE1C2BCCC3E3000CB169 /* FortuneDetailView.swift */; };
 		8239AE1F2BCCEDAF000CB169 /* Fortune.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8239AE1E2BCCEDAF000CB169 /* Fortune.swift */; };
 		8239AE212BCCEDF5000CB169 /* FortuneCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8239AE202BCCEDF5000CB169 /* FortuneCardView.swift */; };
+		8239AE242BCD0260000CB169 /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8239AE232BCD0260000CB169 /* PaywallView.swift */; };
 		8247D2F52BAF74C8009CB70B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8247D2F42BAF74C8009CB70B /* GoogleService-Info.plist */; };
 		8247D2F82BB40468009CB70B /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8247D2F72BB40468009CB70B /* Gender.swift */; };
 		8248CBFC2BC95FEB007FCEAF /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 8248CBFB2BC95FEB007FCEAF /* FirebaseAnalytics */; };
@@ -72,6 +73,7 @@
 		8239AE1C2BCCC3E3000CB169 /* FortuneDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneDetailView.swift; sourceTree = "<group>"; };
 		8239AE1E2BCCEDAF000CB169 /* Fortune.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fortune.swift; sourceTree = "<group>"; };
 		8239AE202BCCEDF5000CB169 /* FortuneCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneCardView.swift; sourceTree = "<group>"; };
+		8239AE232BCD0260000CB169 /* PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallView.swift; sourceTree = "<group>"; };
 		8247D2F42BAF74C8009CB70B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8247D2F72BB40468009CB70B /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		825890ED2BCA1AEF00C95B5D /* Premium.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Premium.swift; sourceTree = "<group>"; };
@@ -160,6 +162,14 @@
 				823350962BAE436800D6AF37 /* CommonButtonView.swift */,
 			);
 			path = CommonViews;
+			sourceTree = "<group>";
+		};
+		8239AE222BCD0254000CB169 /* Paywall */ = {
+			isa = PBXGroup;
+			children = (
+				8239AE232BCD0260000CB169 /* PaywallView.swift */,
+			);
+			path = Paywall;
 			sourceTree = "<group>";
 		};
 		8247D2F62BB40450009CB70B /* Enums */ = {
@@ -306,6 +316,7 @@
 		82A98B272BB8037C0014F782 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				8239AE222BCD0254000CB169 /* Paywall */,
 				825890F72BCA42FA00C95B5D /* Help */,
 				825890EB2BCA1AC100C95B5D /* Premium */,
 				826DA3F22BC7C8AE00CB433E /* AccountsCenterMenu */,
@@ -459,6 +470,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8266869D2BA0FDD50007B599 /* SettingsView.swift in Sources */,
+				8239AE242BCD0260000CB169 /* PaywallView.swift in Sources */,
 				827636CB2BC8AC0C00B2E86A /* ResetPasswordButtonView.swift in Sources */,
 				827636C72BC7CD7700B2E86A /* DeleteAccountButtonView.swift in Sources */,
 				826686932B9FF5740007B599 /* AuthenticationView.swift in Sources */,

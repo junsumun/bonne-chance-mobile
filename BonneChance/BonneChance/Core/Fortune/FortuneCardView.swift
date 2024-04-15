@@ -31,7 +31,7 @@ struct FortuneCardView: View {
         .frame(width: 336, height: 422)
         .background(fortune.color)
         .cornerRadius(57)
-        .shadow(color: Color.black.opacity(0.3), radius: 8, x: 0.0, y: 5)
+        .shadow(color: Color.black.opacity(0.2), radius: 8, x: 0.0, y: 5)
         .padding(.leading, 20)
     }
 }

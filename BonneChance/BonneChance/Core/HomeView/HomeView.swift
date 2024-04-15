@@ -12,12 +12,13 @@ struct HomeView: View {
     @StateObject private var profileViewModel = ProfileViewModel()
     
     @State var showMenu = false
+    @State var showPaywall = false
     
     var body: some View {
         NavigationStack {
             GeometryReader { geometry in
                 ZStack(alignment: .leading) {
-                    FortuneHomeView(showMenu: self.$showMenu)
+                    FortuneHomeView(showMenu: self.$showMenu, showPaywall: self.$showPaywall)
                     
                     if self.showMenu {
                         SideMenuView()
@@ -41,6 +42,10 @@ struct HomeView: View {
             }
         }
         .tint(.purple)
+        .fullScreenCover(isPresented: $showPaywall) {
+            PaywallView()
+            let _ = print("paywall displayed")
+        }
     }
 }
 

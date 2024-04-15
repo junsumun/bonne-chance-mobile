@@ -10,16 +10,17 @@ import SwiftUI
 struct FortuneHomeView: View {
     
     @Binding var showMenu: Bool
+    @Binding var showPaywall: Bool
     
     @State var currentFortuneSlider: Int = 0
     @State private var scrollPosition: CGPoint = .zero
     
     var fortuneList = [
-        Fortune(name: "Overall Fortune", type: "overall", image: "overall_fortune", color: .indigo),
-        Fortune(name: "Love Fortune", type: "love", image: "love_fortune", color: .pink),
-        Fortune(name: "Money Fortune", type: "money", image: "money_fortune", color: .yellow),
-        Fortune(name: "Career Fortune", type: "career", image: "career_fortune", color: .brown),
-        Fortune(name: "Study Fortune", type: "study", image: "career_fortune", color: .blue)
+        Fortune(name: "Overall Fortune", type: "overall", image: "overall_fortune", color: Color(red: 188 / 255, green: 188 / 255, blue: 226 / 255)),
+        Fortune(name: "Love Fortune", type: "love", image: "love_fortune", color: Color(red: 239 / 255, green: 176 / 255, blue: 187 / 255)),
+        Fortune(name: "Money Fortune", type: "money", image: "money_fortune", color: Color(red: 239 / 255, green: 223 / 255, blue: 162 / 255)),
+        Fortune(name: "Career Fortune", type: "career", image: "career_fortune", color: Color(red: 211 / 255, green: 202 / 255, blue: 190 / 255)),
+        Fortune(name: "Study Fortune", type: "study", image: "career_fortune", color: Color(red: 163 / 255, green: 199 / 255, blue: 239 / 255))
     ]
     
     var body: some View {
@@ -30,7 +31,11 @@ struct FortuneHomeView: View {
                     HStack {
                         ForEach(fortuneList, id: \.id) { fortune in
                             NavigationLink {
-                                FortuneDetailView()
+//                                if (fortune.type == "overall") {
+//                                    let _ = showPaywall.toggle()
+//                                } else {
+                                    FortuneDetailView()
+//                                }
                             } label: {
                                 FortuneCardView(fortune: fortune)
                                     .padding(.top, 20)
@@ -48,7 +53,6 @@ struct FortuneHomeView: View {
                     }
                     
                 }
-                
                 
                 HStack(spacing: 10) {
                     ForEach(fortuneList.indices, id: \.self) { index in
@@ -70,7 +74,7 @@ struct FortuneHomeView: View {
 }
 
 #Preview {
-    FortuneHomeView(showMenu: .constant(false))
+    FortuneHomeView(showMenu: .constant(false), showPaywall: .constant(false))
 }
 
 struct ScrollOffsetPreferenceKey: PreferenceKey {
