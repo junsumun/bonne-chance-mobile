@@ -10,17 +10,33 @@ import SwiftUI
 struct FortuneHomeView: View {
     
     @Binding var showMenu: Bool
+    
     @State var currentFortuneSlider: Int = 0
     @State private var scrollPosition: CGPoint = .zero
     
+    var fortuneList = [
+        Fortune(name: "Overall Fortune", type: "overall", image: "overall_fortune", color: .green),
+        Fortune(name: "Love Fortune", type: "love", image: "love_fortune", color: .pink),
+        Fortune(name: "Money Fortune", type: "money", image: "money_fortune", color: .yellow),
+        Fortune(name: "Career Fortune", type: "career", image: "career_fortune", color: .brown),
+        Fortune(name: "Study Fortune", type: "study", image: "career_fortune", color: .blue)
+    ]
+    
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 Spacer()
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
-                        ForEach(productList, id: \.id) { product in
-                            ProductCard(product: product)
+                        ForEach(fortuneList, id: \.id) { fortune in
+                            NavigationLink {
+                                FortuneDetailView()
+                            } label: {
+                                FortuneCardView(fortune: fortune)
+                            }
+                            .buttonStyle(PlainButtonStyle())
+                            
+                            
                         }
                     }
                     .background(GeometryReader { geometry in
@@ -35,7 +51,7 @@ struct FortuneHomeView: View {
                 }
                 
                 HStack(spacing: 10) {
-                    ForEach(productList.indices, id: \.self) { index in
+                    ForEach(fortuneList.indices, id: \.self) { index in
                         Circle()
                             .fill(Color.black)
                             .opacity(currentFortuneSlider == index ? 1 : 0.1)
@@ -65,55 +81,4 @@ struct ScrollOffsetPreferenceKey: PreferenceKey {
     }
 }
 
-struct ProductCard: View {
-    var product: Product
-    
-    var body: some View {
-        ZStack {
-            Image(product.image)
-                .resizable()
-                .scaledToFit()
-            ZStack {
-                VStack(alignment: .leading, content: {
-                    HStack {
-                        VStack(alignment: .center) {
-                            Text("Today's")
-                                .font(.system(size: 20, weight: .medium))
-                                .frame(width: 200)
-                            Text("\(product.name)")
-                                .font(.system(size: 30, weight: .medium))
-                                .frame(width: 250)
-                            
-                        }
-                        
-                        
-//                        Spacer()
-                    }
-                    Spacer()
-                })
-            }
-        }
-        .padding(30)
-        .frame(width: 336, height: 422)
-        .background(product.color.opacity(0.13))
-        .clipShape(.rect(cornerRadius: 57))
-        .padding(.leading, 20)
-    }
-}
 
-struct Product: Identifiable {
-    var id: UUID = .init()
-    var name: String
-    var category: String
-    var image: String
-    var color: Color
-    var price: Int
-}
-
-var productList = [
-    Product(name: "Overall Fortune", category: "Choco", image: "overall_fortune", color: .green, price: 8),
-    Product(name: "Love Fortune", category: "Choco", image: "love_fortune", color: .pink, price: 8),
-    Product(name: "Money Fortune", category: "Choco", image: "money_fortune", color: .yellow, price: 8),
-    Product(name: "Career Fortune", category: "Choco", image: "career_fortune", color: .brown, price: 8),
-    Product(name: "Study Fortune", category: "Choco", image: "onboarding1", color: .blue, price: 8),
-]

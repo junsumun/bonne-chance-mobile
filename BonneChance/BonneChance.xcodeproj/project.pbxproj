@@ -11,6 +11,9 @@
 		823350922BAA57AB00D6AF37 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823350912BAA57AB00D6AF37 /* OnBoardingView.swift */; };
 		823350942BAA771500D6AF37 /* OnBoardingSignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823350932BAA771500D6AF37 /* OnBoardingSignupView.swift */; };
 		823350972BAE436800D6AF37 /* CommonButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823350962BAE436800D6AF37 /* CommonButtonView.swift */; };
+		8239AE1D2BCCC3E3000CB169 /* FortuneDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8239AE1C2BCCC3E3000CB169 /* FortuneDetailView.swift */; };
+		8239AE1F2BCCEDAF000CB169 /* Fortune.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8239AE1E2BCCEDAF000CB169 /* Fortune.swift */; };
+		8239AE212BCCEDF5000CB169 /* FortuneCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8239AE202BCCEDF5000CB169 /* FortuneCardView.swift */; };
 		8247D2F52BAF74C8009CB70B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8247D2F42BAF74C8009CB70B /* GoogleService-Info.plist */; };
 		8247D2F82BB40468009CB70B /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8247D2F72BB40468009CB70B /* Gender.swift */; };
 		8248CBFC2BC95FEB007FCEAF /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 8248CBFB2BC95FEB007FCEAF /* FirebaseAnalytics */; };
@@ -66,6 +69,9 @@
 		823350912BAA57AB00D6AF37 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
 		823350932BAA771500D6AF37 /* OnBoardingSignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingSignupView.swift; sourceTree = "<group>"; };
 		823350962BAE436800D6AF37 /* CommonButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonButtonView.swift; sourceTree = "<group>"; };
+		8239AE1C2BCCC3E3000CB169 /* FortuneDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneDetailView.swift; sourceTree = "<group>"; };
+		8239AE1E2BCCEDAF000CB169 /* Fortune.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fortune.swift; sourceTree = "<group>"; };
+		8239AE202BCCEDF5000CB169 /* FortuneCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneCardView.swift; sourceTree = "<group>"; };
 		8247D2F42BAF74C8009CB70B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8247D2F72BB40468009CB70B /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		825890ED2BCA1AEF00C95B5D /* Premium.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Premium.swift; sourceTree = "<group>"; };
@@ -132,6 +138,9 @@
 			isa = PBXGroup;
 			children = (
 				826DA3E52BC77C2E00CB433E /* FortuneHomeView.swift */,
+				8239AE1C2BCCC3E3000CB169 /* FortuneDetailView.swift */,
+				8239AE1E2BCCEDAF000CB169 /* Fortune.swift */,
+				8239AE202BCCEDF5000CB169 /* FortuneCardView.swift */,
 			);
 			path = Fortune;
 			sourceTree = "<group>";
@@ -458,6 +467,7 @@
 				825890F62BCA227500C95B5D /* PremiumStatusViewModel.swift in Sources */,
 				826686AA2BA4E7160007B599 /* SignInGoogleHelper.swift in Sources */,
 				82A98B302BB804940014F782 /* SignInEmailViewModel.swift in Sources */,
+				8239AE1F2BCCEDAF000CB169 /* Fortune.swift in Sources */,
 				82A98B2D2BB804450014F782 /* AuthenticationViewModel.swift in Sources */,
 				826DA3E62BC77C2E00CB433E /* FortuneHomeView.swift in Sources */,
 				82A98B2A2BB803F40014F782 /* SettingsViewModel.swift in Sources */,
@@ -474,6 +484,7 @@
 				823350942BAA771500D6AF37 /* OnBoardingSignupView.swift in Sources */,
 				8233508C2BA7F1B500D6AF37 /* SignInAppleHelper.swift in Sources */,
 				826DA3F12BC7ACC200CB433E /* LogoutButtonView.swift in Sources */,
+				8239AE1D2BCCC3E3000CB169 /* FortuneDetailView.swift in Sources */,
 				826DA3F42BC7C8D600CB433E /* AccountsCenterView.swift in Sources */,
 				825890F02BCA1FB800C95B5D /* DBUser.swift in Sources */,
 				826686972B9FF73A0007B599 /* SignInEmailView.swift in Sources */,
@@ -481,6 +492,7 @@
 				826DA3E82BC7851E00CB433E /* HomeView.swift in Sources */,
 				827636C92BC89F6500B2E86A /* ProfileButtonView.swift in Sources */,
 				823350972BAE436800D6AF37 /* CommonButtonView.swift in Sources */,
+				8239AE212BCCEDF5000CB169 /* FortuneCardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
