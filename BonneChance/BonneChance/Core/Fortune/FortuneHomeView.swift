@@ -15,7 +15,7 @@ struct FortuneHomeView: View {
     @State private var scrollPosition: CGPoint = .zero
     
     var fortuneList = [
-        Fortune(name: "Overall Fortune", type: "overall", image: "overall_fortune", color: .green),
+        Fortune(name: "Overall Fortune", type: "overall", image: "overall_fortune", color: .indigo),
         Fortune(name: "Love Fortune", type: "love", image: "love_fortune", color: .pink),
         Fortune(name: "Money Fortune", type: "money", image: "money_fortune", color: .yellow),
         Fortune(name: "Career Fortune", type: "career", image: "career_fortune", color: .brown),
@@ -33,10 +33,9 @@ struct FortuneHomeView: View {
                                 FortuneDetailView()
                             } label: {
                                 FortuneCardView(fortune: fortune)
+                                    .padding(.top, 20)
+                                    .padding(.bottom, 20)
                             }
-                            .buttonStyle(PlainButtonStyle())
-                            
-                            
                         }
                     }
                     .background(GeometryReader { geometry in
@@ -50,6 +49,7 @@ struct FortuneHomeView: View {
                     
                 }
                 
+                
                 HStack(spacing: 10) {
                     ForEach(fortuneList.indices, id: \.self) { index in
                         Circle()
@@ -60,7 +60,6 @@ struct FortuneHomeView: View {
                             .animation(.spring(), value: currentFortuneSlider == index)
                     }
                 }
-                .padding(.top, 20)
                 Spacer()
             }
             .background(self.showMenu ? .gray : .white)
