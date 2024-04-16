@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProfileView: View {
     
-    @StateObject private var viewModel = ProfileViewModel()
+    @EnvironmentObject var viewModel: ProfileViewModel
     
     var body: some View {
         HStack {
@@ -38,9 +38,6 @@ struct ProfileView: View {
                 }
             }
             Spacer()
-        }
-        .task {
-            try? await viewModel.loadCurrentUser()
         }
     }
 }

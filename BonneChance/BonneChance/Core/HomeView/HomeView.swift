@@ -13,22 +13,26 @@ struct HomeView: View {
     
     @State var showMenu = false
     @State var showPaywall = false
+    @State var userPremiumType: Premium? = nil
     
     var body: some View {
         NavigationStack {
             GeometryReader { geometry in
                 ZStack(alignment: .leading) {
-                    FortuneHomeView(showMenu: self.$showMenu, showPaywall: self.$showPaywall)
+                    FortuneHomeView(showMenu: self.$showMenu, showPaywall: self.$showPaywall, userPremiumType: self.$userPremiumType)
+                        .environmentObject(profileViewModel)
                     
                     if self.showMenu {
                         SideMenuView()
                             .frame(width: geometry.size.width * 0.7)
                             .transition(.move(edge: .leading))
+                            .environmentObject(profileViewModel)
                     }
                 }
                 .animation(.easeInOut, value: self.showMenu)
                 .task {
                     try? await profileViewModel.loadCurrentUser()
+                    userPremiumType = profileViewModel.user?.premiumType
                 }
                 .navigationBarItems(leading: (
                     Button(action: {
@@ -43,8 +47,7 @@ struct HomeView: View {
         }
         .tint(.purple)
         .fullScreenCover(isPresented: $showPaywall) {
-            PaywallView()
-            let _ = print("paywall displayed")
+            PaywallView(showPaywall: $showPaywall)
         }
     }
 }

@@ -10,7 +10,7 @@ import SwiftUI
 struct PremiumStatusView: View {
     
     @StateObject private var viewModel = PremiumStatusViewModel()
-    @StateObject private var profileViewModel = ProfileViewModel()
+    @EnvironmentObject private var profileViewModel: ProfileViewModel
     
     var body: some View {
         VStack(alignment: .center) {
@@ -38,9 +38,6 @@ struct PremiumStatusView: View {
         .padding()
         .background(Color(Color(.systemGray6)))
         .cornerRadius(10)
-        .task {
-            try? await profileViewModel.loadCurrentUser()
-        }
     }
 }
 

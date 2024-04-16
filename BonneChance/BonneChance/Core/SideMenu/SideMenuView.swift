@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SideMenuView: View {
+    @EnvironmentObject var profileViewModel: ProfileViewModel
     
     var body: some View {
         
@@ -15,9 +16,11 @@ struct SideMenuView: View {
             
             ProfileView()
                 .padding(.top, 10)
+                .environmentObject(profileViewModel)
             
             PremiumStatusView()
                 .padding(.top, 10)
+                .environmentObject(profileViewModel)
 
             
             HStack(alignment: .center) {
