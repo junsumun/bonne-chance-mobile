@@ -25,7 +25,7 @@ struct FortuneCardView: View {
                     .frame(width: 250)
             }
             .offset(x: 0, y: -140)
-            .foregroundColor(.white)
+            .foregroundColor(.black)
         }
         .padding(30)
         .frame(width: 336, height: 422)
