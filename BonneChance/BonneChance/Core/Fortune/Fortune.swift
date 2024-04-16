@@ -11,7 +11,7 @@ import SwiftUI
 struct Fortune: Identifiable {
     var id: UUID = UUID()
     var name: String
-    var type: String
+    var type: FortuneType
     var image: String
     var color: Color
 }

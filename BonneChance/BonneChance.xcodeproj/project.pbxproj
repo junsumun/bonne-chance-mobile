@@ -32,6 +32,7 @@
 		825890F22BCA215F00C95B5D /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825890F12BCA215F00C95B5D /* ProfileViewModel.swift */; };
 		825890F42BCA221400C95B5D /* PremiumStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825890F32BCA221400C95B5D /* PremiumStatusView.swift */; };
 		825890F62BCA227500C95B5D /* PremiumStatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825890F52BCA227500C95B5D /* PremiumStatusViewModel.swift */; };
+		825EF8E52BCE2DCF0075465D /* FortuneType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825EF8E42BCE2DCF0075465D /* FortuneType.swift */; };
 		82661A5F2BBE8B250029FA9E /* AuthenticationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82661A5E2BBE8B250029FA9E /* AuthenticationError.swift */; };
 		826686122B9FDC690007B599 /* BonneChanceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826686112B9FDC690007B599 /* BonneChanceApp.swift */; };
 		826686162B9FDC690007B599 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 826686152B9FDC690007B599 /* Assets.xcassets */; };
@@ -81,6 +82,7 @@
 		825890F12BCA215F00C95B5D /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		825890F32BCA221400C95B5D /* PremiumStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumStatusView.swift; sourceTree = "<group>"; };
 		825890F52BCA227500C95B5D /* PremiumStatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumStatusViewModel.swift; sourceTree = "<group>"; };
+		825EF8E42BCE2DCF0075465D /* FortuneType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneType.swift; sourceTree = "<group>"; };
 		82661A5E2BBE8B250029FA9E /* AuthenticationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationError.swift; sourceTree = "<group>"; };
 		8266860E2B9FDC690007B599 /* BonneChance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BonneChance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		826686112B9FDC690007B599 /* BonneChanceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonneChanceApp.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 		8233508D2BA8224000D6AF37 /* Fortune */ = {
 			isa = PBXGroup;
 			children = (
+				825EF8E32BCE2DB80075465D /* Enum */,
 				826DA3E52BC77C2E00CB433E /* FortuneHomeView.swift */,
 				8239AE1C2BCCC3E3000CB169 /* FortuneDetailView.swift */,
 				8239AE1E2BCCEDAF000CB169 /* Fortune.swift */,
@@ -203,6 +206,14 @@
 			children = (
 			);
 			path = Help;
+			sourceTree = "<group>";
+		};
+		825EF8E32BCE2DB80075465D /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				825EF8E42BCE2DCF0075465D /* FortuneType.swift */,
+			);
+			path = Enum;
 			sourceTree = "<group>";
 		};
 		82661A5D2BBE8B060029FA9E /* Error */ = {
@@ -481,6 +492,7 @@
 				82A98B302BB804940014F782 /* SignInEmailViewModel.swift in Sources */,
 				8239AE1F2BCCEDAF000CB169 /* Fortune.swift in Sources */,
 				82A98B2D2BB804450014F782 /* AuthenticationViewModel.swift in Sources */,
+				825EF8E52BCE2DCF0075465D /* FortuneType.swift in Sources */,
 				826DA3E62BC77C2E00CB433E /* FortuneHomeView.swift in Sources */,
 				82A98B2A2BB803F40014F782 /* SettingsViewModel.swift in Sources */,
 				8247D2F82BB40468009CB70B /* Gender.swift in Sources */,

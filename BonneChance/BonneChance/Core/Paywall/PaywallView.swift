@@ -8,11 +8,18 @@
 import SwiftUI
 
 struct PaywallView: View {
+    @Binding var showPaywall: Bool;
+    
     var body: some View {
+        Button {
+            showPaywall.toggle()
+        } label: {
+            Text("Close")
+        }
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
 #Preview {
-    PaywallView()
+    PaywallView(showPaywall: .constant(true))
 }

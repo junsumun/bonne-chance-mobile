@@ -15,12 +15,18 @@ struct FortuneHomeView: View {
     @State var currentFortuneSlider: Int = 0
     @State private var scrollPosition: CGPoint = .zero
     
+    @EnvironmentObject var profileViewModel: ProfileViewModel
+    
+    private var user: DBUser? {
+        return profileViewModel.user
+    }
+    
     var fortuneList = [
-        Fortune(name: "Overall Fortune", type: "overall", image: "overall_fortune", color: Color(red: 188 / 255, green: 188 / 255, blue: 226 / 255)),
-        Fortune(name: "Love Fortune", type: "love", image: "love_fortune", color: Color(red: 239 / 255, green: 176 / 255, blue: 187 / 255)),
-        Fortune(name: "Money Fortune", type: "money", image: "money_fortune", color: Color(red: 239 / 255, green: 223 / 255, blue: 162 / 255)),
-        Fortune(name: "Career Fortune", type: "career", image: "career_fortune", color: Color(red: 211 / 255, green: 202 / 255, blue: 190 / 255)),
-        Fortune(name: "Study Fortune", type: "study", image: "career_fortune", color: Color(red: 163 / 255, green: 199 / 255, blue: 239 / 255))
+        Fortune(name: "Overall Fortune", type: FortuneType.overall, image: "overall_fortune", color: Color(red: 188 / 255, green: 188 / 255, blue: 226 / 255)),
+        Fortune(name: "Love Fortune", type: FortuneType.love, image: "love_fortune", color: Color(red: 239 / 255, green: 176 / 255, blue: 187 / 255)),
+        Fortune(name: "Money Fortune", type: FortuneType.money, image: "money_fortune", color: Color(red: 239 / 255, green: 223 / 255, blue: 162 / 255)),
+        Fortune(name: "Career Fortune", type: FortuneType.career, image: "career_fortune", color: Color(red: 211 / 255, green: 202 / 255, blue: 190 / 255)),
+        Fortune(name: "Study Fortune", type: FortuneType.study, image: "career_fortune", color: Color(red: 163 / 255, green: 199 / 255, blue: 239 / 255))
     ]
     
     var body: some View {
@@ -31,16 +37,22 @@ struct FortuneHomeView: View {
                     HStack {
                         ForEach(fortuneList, id: \.id) { fortune in
                             NavigationLink {
-//                                if (fortune.type == "overall") {
-//                                    let _ = showPaywall.toggle()
-//                                } else {
-                                    FortuneDetailView()
-//                                }
+                                FortuneDetailView()
                             } label: {
                                 FortuneCardView(fortune: fortune)
                                     .padding(.top, 20)
                                     .padding(.bottom, 20)
                             }
+                            .disabled(user?.premiumType == Premium.basic && fortune.type != FortuneType.overall)
+                            .onTapGesture {
+                                if (user?.premiumType != Premium.basic || fortune.type == FortuneType.overall) {
+                                    showPaywall = false
+                                }
+                                else {
+                                    showPaywall = true
+                                }
+                            }
+                            
                         }
                     }
                     .background(GeometryReader { geometry in

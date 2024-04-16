@@ -19,7 +19,7 @@ struct HomeView: View {
         NavigationStack {
             GeometryReader { geometry in
                 ZStack(alignment: .leading) {
-                    FortuneHomeView(showMenu: self.$showMenu, showPaywall: self.$showPaywall, userPremiumType: self.$userPremiumType)
+                    FortuneHomeView(showMenu: self.$showMenu, showPaywall: self.$showPaywall)
                         .environmentObject(profileViewModel)
                     
                     if self.showMenu {
