@@ -116,7 +116,7 @@ struct PaywallView: View {
         }
         .task {
             do {
-                try await viewModel.fetchProducts()
+                try await viewModel.loadProducts()
             } catch {
                 print(error)
             }

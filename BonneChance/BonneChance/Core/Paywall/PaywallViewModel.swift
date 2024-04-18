@@ -17,7 +17,7 @@ final class PaywallViewModel: ObservableObject {
     let productIdentifiers = [ProductIdentifier.gold1Month.rawValue, ProductIdentifier.gold1Year.rawValue, ProductIdentifier.gold3Month.rawValue]
     
     
-    func fetchProducts() async throws {
+    func loadProducts() async throws {
         let decoder = JSONDecoder()
         
         let productList = try await Product.products(for: productIdentifiers).sorted { product1, product2 in
