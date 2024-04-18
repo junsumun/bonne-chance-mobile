@@ -37,5 +37,5 @@ struct FortuneCardView: View {
 }
 
 #Preview {
-    FortuneCardView(fortune: Fortune(name: "Overall Fortune", type: FortuneType.overall, image: "overall_fortune", color: .blue))
+    FortuneCardView(fortune: Fortune(name: "Overall Fortune", type: FortuneType.overall, image: "overall_fortune", color: Color(red: 188 / 255, green: 188 / 255, blue: 226 / 255)))
 }

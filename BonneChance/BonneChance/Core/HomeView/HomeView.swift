@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     
+    @StateObject var paywallViewModel: PaywallViewModel = PaywallViewModel()
     @StateObject private var profileViewModel = ProfileViewModel()
     
     @State var showMenu = false
@@ -48,6 +49,7 @@ struct HomeView: View {
         .tint(.purple)
         .fullScreenCover(isPresented: $showPaywall) {
             PaywallView(showPaywall: $showPaywall)
+                .environmentObject(paywallViewModel)
         }
     }
 }

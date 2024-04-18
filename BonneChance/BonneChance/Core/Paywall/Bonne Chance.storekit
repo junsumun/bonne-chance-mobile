@@ -1,0 +1,157 @@
+{
+  "identifier" : "F0D7A0F0",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+
+  ],
+  "settings" : {
+    "_applicationInternalID" : "6498313801",
+    "_developerTeamID" : "5QS75RAV4U",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 735058296.07502306,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+      {
+        "current" : {
+          "index" : 2,
+          "type" : "generic"
+        },
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "21477644",
+      "localizations" : [
+
+      ],
+      "name" : "Gold",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "9.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "6498715593",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Unlimited Access to Gold Tier features",
+              "displayName" : "1 Month",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "bonnechance_gold_1month_9.99",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "1 Month",
+          "subscriptionGroupID" : "21477644",
+          "type" : "RecurringSubscription"
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "59.99",
+          "familyShareable" : false,
+          "groupNumber" : 2,
+          "internalID" : "6498716381",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "1 Year Unlimited Access to Gold Tier features",
+              "displayName" : "1 Year",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "bonnechance_gold_1year_59.99",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "1 Year",
+          "subscriptionGroupID" : "21477644",
+          "type" : "RecurringSubscription"
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "19.99",
+          "familyShareable" : false,
+          "groupNumber" : 3,
+          "internalID" : "6498716349",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Unlimited Access to Gold Tier feature",
+              "displayName" : "3 Month",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "bonnechance_gold_3month_19.99",
+          "recurringSubscriptionPeriod" : "P3M",
+          "referenceName" : "3 Month",
+          "subscriptionGroupID" : "21477644",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}

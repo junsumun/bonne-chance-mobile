@@ -5,14 +5,63 @@
 //  Created by Junsu Mun on 2024-04-16.
 //
 
-import SwiftUI
+import Foundation
+import StoreKit
 
-struct PaywallViewModel: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+@MainActor
+final class PaywallViewModel: ObservableObject {
+    
+    @Published var products: [Product] = []
+    @Published var selectedProduct: Product? = nil
+    
+    let productIdentifiers = [ProductIdentifier.gold1Month.rawValue, ProductIdentifier.gold1Year.rawValue, ProductIdentifier.gold3Month.rawValue]
+    
+    
+    func fetchProducts() async throws {
+        let decoder = JSONDecoder()
+        
+        let productList = try await Product.products(for: productIdentifiers).sorted { product1, product2 in
+            var result = false
+            do {
+                let product1DAO = try decoder.decode(ProductDAO.self, from: product1.jsonRepresentation)
+                let product2DAO = try decoder.decode(ProductDAO.self, from: product2.jsonRepresentation)
+                
+                result = product1DAO.attributes.subscriptionFamilyRank < product2DAO.attributes.subscriptionFamilyRank
+            } catch {
+                print(error)
+            }
+            return result
+        }
+        
+        self.products = productList
+        self.selectedProduct = self.products[1]
+    }
+    
+    func calculateWeeklyPrice(subscriptionLength: String, price: Decimal) -> String {
+        
+        let priceInDouble = NSDecimalNumber(decimal: price).doubleValue
+        
+        switch subscriptionLength {
+        case "1 Month":
+            return "\(floor(priceInDouble / 4 * 100) / 100)"
+        case "1 Year":
+            return "\(floor(priceInDouble / 12 / 4 * 100) / 100)"
+        case "3 Month":
+            return "\(floor(priceInDouble / 3 / 4 * 100) / 100)"
+        default:
+            return "9.99"
+        }
     }
 }
 
-#Preview {
-    PaywallViewModel()
+
+struct ProductDAO: Codable {
+    let href: String
+    let id: String
+    let type: String
+    let attributes: Attributes
+}
+
+struct Attributes: Codable {
+    let subscriptionFamilyRank: Int
 }

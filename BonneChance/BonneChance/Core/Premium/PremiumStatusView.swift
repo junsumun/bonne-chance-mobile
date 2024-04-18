@@ -43,4 +43,5 @@ struct PremiumStatusView: View {
 
 #Preview {
     PremiumStatusView()
+        .environmentObject(ProfileViewModel())
 }

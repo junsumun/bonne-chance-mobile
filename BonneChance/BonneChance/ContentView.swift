@@ -17,7 +17,6 @@ struct ContentView: View {
         ZStack {
             if currentUserSignedIn {
                 HomeView()
-                let _ = print("Displayed HomeView")
             }
         }
         .onAppear {

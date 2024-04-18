@@ -87,6 +87,7 @@ struct FortuneHomeView: View {
 
 #Preview {
     FortuneHomeView(showMenu: .constant(false), showPaywall: .constant(false))
+        .environmentObject(ProfileViewModel())
 }
 
 struct ScrollOffsetPreferenceKey: PreferenceKey {

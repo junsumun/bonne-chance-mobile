@@ -49,6 +49,9 @@
             ReferencedContainer = "container:BonneChance.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <StoreKitConfigurationFileReference
+         identifier = "../../BonneChance/Core/Paywall/Bonne Chance.storekit">
+      </StoreKitConfigurationFileReference>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
