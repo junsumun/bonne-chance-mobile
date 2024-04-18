@@ -97,12 +97,12 @@ struct PaywallView: View {
             }
             .padding()
             
-            Text(viewModel.selectedProduct?.displayName == "1 Year" ? "Includes 7-day free trial. Cancel anytime." : "Auto-renewable subsription. Cancel anytime.")
+            Text(viewModel.selectedProduct?.displayName == ProductName.oneYear.rawValue ? "Includes 3-day free trial. Cancel anytime." : "Auto-renewable subsription. Cancel anytime.")
                 .padding(.bottom, 10)
             Button {
                 
             } label: {
-                Text(viewModel.selectedProduct?.displayName == "1 Year" ? "Continue for Free" : "Continue")
+                Text(viewModel.selectedProduct?.displayName == ProductName.oneYear.rawValue ? "Continue for Free" : "Continue")
                     .padding(16)
                     .frame(maxWidth: .infinity)
                     .background(Color.purple)
@@ -151,7 +151,7 @@ struct PaywallView: View {
                 .stroke(viewModel.selectedProduct?.displayName == product.displayName ? .purple : .gray, lineWidth: viewModel.selectedProduct?.displayName == product.displayName ? 2 : 1)
         )
         .overlay {
-            if product.displayName == "1 Year" {
+            if product.displayName == ProductName.oneYear.rawValue {
                 HStack {
                     Text("BEST VALUE")
                         .font(.system(size: 15))

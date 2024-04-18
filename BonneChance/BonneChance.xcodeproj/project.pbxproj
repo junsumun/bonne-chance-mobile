@@ -60,6 +60,7 @@
 		82A0D17B2BCF34B200DD4DE1 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82A0D17A2BCF34B200DD4DE1 /* StoreKit.framework */; };
 		82A0D1802BCF3EDE00DD4DE1 /* PaywallViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A0D17F2BCF3EDE00DD4DE1 /* PaywallViewModel.swift */; };
 		82A0D1852BD01AE100DD4DE1 /* ProductIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A0D1842BD01AE100DD4DE1 /* ProductIdentifier.swift */; };
+		82A0D1872BD0B56A00DD4DE1 /* ProductName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A0D1862BD0B56A00DD4DE1 /* ProductName.swift */; };
 		82A98B242BB802ED0014F782 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 82A98B232BB802ED0014F782 /* FirebaseFirestore */; };
 		82A98B2A2BB803F40014F782 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A98B292BB803F40014F782 /* SettingsViewModel.swift */; };
 		82A98B2D2BB804450014F782 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A98B2C2BB804450014F782 /* AuthenticationViewModel.swift */; };
@@ -111,6 +112,7 @@
 		82A0D17F2BCF3EDE00DD4DE1 /* PaywallViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallViewModel.swift; sourceTree = "<group>"; };
 		82A0D1812BCFF45C00DD4DE1 /* Bonne Chance.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Bonne Chance.storekit"; sourceTree = "<group>"; };
 		82A0D1842BD01AE100DD4DE1 /* ProductIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductIdentifier.swift; sourceTree = "<group>"; };
+		82A0D1862BD0B56A00DD4DE1 /* ProductName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductName.swift; sourceTree = "<group>"; };
 		82A98B292BB803F40014F782 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		82A98B2C2BB804450014F782 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		82A98B2F2BB804940014F782 /* SignInEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInEmailViewModel.swift; sourceTree = "<group>"; };
@@ -331,6 +333,7 @@
 			isa = PBXGroup;
 			children = (
 				82A0D1842BD01AE100DD4DE1 /* ProductIdentifier.swift */,
+				82A0D1862BD0B56A00DD4DE1 /* ProductName.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -538,6 +541,7 @@
 				827636C92BC89F6500B2E86A /* ProfileButtonView.swift in Sources */,
 				823350972BAE436800D6AF37 /* CommonButtonView.swift in Sources */,
 				8239AE212BCCEDF5000CB169 /* FortuneCardView.swift in Sources */,
+				82A0D1872BD0B56A00DD4DE1 /* ProductName.swift in Sources */,
 				82A0D1852BD01AE100DD4DE1 /* ProductIdentifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

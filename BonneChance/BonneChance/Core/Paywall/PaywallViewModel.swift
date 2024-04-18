@@ -42,14 +42,14 @@ final class PaywallViewModel: ObservableObject {
         let priceInDouble = NSDecimalNumber(decimal: price).doubleValue
         
         switch subscriptionLength {
-        case "1 Month":
+        case ProductName.oneMonth.rawValue:
             return "\(floor(priceInDouble / 4 * 100) / 100)"
-        case "1 Year":
+        case ProductName.oneYear.rawValue:
             return "\(floor(priceInDouble / 12 / 4 * 100) / 100)"
-        case "3 Month":
+        case ProductName.threeMonth.rawValue:
             return "\(floor(priceInDouble / 3 / 4 * 100) / 100)"
         default:
-            return "9.99"
+            return "Error"
         }
     }
 }

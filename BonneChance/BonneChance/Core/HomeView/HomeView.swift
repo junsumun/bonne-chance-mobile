@@ -47,7 +47,7 @@ struct HomeView: View {
             }
         }
         .tint(.purple)
-        .fullScreenCover(isPresented: $showPaywall) {
+        .sheet(isPresented: $showPaywall) {
             PaywallView(showPaywall: $showPaywall)
                 .environmentObject(paywallViewModel)
         }
