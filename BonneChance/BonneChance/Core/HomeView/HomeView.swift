@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @StateObject var paywallViewModel: PaywallViewModel = PaywallViewModel()
+    @StateObject private var purchaseManager = PurchaseManager()
     @StateObject private var profileViewModel = ProfileViewModel()
     
     @State var showMenu = false
@@ -49,7 +49,10 @@ struct HomeView: View {
         .tint(.purple)
         .sheet(isPresented: $showPaywall) {
             PaywallView(showPaywall: $showPaywall)
-                .environmentObject(paywallViewModel)
+                .environmentObject(purchaseManager)
+        }
+        .task {
+            try? await profileViewModel.loadCurrentUser()
         }
     }
 }
