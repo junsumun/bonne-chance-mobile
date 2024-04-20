@@ -58,7 +58,7 @@
 		827636C92BC89F6500B2E86A /* ProfileButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827636C82BC89F6500B2E86A /* ProfileButtonView.swift */; };
 		827636CB2BC8AC0C00B2E86A /* ResetPasswordButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827636CA2BC8AC0C00B2E86A /* ResetPasswordButtonView.swift */; };
 		82A0D17B2BCF34B200DD4DE1 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82A0D17A2BCF34B200DD4DE1 /* StoreKit.framework */; };
-		82A0D1802BCF3EDE00DD4DE1 /* PaywallViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A0D17F2BCF3EDE00DD4DE1 /* PaywallViewModel.swift */; };
+		82A0D1802BCF3EDE00DD4DE1 /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A0D17F2BCF3EDE00DD4DE1 /* PurchaseManager.swift */; };
 		82A0D1852BD01AE100DD4DE1 /* ProductIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A0D1842BD01AE100DD4DE1 /* ProductIdentifier.swift */; };
 		82A0D1872BD0B56A00DD4DE1 /* ProductName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A0D1862BD0B56A00DD4DE1 /* ProductName.swift */; };
 		82A98B242BB802ED0014F782 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 82A98B232BB802ED0014F782 /* FirebaseFirestore */; };
@@ -109,7 +109,7 @@
 		827636C82BC89F6500B2E86A /* ProfileButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileButtonView.swift; sourceTree = "<group>"; };
 		827636CA2BC8AC0C00B2E86A /* ResetPasswordButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordButtonView.swift; sourceTree = "<group>"; };
 		82A0D17A2BCF34B200DD4DE1 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		82A0D17F2BCF3EDE00DD4DE1 /* PaywallViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallViewModel.swift; sourceTree = "<group>"; };
+		82A0D17F2BCF3EDE00DD4DE1 /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
 		82A0D1812BCFF45C00DD4DE1 /* Bonne Chance.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Bonne Chance.storekit"; sourceTree = "<group>"; };
 		82A0D1842BD01AE100DD4DE1 /* ProductIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductIdentifier.swift; sourceTree = "<group>"; };
 		82A0D1862BD0B56A00DD4DE1 /* ProductName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductName.swift; sourceTree = "<group>"; };
@@ -182,7 +182,7 @@
 			children = (
 				82A0D1832BD01ACE00DD4DE1 /* Enum */,
 				8239AE232BCD0260000CB169 /* PaywallView.swift */,
-				82A0D17F2BCF3EDE00DD4DE1 /* PaywallViewModel.swift */,
+				82A0D17F2BCF3EDE00DD4DE1 /* PurchaseManager.swift */,
 				82A0D1812BCFF45C00DD4DE1 /* Bonne Chance.storekit */,
 			);
 			path = Paywall;
@@ -516,7 +516,7 @@
 				8239AE1F2BCCEDAF000CB169 /* Fortune.swift in Sources */,
 				82A98B2D2BB804450014F782 /* AuthenticationViewModel.swift in Sources */,
 				825EF8E52BCE2DCF0075465D /* FortuneType.swift in Sources */,
-				82A0D1802BCF3EDE00DD4DE1 /* PaywallViewModel.swift in Sources */,
+				82A0D1802BCF3EDE00DD4DE1 /* PurchaseManager.swift in Sources */,
 				826DA3E62BC77C2E00CB433E /* FortuneHomeView.swift in Sources */,
 				82A98B2A2BB803F40014F782 /* SettingsViewModel.swift in Sources */,
 				8247D2F82BB40468009CB70B /* Gender.swift in Sources */,
