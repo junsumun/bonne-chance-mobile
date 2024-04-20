@@ -9,7 +9,8 @@ import SwiftUI
 import StoreKit
 struct PaywallView: View {
     
-    @EnvironmentObject var viewModel: PaywallViewModel
+    @EnvironmentObject private var purchaseManager: PurchaseManager
+    
     @Binding var showPaywall: Bool;
     
     var body: some View {
@@ -85,9 +86,9 @@ struct PaywallView: View {
             
             Spacer()
             HStack {
-                ForEach(viewModel.products, id: \.id) { product in
+                ForEach(purchaseManager.products, id: \.id) { product in
                     Button {
-                        viewModel.selectedProduct = product
+                        purchaseManager.selectedProduct = product
                     } label: {
                         ProductCardView(product: product)
                     }
@@ -97,12 +98,18 @@ struct PaywallView: View {
             }
             .padding()
             
-            Text(viewModel.selectedProduct?.displayName == ProductName.oneYear.rawValue ? "Includes 3-day free trial. Cancel anytime." : "Auto-renewable subsription. Cancel anytime.")
+            Text(purchaseManager.selectedProduct?.displayName == ProductName.oneYear.rawValue ? "Includes 3-day free trial. Cancel anytime." : "Auto-renewable subsription. Cancel anytime.")
                 .padding(.bottom, 10)
             Button {
-                
+                Task {
+                    do {
+                        try await purchaseManager.purchase(product: purchaseManager.selectedProduct!)
+                    } catch {
+                        print(error)
+                    }
+                }
             } label: {
-                Text(viewModel.selectedProduct?.displayName == ProductName.oneYear.rawValue ? "Continue for Free" : "Continue")
+                Text(purchaseManager.selectedProduct?.displayName == ProductName.oneYear.rawValue ? "Continue for Free" : "Continue")
                     .padding(16)
                     .frame(maxWidth: .infinity)
                     .background(Color.purple)
@@ -115,11 +122,14 @@ struct PaywallView: View {
             
         }
         .task {
-            do {
-                try await viewModel.loadProducts()
-            } catch {
-                print(error)
+            _ = Task<Void, Never> {
+                do {
+                    try await purchaseManager.loadProducts()
+                } catch {
+                    print(error)
+                }
             }
+            
         }
     }
     
@@ -137,7 +147,7 @@ struct PaywallView: View {
             Text("per\(product.displayName.dropFirst(1).lowercased())")
                 .font(.caption)
             Divider()
-            Text("$\(viewModel.calculateWeeklyPrice(subscriptionLength: product.displayName, price: product.price))")
+            Text("$\(purchaseManager.calculateWeeklyPrice(subscriptionLength: product.displayName, price: product.price))")
                 .font(.body)
                 .fontWeight(.semibold)
             Text("per week")
@@ -148,7 +158,7 @@ struct PaywallView: View {
         .padding(15)
         .overlay(
             RoundedRectangle(cornerRadius: 20)
-                .stroke(viewModel.selectedProduct?.displayName == product.displayName ? .purple : .gray, lineWidth: viewModel.selectedProduct?.displayName == product.displayName ? 2 : 1)
+                .stroke(purchaseManager.selectedProduct?.displayName == product.displayName ? .purple : .gray, lineWidth: purchaseManager.selectedProduct?.displayName == product.displayName ? 2 : 1)
         )
         .overlay {
             if product.displayName == ProductName.oneYear.rawValue {
@@ -171,5 +181,5 @@ struct PaywallView: View {
 
 #Preview {
     PaywallView(showPaywall: .constant(true))
-        .environmentObject(PaywallViewModel())
+        .environmentObject(PurchaseManager())
 }
