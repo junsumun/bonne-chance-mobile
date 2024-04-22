@@ -57,7 +57,11 @@ struct PaywallView: View {
             
             // PURCHASE BUTTON
             Button {
-                
+                if let selectedProduct = selectedProduct {
+                    Task {
+                        await purchaseManager.purchase(selectedProduct)
+                    }
+                }
             } label: {
                 Text(selectedProduct?.displayName == ProductName.oneYear.rawValue ? "Continue for Free" : "Continue")
                     .padding(16)

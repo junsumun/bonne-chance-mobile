@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @StateObject private var purchaseManager = PurchaseManager()
+    @EnvironmentObject private var purchaseManager: PurchaseManager
     @StateObject private var profileViewModel = ProfileViewModel()
     
     @State var showMenu = false
@@ -51,8 +51,19 @@ struct HomeView: View {
             PaywallView(selectedProduct: purchaseManager.products[1]) {
                 showPaywall.toggle()
             }
+            .alert(isPresented: $purchaseManager.hasError, error: purchaseManager.error) {}
             .environmentObject(purchaseManager)
         }
+        
+        .onChange(of: purchaseManager.action) {
+            if purchaseManager.action == .successful {
+                
+                showPaywall = false
+                
+                purchaseManager.reset()
+            }
+        }
+        
         .task {
             try? await profileViewModel.loadCurrentUser()
         }

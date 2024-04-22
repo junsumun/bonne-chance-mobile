@@ -67,6 +67,8 @@
 		82A98B302BB804940014F782 /* SignInEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A98B2F2BB804940014F782 /* SignInEmailViewModel.swift */; };
 		82A98B332BB804CD0014F782 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A98B322BB804CD0014F782 /* ProfileView.swift */; };
 		82A98B362BB8082E0014F782 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A98B352BB8082E0014F782 /* UserManager.swift */; };
+		82E163F72BD63938006CEA30 /* ProductCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E163F62BD63938006CEA30 /* ProductCardView.swift */; };
+		82E163F92BD64056006CEA30 /* PaywallDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E163F82BD64056006CEA30 /* PaywallDescriptionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,7 +112,7 @@
 		827636CA2BC8AC0C00B2E86A /* ResetPasswordButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordButtonView.swift; sourceTree = "<group>"; };
 		82A0D17A2BCF34B200DD4DE1 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		82A0D17F2BCF3EDE00DD4DE1 /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
-		82A0D1812BCFF45C00DD4DE1 /* Bonne Chance.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Bonne Chance.storekit"; sourceTree = "<group>"; };
+		82A0D1812BCFF45C00DD4DE1 /* BonneChance.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = BonneChance.storekit; sourceTree = "<group>"; };
 		82A0D1842BD01AE100DD4DE1 /* ProductIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductIdentifier.swift; sourceTree = "<group>"; };
 		82A0D1862BD0B56A00DD4DE1 /* ProductName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductName.swift; sourceTree = "<group>"; };
 		82A98B292BB803F40014F782 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -118,6 +120,8 @@
 		82A98B2F2BB804940014F782 /* SignInEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInEmailViewModel.swift; sourceTree = "<group>"; };
 		82A98B322BB804CD0014F782 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		82A98B352BB8082E0014F782 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		82E163F62BD63938006CEA30 /* ProductCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCardView.swift; sourceTree = "<group>"; };
+		82E163F82BD64056006CEA30 /* PaywallDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallDescriptionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,7 +187,9 @@
 				82A0D1832BD01ACE00DD4DE1 /* Enum */,
 				8239AE232BCD0260000CB169 /* PaywallView.swift */,
 				82A0D17F2BCF3EDE00DD4DE1 /* PurchaseManager.swift */,
-				82A0D1812BCFF45C00DD4DE1 /* Bonne Chance.storekit */,
+				82A0D1812BCFF45C00DD4DE1 /* BonneChance.storekit */,
+				82E163F62BD63938006CEA30 /* ProductCardView.swift */,
+				82E163F82BD64056006CEA30 /* PaywallDescriptionView.swift */,
 			);
 			path = Paywall;
 			sourceTree = "<group>";
@@ -513,10 +519,12 @@
 				825890F62BCA227500C95B5D /* PremiumStatusViewModel.swift in Sources */,
 				826686AA2BA4E7160007B599 /* SignInGoogleHelper.swift in Sources */,
 				82A98B302BB804940014F782 /* SignInEmailViewModel.swift in Sources */,
+				82E163F92BD64056006CEA30 /* PaywallDescriptionView.swift in Sources */,
 				8239AE1F2BCCEDAF000CB169 /* Fortune.swift in Sources */,
 				82A98B2D2BB804450014F782 /* AuthenticationViewModel.swift in Sources */,
 				825EF8E52BCE2DCF0075465D /* FortuneType.swift in Sources */,
 				82A0D1802BCF3EDE00DD4DE1 /* PurchaseManager.swift in Sources */,
+				82E163F72BD63938006CEA30 /* ProductCardView.swift in Sources */,
 				826DA3E62BC77C2E00CB433E /* FortuneHomeView.swift in Sources */,
 				82A98B2A2BB803F40014F782 /* SettingsViewModel.swift in Sources */,
 				8247D2F82BB40468009CB70B /* Gender.swift in Sources */,

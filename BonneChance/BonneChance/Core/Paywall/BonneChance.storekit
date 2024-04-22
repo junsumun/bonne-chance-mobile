@@ -8,6 +8,7 @@
   ],
   "settings" : {
     "_applicationInternalID" : "6498313801",
+    "_billingIssuesEnabled" : false,
     "_developerTeamID" : "5QS75RAV4U",
     "_failTransactionsEnabled" : false,
     "_lastSynchronizedDate" : 735058296.07502306,
@@ -28,7 +29,10 @@
         "name" : "Purchase"
       },
       {
-        "current" : null,
+        "current" : {
+          "index" : 0,
+          "type" : "verification"
+        },
         "enabled" : false,
         "name" : "Verification"
       },

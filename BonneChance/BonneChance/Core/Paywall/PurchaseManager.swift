@@ -8,117 +8,170 @@
 import Foundation
 import StoreKit
 
-@MainActor
-final class PurchaseManager: ObservableObject {
+enum PurchaseManagerError: LocalizedError {
+    case failedVerification
+    case system(Error)
     
-    private let productIdentifiers = [ProductIdentifier.gold1Month.rawValue, ProductIdentifier.gold1Year.rawValue, ProductIdentifier.gold3Month.rawValue]
-    
-    @Published private(set) var products: [Product] = []
-    @Published private(set) var purchasedProductIDs = Set<String>()
-    
-    private var productsLoaded = false
-    private var updates: Task<Void, Never>? = nil
-    
-    init() {
-        self.updates = observeTransactionUpdates()
-    }
-    
-    deinit {
-        self.updates?.cancel()
-    }
-    
-    var hasUnlockedPro: Bool {
-        return !self.purchasedProductIDs.isEmpty
-    }
-    
-    func loadProducts() async throws {
-        
-        guard !self.productsLoaded else { return }
-        let decoder = JSONDecoder()
-        
-        let productList = try await Product.products(for: productIdentifiers).sorted { product1, product2 in
-            var result = false
-            do {
-                let product1DAO = try decoder.decode(ProductDAO.self, from: product1.jsonRepresentation)
-                let product2DAO = try decoder.decode(ProductDAO.self, from: product2.jsonRepresentation)
-                
-                result = product1DAO.attributes.subscriptionFamilyRank < product2DAO.attributes.subscriptionFamilyRank
-            } catch {
-                print(error)
-            }
-            return result
-        }
-        
-        self.products = productList
-        self.productsLoaded = true
-    }
-    
-    func purchase(product: Product) async throws {
-        let result = try await product.purchase()
-        
-        switch result {
-        case let .success(.verified(transaction)):
-            // Successful purhcase
-            await transaction.finish()
-            await self.updatePurchasedProducts()
-        case let .success(.unverified(_, error)):
-            // Successful purchase but transaction/receipt can't be verified
-            // Could be a jailbroken phone
-        print(error)
-            break
-        case .pending:
-            // Transaction waiting on SCA (Strong Customer Authentication) or
-            // approval from Ask to Buy
-            break
-        case .userCancelled:
-            // ^^^
-            break
-        @unknown default:
-            break
-        }
-    }
-    
-    func updatePurchasedProducts() async {
-        for await result in Transaction.currentEntitlements {
-            guard case .verified(let transaction) = result else {
-                continue
-            }
-
-            if transaction.revocationDate == nil {
-                self.purchasedProductIDs.insert(transaction.productID)
-            } else {
-                self.purchasedProductIDs.remove(transaction.productID)
-            }
-        }
-    }
-    
-    private func observeTransactionUpdates() -> Task<Void, Never> {
-            Task(priority: .background) {
-                for await verificationResult in Transaction.updates {
-                    // Using verificationResult directly would be better
-                    // but this way works for this tutorial
-                    await self.updatePurchasedProducts()
-                }
-            }
-        }
-
-    func calculateWeeklyPrice(subscriptionLength: String, price: Decimal) -> String {
-        
-        let priceInDouble = NSDecimalNumber(decimal: price).doubleValue
-        
-        switch subscriptionLength {
-        case ProductName.oneMonth.rawValue:
-            return "\(floor(priceInDouble / 4 * 100) / 100)"
-        case ProductName.oneYear.rawValue:
-            return "\(floor(priceInDouble / 12 / 4 * 100) / 100)"
-        case ProductName.threeMonth.rawValue:
-            return "\(floor(priceInDouble / 3 / 4 * 100) / 100)"
-        default:
-            return "Error"
+    var errorDescription: String? {
+        switch self {
+        case .failedVerification:
+            return "User transaction verification failed"
+        case .system(let err):
+            return err.localizedDescription
         }
     }
 }
 
+enum PurchaseManagerAction: Equatable {
+    case successful
+    case failed(PurchaseManagerError)
+    
+    static func == (lhs: PurchaseManagerAction, rhs: PurchaseManagerAction) -> Bool {
+        switch (lhs, rhs) {
+        case (.successful, .successful):
+            return true
+        case (let .failed(lhsErr), let .failed(rhsErr)):
+            return lhsErr.localizedDescription == rhsErr.localizedDescription
+        default:
+            return false
+        }
+    }
+}
+
+typealias PurchaseResult = Product.PurchaseResult
+typealias TransactionListener = Task<Void, Error>
+
+@MainActor
+final class PurchaseManager: ObservableObject {
+    
+    @Published private(set) var products = [Product]()
+    @Published private(set) var action: PurchaseManagerAction? {
+        didSet {
+            switch action {
+            case .failed:
+                hasError = true
+            default:
+                hasError = false
+            }
+        }
+    }
+    
+    @Published var hasError = false
+    
+    var error: PurchaseManagerError? {
+        switch action {
+        case .failed(let err):
+            return err
+        default:
+            return nil
+        }
+    }
+    
+    private var transactionListener: TransactionListener?
+    
+    init() {
+        
+        transactionListener = configureTransactionListener()
+        
+        Task { [weak self] in
+            await self?.retrieveProducts()
+        }
+    }
+    
+    deinit {
+        transactionListener?.cancel()
+    }
+    
+    func purchase(_ product: Product) async {
+        
+        do {
+            let result = try await product.purchase()
+            
+            try await handlePurchase(from: result)
+            
+        } catch {
+            action = .failed(.system(error))
+            print(error)
+        }
+    }
+    
+    func reset() {
+        action = nil
+    }
+}
+
+private extension PurchaseManager {
+    
+    func retrieveProducts() async {
+        
+        do {
+            let decoder = JSONDecoder()
+            let products = try await Product.products(for: productIdentifiers).sorted { p1, p2 in
+                let p1DAO = try decoder.decode(ProductDAO.self, from: p1.jsonRepresentation)
+                let p2DAO = try decoder.decode(ProductDAO.self, from: p2.jsonRepresentation)
+                
+                return p1DAO.attributes.subscriptionFamilyRank < p2DAO.attributes.subscriptionFamilyRank
+            }
+            
+            self.products = products
+        
+        } catch {
+            action = .failed(.system(error))
+            print(error)
+        }
+    }
+    
+    func handlePurchase(from result: PurchaseResult) async throws {
+        
+        switch result {
+        case .success(let verification):
+            print("Purchase was a success, verifying their purchase")
+            
+            let transaction = try checkVerified(verification)
+            
+            action = .successful
+            
+            await transaction.finish()
+            
+        case .pending:
+            print("The user needs to complete some action on their account before they can complete purchase")
+            
+        case .userCancelled:
+            print("The user canceled before their transaction started")
+            
+        default:
+            break
+        }
+    }
+    
+    func checkVerified<T>(_ result: VerificationResult<T>) throws -> T {
+        switch result {
+        case .unverified:
+            print("The verification of the user failed")
+            throw PurchaseManagerError.failedVerification
+        case .verified(let safe):
+            return safe
+        }
+    }
+    
+    func configureTransactionListener() -> TransactionListener {
+        Task.detached(priority: .background) { @MainActor [weak self] in
+            do {
+                for await result in Transaction.updates {
+                    
+                    let transaction = try self?.checkVerified(result)
+                    
+                    self?.action = .successful
+                    
+                    await transaction?.finish()
+                }
+            } catch {
+                self?.action = .failed(.system(error))
+                print(error)
+            }
+        }
+    }
+}
 
 struct ProductDAO: Codable {
     let href: String
