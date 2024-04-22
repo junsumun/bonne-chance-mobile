@@ -48,8 +48,10 @@ struct HomeView: View {
         }
         .tint(.purple)
         .sheet(isPresented: $showPaywall) {
-            PaywallView(showPaywall: $showPaywall)
-                .environmentObject(purchaseManager)
+            PaywallView(selectedProduct: purchaseManager.products[1]) {
+                showPaywall.toggle()
+            }
+            .environmentObject(purchaseManager)
         }
         .task {
             try? await profileViewModel.loadCurrentUser()

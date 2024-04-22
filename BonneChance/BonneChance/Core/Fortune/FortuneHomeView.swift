@@ -15,6 +15,7 @@ struct FortuneHomeView: View {
     @State var currentFortuneSlider: Int = 0
     @State private var scrollPosition: CGPoint = .zero
     
+    @EnvironmentObject var purchaseManager: PurchaseManager
     @EnvironmentObject var profileViewModel: ProfileViewModel
     
     private var user: DBUser? {
