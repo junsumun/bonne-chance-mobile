@@ -14,7 +14,6 @@ struct HomeView: View {
     
     @State var showMenu = false
     @State var showPaywall = false
-    @State var userPremiumType: Premium? = nil
     
     var body: some View {
         NavigationStack {
@@ -31,10 +30,6 @@ struct HomeView: View {
                     }
                 }
                 .animation(.easeInOut, value: self.showMenu)
-                .task {
-                    try? await profileViewModel.loadCurrentUser()
-                    userPremiumType = profileViewModel.user?.premiumType
-                }
                 .navigationBarItems(leading: (
                     Button(action: {
                         self.showMenu.toggle()
@@ -63,13 +58,10 @@ struct HomeView: View {
                 purchaseManager.reset()
             }
         }
-        
-        .task {
-            try? await profileViewModel.loadCurrentUser()
-        }
     }
 }
 
 #Preview {
     HomeView()
+        .environmentObject(PurchaseManager())
 }

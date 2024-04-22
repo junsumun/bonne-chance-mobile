@@ -56,6 +56,8 @@ final class PurchaseManager: ObservableObject {
         }
     }
     
+    @Published private(set) var purchasedProductIDs = Set<String>()
+    
     @Published var hasError = false
     
     var error: PurchaseManagerError? {
@@ -76,10 +78,19 @@ final class PurchaseManager: ObservableObject {
         Task { [weak self] in
             await self?.retrieveProducts()
         }
+        
+        Task {
+            await self.loadPurchasedProducts()
+        }
+        
     }
     
     deinit {
         transactionListener?.cancel()
+    }
+    
+    var hasUnlockedGold: Bool {
+        return !self.purchasedProductIDs.isEmpty
     }
     
     func purchase(_ product: Product) async {
@@ -129,6 +140,8 @@ private extension PurchaseManager {
             
             let transaction = try checkVerified(verification)
             
+            await loadPurchasedProducts()
+            
             action = .successful
             
             await transaction.finish()
@@ -168,6 +181,20 @@ private extension PurchaseManager {
             } catch {
                 self?.action = .failed(.system(error))
                 print(error)
+            }
+        }
+    }
+    
+    func loadPurchasedProducts() async {
+        for await result in Transaction.currentEntitlements {
+            guard case .verified(let transaction) = result else {
+                continue
+            }
+            
+            if transaction.revocationDate == nil {
+                self.purchasedProductIDs.insert(transaction.productID)
+            } else {
+                self.purchasedProductIDs.remove(transaction.productID)
             }
         }
     }

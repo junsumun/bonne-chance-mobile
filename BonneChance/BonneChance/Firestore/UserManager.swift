@@ -57,6 +57,19 @@ final class UserManager {
         try await userDocument(userId: user.userId).setData(from: user, merge: true)
     }
     
+//    func updateUserSubscription(userId: String, subscription: Subscription) async throws {
+//        guard let data = try? encoder.encode(subscription) else {
+//            throw URLError(.badURL)
+//        }
+//        
+//        let dict: [String: Any] = [
+//            DBUser.CodingKeys.subscription.rawValue : data
+//        ]
+//        
+//        print(data)
+//        try await userDocument(userId: userId).updateData(dict)
+//    }
+    
     func updateUserPremiumStatus(userId: String, premiumType: Premium) async throws {
         let data: [String: Any] = [
             DBUser.CodingKeys.premiumType.rawValue : premiumType.rawValue

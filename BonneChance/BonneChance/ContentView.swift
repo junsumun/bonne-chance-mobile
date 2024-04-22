@@ -25,11 +25,9 @@ struct ContentView: View {
         .onAppear {
             let authUser = try? AuthenticationManager.shared.getAuthenticatedUser()
             currentUserSignedIn = authUser == nil ? false : true
-            print("Checking auth user: \(currentUserSignedIn)")
         }
         .fullScreenCover(isPresented: Binding<Bool>(get: { !currentUserSignedIn }, set: { _ in })) {
             OnBoardingView()
-            let _ = print("OnBoardingView should be displayed")
         }
         
     }

@@ -112,7 +112,7 @@
 		827636CA2BC8AC0C00B2E86A /* ResetPasswordButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordButtonView.swift; sourceTree = "<group>"; };
 		82A0D17A2BCF34B200DD4DE1 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		82A0D17F2BCF3EDE00DD4DE1 /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
-		82A0D1812BCFF45C00DD4DE1 /* BonneChance.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = BonneChance.storekit; sourceTree = "<group>"; };
+		82A0D1812BCFF45C00DD4DE1 /* Bonne Chance.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Bonne Chance.storekit"; sourceTree = "<group>"; };
 		82A0D1842BD01AE100DD4DE1 /* ProductIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductIdentifier.swift; sourceTree = "<group>"; };
 		82A0D1862BD0B56A00DD4DE1 /* ProductName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductName.swift; sourceTree = "<group>"; };
 		82A98B292BB803F40014F782 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -187,7 +187,7 @@
 				82A0D1832BD01ACE00DD4DE1 /* Enum */,
 				8239AE232BCD0260000CB169 /* PaywallView.swift */,
 				82A0D17F2BCF3EDE00DD4DE1 /* PurchaseManager.swift */,
-				82A0D1812BCFF45C00DD4DE1 /* BonneChance.storekit */,
+				82A0D1812BCFF45C00DD4DE1 /* Bonne Chance.storekit */,
 				82E163F62BD63938006CEA30 /* ProductCardView.swift */,
 				82E163F82BD64056006CEA30 /* PaywallDescriptionView.swift */,
 			);
@@ -705,9 +705,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.junsumun.BonneChance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -740,9 +744,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.junsumun.BonneChance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

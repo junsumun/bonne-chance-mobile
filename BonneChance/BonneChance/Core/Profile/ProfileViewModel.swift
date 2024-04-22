@@ -12,9 +12,21 @@ final class ProfileViewModel: ObservableObject {
     
     @Published private(set) var user: DBUser? = nil
     
-    func loadCurrentUser() async throws {
-        let authDataResult = try AuthenticationManager.shared.getAuthenticatedUser()
-        self.user = try await UserManager.shared.getUser(userId: authDataResult.uid)
+    init() {
+        Task { [weak self] in
+            await self?.loadCurrentUser()
+        }
+        
+    }
+    
+    func loadCurrentUser() async {
+        do {
+            let authDataResult = try AuthenticationManager.shared.getAuthenticatedUser()
+            self.user = try await UserManager.shared.getUser(userId: authDataResult.uid)
+        } catch {
+            print(error)
+        }
+        
     }
     
     func togglePremiumStatus() {
@@ -24,6 +36,5 @@ final class ProfileViewModel: ObservableObject {
             try await UserManager.shared.updateUserPremiumStatus(userId: user.userId, premiumType: currentValue == Premium.basic ? Premium.gold : Premium.basic)
             self.user = try await UserManager.shared.getUser(userId: user.userId)
         }
-    
     }
 }
