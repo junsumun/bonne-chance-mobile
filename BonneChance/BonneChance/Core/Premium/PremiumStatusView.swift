@@ -12,6 +12,8 @@ struct PremiumStatusView: View {
     @StateObject private var viewModel = PremiumStatusViewModel()
     @EnvironmentObject private var profileViewModel: ProfileViewModel
     
+    @Binding var showPaywall: Bool
+    
     var body: some View {
         VStack(alignment: .center) {
             Text("Current Plan:")
@@ -23,17 +25,21 @@ struct PremiumStatusView: View {
                 Text("\(profileViewModel.user?.premiumType?.rawValue.capitalized ?? "Basic" )")
                     .font(.title2)
             }
-            Button(action: {
-                profileViewModel.togglePremiumStatus()
-            }, label: {
-                Text("Upgrade Plan")
-                    .padding(10)
-                    .frame(maxWidth: .infinity)
-                    .background(Color.purple)
-                    .cornerRadius(10)
-                    .padding(.horizontal, 10)
-                    .foregroundColor(.white)
-            })
+            .frame(maxWidth: .infinity)
+            if profileViewModel.user?.premiumType == Premium.basic {
+                Button(action: {
+                    showPaywall.toggle()
+                }, label: {
+                    Text("Upgrade Plan")
+                        .padding(10)
+                        .frame(maxWidth: .infinity)
+                        .background(Color.purple)
+                        .cornerRadius(10)
+                        .padding(.horizontal, 10)
+                        .foregroundColor(.white)
+                })
+            }
+            
         }
         .padding()
         .background(Color(Color(.systemGray6)))
@@ -42,6 +48,6 @@ struct PremiumStatusView: View {
 }
 
 #Preview {
-    PremiumStatusView()
+    PremiumStatusView(showPaywall: .constant(false))
         .environmentObject(ProfileViewModel())
 }

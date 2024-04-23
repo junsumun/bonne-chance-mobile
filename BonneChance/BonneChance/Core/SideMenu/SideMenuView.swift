@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct SideMenuView: View {
-    @EnvironmentObject var profileViewModel: ProfileViewModel
+    @EnvironmentObject private var profileViewModel: ProfileViewModel
+    
+    @Binding var showPaywall: Bool
     
     var body: some View {
         
@@ -18,7 +20,7 @@ struct SideMenuView: View {
                 .padding(.top, 10)
                 .environmentObject(profileViewModel)
             
-            PremiumStatusView()
+            PremiumStatusView(showPaywall: $showPaywall)
                 .padding(.top, 10)
                 .environmentObject(profileViewModel)
 
@@ -85,7 +87,8 @@ struct SideMenuView: View {
 
 #Preview {
     NavigationView {
-        SideMenuView()
+        SideMenuView(showPaywall: .constant(false))
+            .environmentObject(ProfileViewModel())
     }
     .tint(.purple)
 }

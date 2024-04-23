@@ -23,10 +23,11 @@ struct HomeView: View {
                         .environmentObject(profileViewModel)
                     
                     if self.showMenu {
-                        SideMenuView()
+                        SideMenuView(showPaywall: $showPaywall)
                             .frame(width: geometry.size.width * 0.7)
                             .transition(.move(edge: .leading))
                             .environmentObject(profileViewModel)
+                            .environmentObject(purchaseManager)
                     }
                 }
                 .animation(.easeInOut, value: self.showMenu)
@@ -49,15 +50,22 @@ struct HomeView: View {
             .alert(isPresented: $purchaseManager.hasError, error: purchaseManager.error) {}
             .environmentObject(purchaseManager)
         }
-        
         .onChange(of: purchaseManager.action) {
             if purchaseManager.action == .successful {
-                
+                Task {
+                    await profileViewModel.loadCurrentUser()
+                }
                 showPaywall = false
                 
                 purchaseManager.reset()
             }
         }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification), perform: { _ in
+            Task {
+                await purchaseManager.update()
+                await profileViewModel.loadCurrentUser()
+            }
+        })
     }
 }
 

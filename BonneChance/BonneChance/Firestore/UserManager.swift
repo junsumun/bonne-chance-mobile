@@ -57,18 +57,23 @@ final class UserManager {
         try await userDocument(userId: user.userId).setData(from: user, merge: true)
     }
     
-//    func updateUserSubscription(userId: String, subscription: Subscription) async throws {
-//        guard let data = try? encoder.encode(subscription) else {
-//            throw URLError(.badURL)
-//        }
-//        
-//        let dict: [String: Any] = [
-//            DBUser.CodingKeys.subscription.rawValue : data
-//        ]
-//        
-//        print(data)
-//        try await userDocument(userId: userId).updateData(dict)
-//    }
+    private let encoder: Firestore.Encoder = {
+        let encoder = Firestore.Encoder()
+        return encoder
+    }()
+    
+    func updateUserSubscription(userId: String, subscription: Subscription) async throws {
+        guard let data = try? encoder.encode(subscription) else {
+            throw URLError(.badURL)
+        }
+        
+        let dict: [String: Any] = [
+            DBUser.CodingKeys.subscription.rawValue : data
+        ]
+        
+        try await userDocument(userId: userId).updateData(dict)
+        try await updateUserPremiumStatus(userId: userId, premiumType: subscription.subscriptionFamily ?? Premium.basic)
+    }
     
     func updateUserPremiumStatus(userId: String, premiumType: Premium) async throws {
         let data: [String: Any] = [

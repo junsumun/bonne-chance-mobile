@@ -28,13 +28,5 @@ final class ProfileViewModel: ObservableObject {
         }
         
     }
-    
-    func togglePremiumStatus() {
-        guard let user else { return }
-        let currentValue = user.premiumType ?? Premium.basic
-        Task {
-            try await UserManager.shared.updateUserPremiumStatus(userId: user.userId, premiumType: currentValue == Premium.basic ? Premium.gold : Premium.basic)
-            self.user = try await UserManager.shared.getUser(userId: user.userId)
-        }
-    }
+
 }

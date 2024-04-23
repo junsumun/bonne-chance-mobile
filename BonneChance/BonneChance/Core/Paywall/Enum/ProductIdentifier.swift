@@ -18,3 +18,25 @@ let productIdentifiers = [
     ProductIdentifier.gold1Year.rawValue,
     ProductIdentifier.gold3Month.rawValue
 ]
+
+enum SubscriptionFamily: String, Codable {
+    case gold = "gold"
+}
+
+func getSubscriptionFamily(productId: String) -> Premium {
+    switch productId {
+        
+    case ProductIdentifier.gold1Month.rawValue:
+        return Premium.gold
+        
+    case ProductIdentifier.gold1Year.rawValue:
+        return Premium.gold
+        
+    case ProductIdentifier.gold3Month.rawValue:
+        return Premium.gold
+        
+    default:
+        return Premium.gold
+    }
+    
+}

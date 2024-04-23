@@ -109,6 +109,10 @@ final class PurchaseManager: ObservableObject {
     func reset() {
         action = nil
     }
+    
+    func update() async {
+        await loadPurchasedProducts()
+    }
 }
 
 private extension PurchaseManager {
@@ -168,6 +172,7 @@ private extension PurchaseManager {
     }
     
     func configureTransactionListener() -> TransactionListener {
+        
         Task.detached(priority: .background) { @MainActor [weak self] in
             do {
                 for await result in Transaction.updates {
@@ -175,6 +180,8 @@ private extension PurchaseManager {
                     let transaction = try self?.checkVerified(result)
                     
                     self?.action = .successful
+                    
+                    await self?.loadPurchasedProducts()
                     
                     await transaction?.finish()
                 }
@@ -186,16 +193,57 @@ private extension PurchaseManager {
     }
     
     func loadPurchasedProducts() async {
+        
+        purchasedProductIDs.removeAll()
+        
         for await result in Transaction.currentEntitlements {
             guard case .verified(let transaction) = result else {
                 continue
             }
-            
-            if transaction.revocationDate == nil {
+            if transaction.revocationDate == nil && transaction.expirationDate! > Date() {
                 self.purchasedProductIDs.insert(transaction.productID)
+                await updateSubscription(transaction: transaction)
             } else {
                 self.purchasedProductIDs.remove(transaction.productID)
             }
+        }
+        if purchasedProductIDs.isEmpty {
+            await removeSubscription()
+        }
+    }
+    
+    func removeSubscription() async {
+        do {
+            let authDataResult = try AuthenticationManager.shared.getAuthenticatedUser()
+            let user = try await UserManager.shared.getUser(userId: authDataResult.uid)
+            
+            let subscription = Subscription(
+                id: UInt64(),
+                subscriptionFamily: Premium.basic
+            )
+            
+            try await UserManager.shared.updateUserSubscription(userId: user.userId, subscription: subscription)
+        } catch {
+            print(error)
+        }
+    }
+    func updateSubscription(transaction: Transaction) async {
+        do {
+            let authDataResult = try AuthenticationManager.shared.getAuthenticatedUser()
+            let user = try await UserManager.shared.getUser(userId: authDataResult.uid)
+            
+            let subscription = Subscription(
+                id: transaction.id,
+                purchaseDate: transaction.purchaseDate,
+                originalPurchaseDate: transaction.originalPurchaseDate,
+                expirationDate: transaction.expirationDate,
+                productId: transaction.productID,
+                subscriptionFamily: getSubscriptionFamily(productId: transaction.productID)
+            )
+            
+            try await UserManager.shared.updateUserSubscription(userId: user.userId, subscription: subscription)
+        } catch {
+            print(error)
         }
     }
 }

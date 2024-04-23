@@ -11,13 +11,30 @@ import Foundation
 struct Subscription: Codable {
     let id: UInt64
     let purchaseDate: Date?
+    let originalPurchaseDate: Date?
     let expirationDate: Date?
     let productId: String?
-    let subscriptionFamily: String?
+    let subscriptionFamily: Premium?
+    
+    init(id: UInt64,
+         purchaseDate: Date? = nil,
+         originalPurchaseDate: Date? = nil,
+         expirationDate: Date? = nil,
+         productId: String? = nil,
+         subscriptionFamily: Premium? = nil
+    ) {
+        self.id = id
+        self.purchaseDate = purchaseDate
+        self.originalPurchaseDate = originalPurchaseDate
+        self.expirationDate = expirationDate
+        self.productId = productId
+        self.subscriptionFamily = subscriptionFamily
+    }
     
     enum CodingKeys: String, CodingKey {
         case id = "id"
         case purchaseDate = "purchase_date"
+        case originalPurchaseDate = "original_purchase_date"
         case expirationDate = "expiration_date"
         case productId = "product_id"
         case subscriptionFamily = "subscription_family"
@@ -27,15 +44,17 @@ struct Subscription: Codable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try container.decode(UInt64.self, forKey: .id)
         self.purchaseDate = try container.decodeIfPresent(Date.self, forKey: .purchaseDate)
+        self.originalPurchaseDate = try container.decodeIfPresent(Date.self, forKey: .originalPurchaseDate)
         self.expirationDate = try container.decodeIfPresent(Date.self, forKey: .expirationDate)
         self.productId = try container.decodeIfPresent(String.self, forKey: .productId)
-        self.subscriptionFamily = try container.decodeIfPresent(String.self, forKey: .subscriptionFamily)
+        self.subscriptionFamily = try container.decodeIfPresent(Premium.self, forKey: .subscriptionFamily)
     }
     
     func encode(to encoder: any Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(self.id, forKey: .id)
         try container.encodeIfPresent(self.purchaseDate, forKey: .purchaseDate)
+        try container.encodeIfPresent(self.originalPurchaseDate, forKey: .originalPurchaseDate)
         try container.encodeIfPresent(self.expirationDate, forKey: .expirationDate)
         try container.encodeIfPresent(self.productId, forKey: .productId)
         try container.encodeIfPresent(self.subscriptionFamily, forKey: .subscriptionFamily)
