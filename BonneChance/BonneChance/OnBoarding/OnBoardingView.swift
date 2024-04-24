@@ -14,9 +14,10 @@ struct OnBoardingStep {
 }
 
 private let onBoardingSteps = [
-    OnBoardingStep(image: "onboarding1", title: "Tarot, Horoscope, Saju, Palmistry & More!", description: "A whole assortment of free fortunes right in the palm of your hands!"),
-    OnBoardingStep(image: "onboarding1", title: "Purchase-Free Experience", description: "A whole assortment of free fortunes right in the palm of your hands!"),
-    OnBoardingStep(image: "onboarding1", title: "Tarot, Horoscope, Saju, Palmistry & More!", description: "A whole assortment of free fortunes right in the palm of your hands!")
+    OnBoardingStep(image: "onboarding1", title: "Foresight", description: "Gain a crystal-clear view of your day ahead, guiding you towards success and serenity!"),
+    OnBoardingStep(image: "onboarding1", title: "Love, Career & More!", description: "Explore a universe of possibilities with our diverse fortune readings!"),
+    OnBoardingStep(image: "onboarding1", title: "Purchase-Free Experience", description: "A whole assortment of free fortunes right in the palm of your hands!")
+    
 ]
 struct OnBoardingView: View {
     
@@ -26,24 +27,36 @@ struct OnBoardingView: View {
     
     var body: some View {
         NavigationView {
+            
             VStack {
+                ZStack {
+                    Image("onboarding1")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 350, height: 350)
+                        .offset(CGSize(width: 0, height: 50))
+                    Image("bonne_chance_logo")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 100, height: 100)
+                        .offset(CGSize(width: 0, height: -100))
+                }
+                .padding()
                 TabView(selection: $currentStep) {
                     ForEach(0..<onBoardingSteps.count, id: \.self) { index in
                         VStack {
-                            Image(onBoardingSteps[index].image)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 250, height: 250)
-                            
-                            
                             Text(onBoardingSteps[index].title)
                                 .font(.title)
+                                .foregroundColor(.accentColor)
                                 .bold()
+                                .fontDesign(.serif)
                     
                             Text(onBoardingSteps[index].description)
                                 .multilineTextAlignment(.center)
                                 .padding(.horizontal, 32)
-                                .padding(.top, 16)
+                                .padding(.top, 5)
+                                .foregroundColor(.accentColor)
+                                .bold()
                         }
                     }
                 }
@@ -55,7 +68,7 @@ struct OnBoardingView: View {
                             Rectangle()
                                 .frame(width: 20, height: 10)
                                 .cornerRadius(10)
-                                .foregroundColor(.purple)
+                                .foregroundColor(.accentColor)
                         } else {
                             Circle()
                                 .frame(width: 10, height: 10)
@@ -68,32 +81,49 @@ struct OnBoardingView: View {
                 NavigationLink {
                     OnBoardingSignupView()
                 } label: {
-                    Text("Get Started!")
+                    Text("Get Started")
                         .padding(16)
                         .frame(maxWidth: .infinity)
-                        .background(Color.purple)
-                        .cornerRadius(10)
-                        .padding(.horizontal, 16)
+                        .background(Color.accentColor)
+                        .cornerRadius(27)
+                        .padding(.horizontal, 45)
                         .foregroundColor(.white)
+                        .fontWeight(.bold)
                 }
                 .padding(.bottom, 15)
                 
                 HStack {
                     Text("Already have an account?")
+                        .foregroundColor(.gray)
+                        .fontWeight(.semibold)
                     NavigationLink {
                         AuthenticationView(hasAccount: .constant(true))
                             
                     } label: {
                         Text("Log in")
-                            .foregroundStyle(Color.purple)
+                            .foregroundStyle(Color.accentColor)
                             .bold()
                     }
                 }
-                .padding(.bottom, 10)
+                .padding(.bottom, 15)
                 
+                
+                Group {
+                    Text("By continuing, you agree to our ")
+                    + Text("[Terms. ](https://google.ca)").fontWeight(.bold)
+                    + Text("You acknowledge receipt and understanding of our ")
+                    + Text("[Privacy Policy ](https://google.ca)").fontWeight(.bold)
+                    + Text("and ")
+                    + Text("[Cookie Notice.](https://google.ca)").fontWeight(.bold)
+                }
+                .multilineTextAlignment(.center)
+                .font(.system(size: 12))
+                .fontWeight(.light)
+                .foregroundColor(Color("FooterTextColor"))
+                .padding(.horizontal, 45)
+//                .padding(.bottom, 10)
             }
         }
-        .tint(Color.purple)
     }
 }
 
