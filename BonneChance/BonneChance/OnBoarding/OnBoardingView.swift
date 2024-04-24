@@ -121,7 +121,6 @@ struct OnBoardingView: View {
                 .fontWeight(.light)
                 .foregroundColor(Color("FooterTextColor"))
                 .padding(.horizontal, 45)
-//                .padding(.bottom, 10)
             }
         }
     }
