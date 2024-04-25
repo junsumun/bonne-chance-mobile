@@ -107,7 +107,7 @@ struct OnBoardingView: View {
                 }
                 .padding(.bottom, 15)
                 
-                
+                // TODO: Change below links to the landing page link
                 Group {
                     Text("By continuing, you agree to our ")
                     + Text("[Terms. ](https://google.ca)").fontWeight(.bold)

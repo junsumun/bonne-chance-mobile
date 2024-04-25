@@ -19,10 +19,10 @@ struct CommonBackButton: View {
                     .resizable()
                     .frame(width: 12, height: 20)
                     .aspectRatio(contentMode: .fit)
-                    .foregroundColor(.purple)
+                    .foregroundColor(.black)
                     .fontWeight(.semibold)
                 Text("Back")
-                    .foregroundColor(.purple)
+                    .foregroundColor(.black)
             }
         }
         .padding(.horizontal, 10)

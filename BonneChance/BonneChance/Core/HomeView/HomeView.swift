@@ -37,7 +37,7 @@ struct HomeView: View {
                     }) {
                         Image(systemName: self.showMenu ? "xmark" : "line.horizontal.3")
                             .imageScale(.large)
-                            .foregroundColor(.purple)
+                            .foregroundColor(.accentColor)
                     }
                 ))
             }

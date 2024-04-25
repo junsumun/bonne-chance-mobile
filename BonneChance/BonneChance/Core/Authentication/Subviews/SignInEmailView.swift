@@ -9,12 +9,18 @@ import SwiftUI
 
 struct SignInEmailView: View {
     
+    enum FocusField {
+        case email
+    }
+    
     @StateObject private var viewModel = SignInEmailViewModel()
     
     @Binding var email: String
     @Binding var hasAccount: Bool
     
     @State var errorMessage: String = ""
+    
+    @FocusState private var focusedField: FocusField?
     
     @Environment(\.dismiss) var dismiss
 
@@ -31,19 +37,28 @@ struct SignInEmailView: View {
             }
             VStack {
                 TextField("email address", text: $email)
-                    .padding()
                     .autocapitalization(.none)
                     .keyboardType(.emailAddress)
+                    .focused($focusedField, equals: .email)
+                    .padding(.top, 20)
+                    .padding(.bottom, 10)
+                    .padding(.leading, 5)
                     .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.black, lineWidth: 0.5)
+                        Divider()
+                            .frame(maxHeight: 1)
+                            .background(.black),
+                        alignment: .bottom
                     )
                 
                 SecureField("password", text: $viewModel.password)
-                    .padding()
+                    .padding(.top, 20)
+                    .padding(.bottom, 10)
+                    .padding(.leading, 5)
                     .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.black, lineWidth: 0.5)
+                        Divider()
+                            .frame(maxHeight: 1)
+                            .background(.black),
+                        alignment: .bottom
                     )
                 
                 if !errorMessage.isEmpty {
@@ -60,7 +75,6 @@ struct SignInEmailView: View {
                                 viewModel.email = email
                                 try await viewModel.signIn()
                                 currentUserSignedIn = true
-//                                return
                             } catch let error as AuthenticationError {
                                 errorMessage = error.errorDescription
                             }
@@ -78,14 +92,15 @@ struct SignInEmailView: View {
                 
                 } label: {
                     Text(hasAccount ? "Sign In" : "Sign Up")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .frame(height: 55)
+                        .padding(16)
                         .frame(maxWidth: .infinity)
-                        .background(email.isEmpty == true ? Color.gray : Color.purple)
-                        .cornerRadius(10)
-                    
+                        .background(email.isEmpty == true ? Color("ButtonDisabledColor") : Color.accentColor)
+                        .cornerRadius(27)
+                        .padding(.horizontal, 15)
+                        .foregroundColor(.white)
+                        .bold()
                 }
+                .padding(.top, 20)
                 
                 Spacer()
                 
@@ -94,6 +109,9 @@ struct SignInEmailView: View {
             
         }
         .navigationBarBackButtonHidden(true)
+        .onAppear{
+            focusedField = .email
+        }
         
         
     }

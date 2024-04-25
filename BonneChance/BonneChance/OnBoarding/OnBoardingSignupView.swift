@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct OnBoardingSignupView: View {
+    enum FocusField {
+        case firstName
+        case lastName
+    }
     
     @State var onboardingState: Int = 0
     
@@ -20,6 +24,8 @@ struct OnBoardingSignupView: View {
     @State private var currentStep: Int = 0
     
     @State private var onBoardingSignupSteps: Int = 4
+    
+    @FocusState private var focusedField: FocusField?
     
     @Environment(\.dismiss) var dismiss
     
@@ -68,26 +74,15 @@ extension OnBoardingSignupView {
         Text("Next")
             .padding(16)
             .frame(maxWidth: .infinity)
-            .background(buttonDisabled == true ? Color.gray : Color.purple)
-            .cornerRadius(10)
+            .background(buttonDisabled == true ? Color("ButtonDisabledColor") : Color.accentColor)
+            .cornerRadius(27)
+            .padding(.horizontal, 15)
             .foregroundColor(.white)
+            .bold()
             .onTapGesture {
                 handleNextButtonClicked()
             }
             .disabled(buttonDisabled)
-    }
-    
-    private var backButton: some View {
-        HStack {
-            Button(action: {
-                handleBackButtonClicked()
-            }) {
-                Label("Back", systemImage: "chevron.backward")
-                    .foregroundColor(.purple)
-            }
-            Spacer()
-        }
-        .padding(.horizontal, 10)
     }
     
     private var signupProgressIndicator: some View {
@@ -97,11 +92,11 @@ extension OnBoardingSignupView {
                     Rectangle()
                         .frame(width: 20, height: 10)
                         .cornerRadius(10)
-                        .foregroundColor(.purple)
+                        .foregroundColor(.accentColor)
                 } else if index < currentStep {
                     Circle()
                         .frame(width: 10, height: 10)
-                        .foregroundColor(.purple)
+                        .foregroundColor(.accentColor)
                 } else {
                     Circle()
                         .frame(width: 10, height: 10)
@@ -114,81 +109,79 @@ extension OnBoardingSignupView {
     
     private var firstNamePromptView: some View {
         VStack {
-            VStack {
-                Image("onboarding1")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 250, height: 250)
-
-
+            VStack(alignment: .leading) {
                 Text("What's your **first name**?")
-                    .multilineTextAlignment(.center)
                     .font(.title)
+                    .fontDesign(.serif)
 
-                TextField("max 20 characters", text: $firstName)
+                TextField("first name", text: $firstName)
                     .limitInputLength(value: $firstName, length: 20)
-                    .padding()
+                    .focused($focusedField, equals: .firstName)
+                    .padding(.bottom, 10)
+                    .padding(.leading, 5)
                     .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.black, lineWidth: 0.5)
+                        Divider()
+                            .frame(maxHeight: 1)
+                            .background(.black),
+                        alignment: .bottom
                     )
             }
-            
+            .padding(.top, 30)
             .padding(.bottom, 24)
-            
-            Spacer()
             
             signupProgressIndicator
             
             nextButton(buttonDisabled: !firstNameInputIsValid())
+            
+            Spacer()
         }
         .padding()
+        .onAppear {
+            focusedField = .firstName
+        }
     }
     
     private var lastNamePromptView: some View {
         VStack {
-            VStack {
-                Image("onboarding1")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 250, height: 250)
-
-
+            VStack(alignment: .leading) {
                 Text("What's your **last name**?")
-                    .multilineTextAlignment(.center)
                     .font(.title)
+                    .fontDesign(.serif)
 
-                TextField("max 20 characters", text: $lastName)
+                TextField("last name", text: $lastName)
                     .limitInputLength(value: $lastName, length: 20)
-                    .padding()
+                    .focused($focusedField, equals: .lastName)
+                    .padding(.bottom, 10)
+                    .padding(.leading, 5)
                     .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.black, lineWidth: 0.5)
+                        Divider()
+                            .frame(maxHeight: 1)
+                            .background(.black),
+                        alignment: .bottom
                     )
 
             }
+            .padding(.top, 30)
             .padding(.bottom, 24)
-            
-            Spacer()
             
             signupProgressIndicator
             
             nextButton(buttonDisabled: !lastNameInputIsValid())
+            
+            Spacer()
         }
         .padding()
+        .onAppear {
+            focusedField = .lastName
+        }
     }
     
     private var genderPromptView: some View {
         VStack {
-            VStack {
-                Image("onboarding1")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 250, height: 250)
-
+            VStack(alignment: .leading) {
                 Text("What's your **gender**?")
-                    .multilineTextAlignment(.center)
                     .font(.title)
+                    .fontDesign(.serif)
                 
                 Text("Male")
                     .bold()
@@ -196,9 +189,9 @@ extension OnBoardingSignupView {
                     .frame(maxWidth: .infinity)
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
-                            .stroke(gender == Gender.male ? Color.purple : Color.black, lineWidth: 0.5)
+                            .stroke(gender == Gender.male ? Color.accentColor : Color.black, lineWidth: 0.5)
                     )
-                    .background(gender == Gender.male ? Color.purple : Color.white)
+                    .background(gender == Gender.male ? Color.accentColor : Color.white)
                     .cornerRadius(10)
                     .foregroundColor(gender == Gender.male ? Color.white : Color.black)
                     .onTapGesture {
@@ -211,15 +204,31 @@ extension OnBoardingSignupView {
                     .frame(maxWidth: .infinity)
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
-                            .stroke(gender == Gender.female ? Color.purple : Color.black, lineWidth: 0.5)
+                            .stroke(gender == Gender.female ? Color.accentColor : Color.black, lineWidth: 0.5)
                     )
-                    .background(gender == Gender.female ? Color.purple : Color.white)
+                    .background(gender == Gender.female ? Color.accentColor : Color.white)
                     .cornerRadius(10)
                     .foregroundColor(gender == Gender.female ? Color.white : Color.black)
                     .onTapGesture {
                         gender = Gender.female
                     }
+                
+                Text("Other")
+                    .bold()
+                    .padding(16)
+                    .frame(maxWidth: .infinity)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(gender == Gender.other ? Color.accentColor : Color.black, lineWidth: 0.5)
+                    )
+                    .background(gender == Gender.other ? Color.accentColor : Color.white)
+                    .cornerRadius(10)
+                    .foregroundColor(gender == Gender.other ? Color.white : Color.black)
+                    .onTapGesture {
+                        gender = Gender.other
+                    }
             }
+            .padding(.top, 30)
             .padding(.bottom, 24)
             
             Spacer()
@@ -233,21 +242,18 @@ extension OnBoardingSignupView {
     
     private var birthdayPromptView: some View {
         VStack {
-            VStack {
-                Image("onboarding1")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 250, height: 250)
+            VStack(alignment: .center) {
                 Text("When is your **birthday**?")
-                    .multilineTextAlignment(.center)
                     .font(.title)
+                    .fontDesign(.serif)
+                DatePicker("",
+                           selection: $birthdate,
+                           displayedComponents: [.date])
+                    .datePickerStyle(.wheel)
+                    .labelsHidden()
             }
+            .padding(.top, 30)
             .padding(.bottom, 24)
-            
-            DatePicker("", selection: $birthdate, displayedComponents: [.date])
-                .datePickerStyle(.wheel)
-                .labelsHidden()
-            
             
             Spacer()
             

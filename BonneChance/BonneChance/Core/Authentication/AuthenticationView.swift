@@ -10,12 +10,17 @@ import GoogleSignIn
 import GoogleSignInSwift
 
 struct AuthenticationView: View {
+    enum FocusField {
+        case email
+    }
     
     @StateObject private var viewModel = AuthenticationViewModel()
     
     @State var email: String = ""
     
     @Binding var hasAccount: Bool
+    
+    @FocusState private var focusedField: FocusField?
     
     // User Profile
     @AppStorage("firstName") var currentUserFirstName: String?
@@ -31,6 +36,7 @@ struct AuthenticationView: View {
             HStack {
                 Text(hasAccount ? "Sign in" : "Sign up")
                     .font(.title)
+                    .fontDesign(.serif)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.bottom, 10)
@@ -40,26 +46,32 @@ struct AuthenticationView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.bottom, 20)
                 
-            
             TextField("email address", text: $email)
                 .autocapitalization(.none)
-                .padding()
                 .keyboardType(.emailAddress)
+                .focused($focusedField, equals: .email)
+                .padding(.bottom, 10)
+                .padding(.leading, 5)
                 .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.black, lineWidth: 0.5)
+                    Divider()
+                        .frame(maxHeight: 1)
+                        .background(.black),
+                    alignment: .bottom
                 )
-            
             NavigationLink {
                 SignInEmailView(email: $email, hasAccount: $hasAccount)
             } label: {
                 Text("Continue")
-                    .foregroundColor(.white)
+                    .padding(16)
                     .frame(height: 55)
                     .frame(maxWidth: .infinity)
-                    .background(email.isEmpty == true ? Color.gray : Color.purple)
-                    .cornerRadius(10)
+                    .background(email.isEmpty == true ? Color("ButtonDisabledColor") : Color.accentColor)
+                    .cornerRadius(27)
+                    .padding(.horizontal, 15)
+                    .foregroundColor(.white)
+                    .bold()
             }
+            .padding(.top, 10)
             .disabled(email.isEmpty)
             
             HStack {
@@ -105,9 +117,12 @@ struct AuthenticationView: View {
                 }
                 .frame(maxWidth: .infinity)
                 .frame(height: 50)
+                .padding(.horizontal, 15)
                 .overlay(
-                    RoundedRectangle(cornerRadius: 6)
+                    RoundedRectangle(cornerRadius: 27)
                         .stroke(Color.black, lineWidth: 0.5)
+                        .padding(.horizontal, 15)
+                    
                 )
             }
             .alert(isPresented: Binding<Bool>(get: { viewModel.showSignInFailAlert }, set: { _ in })) {
@@ -139,6 +154,8 @@ struct AuthenticationView: View {
             }, label: {
                 SignInWithAppleButtonViewRepresentable(type: .continue, style: .black)
                     .allowsHitTesting(/*@START_MENU_TOKEN@*/false/*@END_MENU_TOKEN@*/)
+                    .cornerRadius(27)
+                    .padding(.horizontal, 15)
             })
             .frame(height: 55)
             .onChange(of: viewModel.didSignInWithApple) {
@@ -159,6 +176,9 @@ struct AuthenticationView: View {
             Spacer()
         }
         .padding()
+        .onAppear {
+            focusedField = .email
+        }
     }
 }
 
