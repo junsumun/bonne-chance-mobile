@@ -9,6 +9,8 @@ import SwiftUI
 
 struct FortuneCardView: View {
     
+    @Binding var showMenu: Bool
+    
     var fortune: Fortune
     
     var body: some View {
@@ -19,17 +21,18 @@ struct FortuneCardView: View {
             VStack(alignment: .center) {
                 Text("Today's")
                     .font(.system(size: 20, weight: .medium))
-                    .frame(width: 200)
+                    .foregroundColor(.gray)
                 Text("\(fortune.name)")
-                    .font(.system(size: 30, weight: .medium))
-                    .frame(width: 250)
+                    .font(.system(size: 30, weight: .bold))
+                    .fontDesign(.serif)
+                    .foregroundColor(.accentColor)
+                    
             }
             .offset(x: 0, y: -140)
-            .foregroundColor(.black)
         }
         .padding(30)
         .frame(width: 336, height: 422)
-        .background(fortune.color)
+        .background(showMenu ? .gray : fortune.color)
         .cornerRadius(57)
         .shadow(color: Color.black.opacity(0.2), radius: 8, x: 0.0, y: 5)
         .padding(.leading, 20)
@@ -37,5 +40,5 @@ struct FortuneCardView: View {
 }
 
 #Preview {
-    FortuneCardView(fortune: Fortune(name: "Overall Fortune", type: FortuneType.overall, image: "overall_fortune", color: Color(red: 188 / 255, green: 188 / 255, blue: 226 / 255)))
+    FortuneCardView(showMenu: .constant(false), fortune: Fortune(name: "Overall Fortune", type: FortuneType.overall, image: "overall_fortune", color: Color("FortuneCardColor")))
 }

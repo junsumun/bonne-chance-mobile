@@ -17,32 +17,41 @@ struct HomeView: View {
     
     var body: some View {
         NavigationStack {
-            GeometryReader { geometry in
-                ZStack(alignment: .leading) {
-                    FortuneHomeView(showMenu: self.$showMenu, showPaywall: self.$showPaywall)
-                        .environmentObject(profileViewModel)
-                    
-                    if self.showMenu {
-                        SideMenuView(showPaywall: $showPaywall)
-                            .frame(width: geometry.size.width * 0.7)
-                            .transition(.move(edge: .leading))
+            ZStack {
+                GeometryReader { geometry in
+                    ZStack(alignment: .leading) {
+                        FortuneHomeView(showMenu: self.$showMenu, showPaywall: self.$showPaywall)
                             .environmentObject(profileViewModel)
-                            .environmentObject(purchaseManager)
+                        
+                        if self.showMenu {
+                            SideMenuView(showPaywall: $showPaywall)
+                                .frame(width: geometry.size.width * 0.7)
+                                .transition(.move(edge: .leading))
+                                .environmentObject(profileViewModel)
+                                .environmentObject(purchaseManager)
+                        }
+                        
                     }
+                    .animation(.easeInOut, value: self.showMenu)
+                    .navigationBarItems(leading: (
+                        Button(action: {
+                            self.showMenu.toggle()
+                        }) {
+                            Image(systemName: self.showMenu ? "xmark" : "line.horizontal.3")
+                                .imageScale(.large)
+                                .foregroundColor(.black)
+                        }
+                    ))
                 }
-                .animation(.easeInOut, value: self.showMenu)
-                .navigationBarItems(leading: (
-                    Button(action: {
-                        self.showMenu.toggle()
-                    }) {
-                        Image(systemName: self.showMenu ? "xmark" : "line.horizontal.3")
-                            .imageScale(.large)
-                            .foregroundColor(.accentColor)
-                    }
-                ))
+                if !self.showMenu {
+                    Image("bonne_chance_logo")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 120, height: 120)
+                        .offset(x: 0, y: -300)
+                }
             }
         }
-        .tint(.purple)
         .sheet(isPresented: $showPaywall) {
             PaywallView(selectedProduct: purchaseManager.products[1]) {
                 showPaywall.toggle()
