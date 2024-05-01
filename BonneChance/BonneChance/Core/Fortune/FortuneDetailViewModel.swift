@@ -6,3 +6,17 @@
 //
 
 import Foundation
+
+@MainActor
+final class FortuneDetailViewModel: ObservableObject {
+    
+    init() {
+        
+    }
+    
+    func loadFortunes() async {
+        do {
+            
+        }
+    }
+}

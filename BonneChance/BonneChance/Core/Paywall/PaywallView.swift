@@ -66,7 +66,7 @@ struct PaywallView: View {
                 Text(selectedProduct?.displayName == ProductName.oneYear.rawValue ? "Continue for Free" : "Continue")
                     .padding(16)
                     .frame(maxWidth: .infinity)
-                    .background(Color.purple)
+                    .background(Color("MainColor"))
                     .cornerRadius(10)
                     .padding(.horizontal, 16)
                     .foregroundColor(.white)

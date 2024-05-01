@@ -40,7 +40,7 @@ struct ProductCardView: View {
         .padding(15)
         .overlay(
             RoundedRectangle(cornerRadius: 20)
-                .stroke(selectedProduct?.displayName == product?.displayName ? .purple : .gray, lineWidth: selectedProduct?.displayName == product?.displayName ? 2 : 1)
+                .stroke(selectedProduct?.displayName == product?.displayName ? Color("MainColor") : .gray, lineWidth: selectedProduct?.displayName == product?.displayName ? 2 : 1)
         )
         .overlay {
             if product?.displayName == ProductName.oneYear.rawValue {
@@ -51,7 +51,7 @@ struct ProductCardView: View {
                         .foregroundColor(.white)
                 }
                 .padding(7)
-                .background(Color.purple)
+                .background(Color("MainColor"))
                 .cornerRadius(20)
                 .offset(x: 0, y: -90)
             }

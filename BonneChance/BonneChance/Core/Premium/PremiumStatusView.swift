@@ -33,7 +33,7 @@ struct PremiumStatusView: View {
                     Text("Upgrade Plan")
                         .padding(10)
                         .frame(maxWidth: .infinity)
-                        .background(Color.purple)
+                        .background(Color("MainColor"))
                         .cornerRadius(10)
                         .padding(.horizontal, 10)
                         .foregroundColor(.white)

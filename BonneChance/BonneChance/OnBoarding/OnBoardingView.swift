@@ -47,7 +47,7 @@ struct OnBoardingView: View {
                         VStack {
                             Text(onBoardingSteps[index].title)
                                 .font(.title)
-                                .foregroundColor(.accentColor)
+                                .foregroundColor(Color("MainColor"))
                                 .bold()
                                 .fontDesign(.serif)
                     
@@ -55,7 +55,7 @@ struct OnBoardingView: View {
                                 .multilineTextAlignment(.center)
                                 .padding(.horizontal, 32)
                                 .padding(.top, 5)
-                                .foregroundColor(.accentColor)
+                                .foregroundColor(Color("MainColor"))
                                 .bold()
                         }
                     }
@@ -68,7 +68,7 @@ struct OnBoardingView: View {
                             Rectangle()
                                 .frame(width: 20, height: 10)
                                 .cornerRadius(10)
-                                .foregroundColor(.accentColor)
+                                .foregroundColor(Color("MainColor"))
                         } else {
                             Circle()
                                 .frame(width: 10, height: 10)
@@ -84,7 +84,7 @@ struct OnBoardingView: View {
                     Text("Get Started")
                         .padding(16)
                         .frame(maxWidth: .infinity)
-                        .background(Color.accentColor)
+                        .background(Color("MainColor"))
                         .cornerRadius(27)
                         .padding(.horizontal, 45)
                         .foregroundColor(.white)
@@ -101,7 +101,7 @@ struct OnBoardingView: View {
                             
                     } label: {
                         Text("Log in")
-                            .foregroundStyle(Color.accentColor)
+                            .foregroundStyle(Color("MainColor"))
                             .bold()
                     }
                 }
@@ -121,6 +121,7 @@ struct OnBoardingView: View {
                 .fontWeight(.light)
                 .foregroundColor(Color("FooterTextColor"))
                 .padding(.horizontal, 45)
+                .tint(Color("MainColor"))
             }
         }
     }

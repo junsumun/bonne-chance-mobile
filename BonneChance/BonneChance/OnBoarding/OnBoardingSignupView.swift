@@ -74,7 +74,7 @@ extension OnBoardingSignupView {
         Text("Next")
             .padding(16)
             .frame(maxWidth: .infinity)
-            .background(buttonDisabled == true ? Color("ButtonDisabledColor") : Color.accentColor)
+            .background(buttonDisabled == true ? Color("ButtonDisabledColor") : Color("MainColor"))
             .cornerRadius(27)
             .padding(.horizontal, 15)
             .foregroundColor(.white)
@@ -92,11 +92,11 @@ extension OnBoardingSignupView {
                     Rectangle()
                         .frame(width: 20, height: 10)
                         .cornerRadius(10)
-                        .foregroundColor(.accentColor)
+                        .foregroundColor(Color("MainColor"))
                 } else if index < currentStep {
                     Circle()
                         .frame(width: 10, height: 10)
-                        .foregroundColor(.accentColor)
+                        .foregroundColor(Color("MainColor"))
                 } else {
                     Circle()
                         .frame(width: 10, height: 10)
@@ -189,9 +189,9 @@ extension OnBoardingSignupView {
                     .frame(maxWidth: .infinity)
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
-                            .stroke(gender == Gender.male ? Color.accentColor : Color.black, lineWidth: 0.5)
+                            .stroke(gender == Gender.male ? Color("MainColor") : Color.black, lineWidth: 0.5)
                     )
-                    .background(gender == Gender.male ? Color.accentColor : Color.white)
+                    .background(gender == Gender.male ? Color("MainColor") : Color.white)
                     .cornerRadius(10)
                     .foregroundColor(gender == Gender.male ? Color.white : Color.black)
                     .onTapGesture {
@@ -204,9 +204,9 @@ extension OnBoardingSignupView {
                     .frame(maxWidth: .infinity)
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
-                            .stroke(gender == Gender.female ? Color.accentColor : Color.black, lineWidth: 0.5)
+                            .stroke(gender == Gender.female ? Color("MainColor") : Color.black, lineWidth: 0.5)
                     )
-                    .background(gender == Gender.female ? Color.accentColor : Color.white)
+                    .background(gender == Gender.female ? Color("MainColor") : Color.white)
                     .cornerRadius(10)
                     .foregroundColor(gender == Gender.female ? Color.white : Color.black)
                     .onTapGesture {
@@ -219,9 +219,9 @@ extension OnBoardingSignupView {
                     .frame(maxWidth: .infinity)
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
-                            .stroke(gender == Gender.other ? Color.accentColor : Color.black, lineWidth: 0.5)
+                            .stroke(gender == Gender.other ? Color("MainColor") : Color.black, lineWidth: 0.5)
                     )
-                    .background(gender == Gender.other ? Color.accentColor : Color.white)
+                    .background(gender == Gender.other ? Color("MainColor") : Color.white)
                     .cornerRadius(10)
                     .foregroundColor(gender == Gender.other ? Color.white : Color.black)
                     .onTapGesture {

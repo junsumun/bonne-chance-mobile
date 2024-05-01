@@ -90,5 +90,4 @@ struct SideMenuView: View {
         SideMenuView(showPaywall: .constant(false))
             .environmentObject(ProfileViewModel())
     }
-    .tint(.purple)
 }

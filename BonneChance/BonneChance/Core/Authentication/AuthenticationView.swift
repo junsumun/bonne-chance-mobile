@@ -65,7 +65,7 @@ struct AuthenticationView: View {
                     .padding(16)
                     .frame(height: 55)
                     .frame(maxWidth: .infinity)
-                    .background(email.isEmpty == true ? Color("ButtonDisabledColor") : Color.accentColor)
+                    .background(email.isEmpty == true ? Color("ButtonDisabledColor") : Color("MainColor"))
                     .cornerRadius(27)
                     .padding(.horizontal, 15)
                     .foregroundColor(.white)

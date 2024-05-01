@@ -94,7 +94,7 @@ struct SignInEmailView: View {
                     Text(hasAccount ? "Sign In" : "Sign Up")
                         .padding(16)
                         .frame(maxWidth: .infinity)
-                        .background(email.isEmpty == true ? Color("ButtonDisabledColor") : Color.accentColor)
+                        .background(email.isEmpty == true ? Color("ButtonDisabledColor") : Color("MainColor"))
                         .cornerRadius(27)
                         .padding(.horizontal, 15)
                         .foregroundColor(.white)

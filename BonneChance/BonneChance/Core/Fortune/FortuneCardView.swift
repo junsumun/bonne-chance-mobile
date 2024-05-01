@@ -25,7 +25,7 @@ struct FortuneCardView: View {
                 Text("\(fortune.name)")
                     .font(.system(size: 30, weight: .bold))
                     .fontDesign(.serif)
-                    .foregroundColor(.accentColor)
+                    .foregroundColor(Color("MainColor"))
                     
             }
             .offset(x: 0, y: -140)

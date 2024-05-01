@@ -61,7 +61,7 @@ struct FortuneHomeView: View {
                 HStack(spacing: 10) {
                     ForEach(fortuneList.indices, id: \.self) { index in
                         Circle()
-                            .fill(Color.accentColor)
+                            .fill(Color("MainColor"))
                             .opacity(currentFortuneSlider == index ? 1 : 0.1)
                             .frame(width: 7, height: 8)
                             .scaleEffect(currentFortuneSlider == index ? 1.4 : 1)
@@ -72,7 +72,6 @@ struct FortuneHomeView: View {
             }
             .background(self.showMenu ? .gray : .white)
             .disabled(self.showMenu)
-            
         }
     }
 }
