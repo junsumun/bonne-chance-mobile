@@ -71,7 +71,7 @@ struct FortuneDetailView: View {
                             Button {
                                 if (user?.premiumType != Premium.basic || fortune.type == FortuneType.overall) {
                                     showPaywall = false
-                                    lineLimit = 100
+                                    lineLimit = 200
                                     hideReadMoreButton = true
                                 }
                                 else {

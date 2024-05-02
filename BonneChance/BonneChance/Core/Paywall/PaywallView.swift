@@ -26,8 +26,8 @@ struct PaywallView: View {
                 HStack {
                     Spacer()
                     Text("Close")
-                        .foregroundColor(.black)
-                        .font(.title3)
+                        .foregroundColor(.gray)
+                        .font(.system(size: 16))
                 }
                 .padding()
             }
@@ -67,8 +67,9 @@ struct PaywallView: View {
                     .padding(16)
                     .frame(maxWidth: .infinity)
                     .background(Color("MainColor"))
-                    .cornerRadius(10)
+                    .cornerRadius(27)
                     .padding(.horizontal, 16)
+                    .bold()
                     .foregroundColor(.white)
             }
             .padding(.bottom, 15)

@@ -17,8 +17,8 @@ private let onBoardingSteps = [
     OnBoardingStep(image: "onboarding1", title: "Foresight", description: "Gain a crystal-clear view of your day ahead, guiding you towards success and serenity!"),
     OnBoardingStep(image: "onboarding1", title: "Love, Money & More!", description: "Explore a universe of possibilities with our diverse fortune readings!"),
     OnBoardingStep(image: "onboarding1", title: "Purchase-Free Experience", description: "A whole assortment of free fortunes right in the palm of your hands!")
-    
 ]
+
 struct OnBoardingView: View {
     
     @State private var currentStep = 0
