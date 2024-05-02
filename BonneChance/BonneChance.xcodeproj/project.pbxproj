@@ -219,13 +219,6 @@
 			path = Enum;
 			sourceTree = "<group>";
 		};
-		825890F72BCA42FA00C95B5D /* Help */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Help;
-			sourceTree = "<group>";
-		};
 		825EF8E32BCE2DB80075465D /* Enum */ = {
 			isa = PBXGroup;
 			children = (
@@ -363,7 +356,6 @@
 			isa = PBXGroup;
 			children = (
 				8239AE222BCD0254000CB169 /* Paywall */,
-				825890F72BCA42FA00C95B5D /* Help */,
 				825890EB2BCA1AC100C95B5D /* Premium */,
 				826DA3F22BC7C8AE00CB433E /* AccountsCenterMenu */,
 				826DA3E12BC777A800CB433E /* SideMenu */,
