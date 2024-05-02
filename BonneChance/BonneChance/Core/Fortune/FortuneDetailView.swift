@@ -11,6 +11,7 @@ struct FortuneDetailView: View {
     @State var fortuneData: FortuneData? = nil
     @State var lineLimit: Int = 3
     @State var hideReadMoreButton: Bool = false
+    @State private var animatedText: String = ""
     
     @Binding var showPaywall: Bool
     
@@ -32,7 +33,8 @@ struct FortuneDetailView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(height: 200)
-                    .blur(radius: 8)
+                    .blur(radius: 3)
+                    .opacity(0.8)
                 
                 HStack {
                     VStack(alignment: .leading) {
@@ -60,7 +62,7 @@ struct FortuneDetailView: View {
                 
                 ScrollView {
                     VStack(alignment: .leading) {
-                        Text(fortuneData?.content ?? "")
+                        Text(animatedText)
                             .multilineTextAlignment(.leading)
                             .lineLimit(lineLimit)
                             .font(.body)
@@ -76,9 +78,6 @@ struct FortuneDetailView: View {
                                     showPaywall = true
                                 }
                             } label: {
-//                                Text("Read more")
-//                                    .font(.body)
-//                                    .foregroundStyle(Color("MainColor"))
                                 Text("Continue reading")
                                     .padding(16)
                                     .frame(maxWidth: .infinity)
@@ -94,17 +93,34 @@ struct FortuneDetailView: View {
                     
                 }
                 
+                Rectangle()
+                    .hidden()
                 Spacer()
             }
+            
             .padding()
             
         }
         .task {
-            let fortune = try? await FortuneManager.shared.getFortune()
-            fortuneData = fortune
+            fortuneData = try? await FortuneManager.shared.getFortune()
+            guard let content = fortuneData?.content else {
+                return
+            }
+            typeWriter(content: content)
         }
     }
     
+    func typeWriter(content: String, at position: Int = 0) {
+        if position == 0 {
+            animatedText = ""
+        }
+        if position < content.count {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                animatedText.append(Array(content)[position])
+                typeWriter(content: content, at: position + 1)
+            }
+        }
+    }
 }
 
 #Preview {
