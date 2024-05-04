@@ -25,6 +25,7 @@ struct FortuneDetailView: View {
     
     @AppStorage("lastCheckedDate") var lastCheckedDate: String?
     @AppStorage("fortuneIndex") var fortuneIndex: Int?
+    @AppStorage("fortuneLevel") var fortuneLevel: Int?
     
     var body: some View {
         VStack {
@@ -97,18 +98,48 @@ struct FortuneDetailView: View {
                         Spacer()
                     }
                 }
-                
-                Spacer()
             }
-            
             .padding()
+            
+            VStack {
+                Text("Your Lucky Level")
+                    .font(.system(size: 15))
+                    .bold()
+                HStack {
+                    if fortuneLevel != nil {
+                        ForEach(0..<5, id: \.self) { index in
+                            
+                            if index < fortuneLevel! {
+                                Image(systemName: "staroflife.fill")
+                                    .resizable()
+                                    .frame(width: 20, height: 20)
+                                    .aspectRatio(contentMode: .fit)
+                                    .foregroundColor(Color("MainColor"))
+                                    .fontWeight(.semibold)
+                            } else {
+                                Image(systemName: "staroflife")
+                                    .resizable()
+                                    .frame(width: 20, height: 20)
+                                    .aspectRatio(contentMode: .fit)
+                                    .foregroundColor(Color("MainColor"))
+                                    .fontWeight(.semibold)
+                            }
+                            
+                        }
+                    }
+                    
+                }
+            }
+            .padding(.bottom, 20)
             
         }
         .task {
 //            if fortuneData == nil || lastCheckedDate == nil || fortuneIndex == nil || lastCheckedDate != "May 4, 2024" {
             if fortuneData == nil || lastCheckedDate == nil || fortuneIndex == nil || lastCheckedDate != DateFormatter.localizedString(from: Date(), dateStyle: .medium, timeStyle: .none) {
+                
                 let totalFortunes = try? await FortuneManager.shared.countFortunes()
                 print("Total fortunes: \(totalFortunes ?? -1)")
+                
                 fortuneIndex = Int.random(in: 0..<totalFortunes!)
                 print("Random fortune index: \(fortuneIndex ?? -11)")
                 
@@ -124,7 +155,10 @@ struct FortuneDetailView: View {
             guard let fortuneData = fortuneData else {
                 return
             }
-            let fortuneContent = getFortuneContent(fortue: fortune, fortuneData: fortuneData)
+            
+            let fortuneContent = getFortuneContent(fortune: fortune, fortuneData: fortuneData)
+            
+            fortuneLevel = fortuneContent.level
             
             typeWriter(content: fortuneContent.content)
             
@@ -148,7 +182,7 @@ extension FortuneDetailView {
         }
     }
     
-    func getFortuneContent(fortue: Fortune, fortuneData: FortuneData) -> FortuneContent {
+    func getFortuneContent(fortune: Fortune, fortuneData: FortuneData) -> FortuneContent {
         
         switch fortune.type {
         case FortuneType.overall:
@@ -163,6 +197,7 @@ extension FortuneDetailView {
             return fortuneData.studyFortune
         }
     }
+    
 }
 
 #Preview {
