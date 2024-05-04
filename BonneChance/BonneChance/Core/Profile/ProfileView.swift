@@ -15,11 +15,11 @@ struct ProfileView: View {
         HStack {
             Spacer()
             VStack {
-                Image(systemName: "person.crop.circle")
+                Image(viewModel.user?.gender == Gender.male ? "man_profile" : "woman_profile")
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 70, height: 70)
-                    .foregroundColor(Color("MainColor"))
+                    .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
+                    .frame(width: 95, height: 95)
+                    .foregroundColor(.purple)
                 HStack {
                     Text(viewModel.user?.firstName ?? "Full")
                     Text(viewModel.user?.lastName ?? "Name")
