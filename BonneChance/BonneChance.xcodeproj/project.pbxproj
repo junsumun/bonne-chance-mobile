@@ -12,7 +12,6 @@
 		823350942BAA771500D6AF37 /* OnBoardingSignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823350932BAA771500D6AF37 /* OnBoardingSignupView.swift */; };
 		823350972BAE436800D6AF37 /* CommonButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823350962BAE436800D6AF37 /* CommonButtonView.swift */; };
 		8239AE1D2BCCC3E3000CB169 /* FortuneDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8239AE1C2BCCC3E3000CB169 /* FortuneDetailView.swift */; };
-		8239AE1F2BCCEDAF000CB169 /* Fortune.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8239AE1E2BCCEDAF000CB169 /* Fortune.swift */; };
 		8239AE212BCCEDF5000CB169 /* FortuneCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8239AE202BCCEDF5000CB169 /* FortuneCardView.swift */; };
 		8239AE242BCD0260000CB169 /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8239AE232BCD0260000CB169 /* PaywallView.swift */; };
 		8247D2F52BAF74C8009CB70B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8247D2F42BAF74C8009CB70B /* GoogleService-Info.plist */; };
@@ -67,6 +66,7 @@
 		82A98B302BB804940014F782 /* SignInEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A98B2F2BB804940014F782 /* SignInEmailViewModel.swift */; };
 		82A98B332BB804CD0014F782 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A98B322BB804CD0014F782 /* ProfileView.swift */; };
 		82A98B362BB8082E0014F782 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A98B352BB8082E0014F782 /* UserManager.swift */; };
+		82CE69482BE583FE00A549EC /* Fortune.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CE69472BE583FE00A549EC /* Fortune.swift */; };
 		82E163F72BD63938006CEA30 /* ProductCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E163F62BD63938006CEA30 /* ProductCardView.swift */; };
 		82E163F92BD64056006CEA30 /* PaywallDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E163F82BD64056006CEA30 /* PaywallDescriptionView.swift */; };
 		82E163FB2BD8148E006CEA30 /* FortuneDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E163FA2BD8148E006CEA30 /* FortuneDetailViewModel.swift */; };
@@ -81,7 +81,6 @@
 		823350932BAA771500D6AF37 /* OnBoardingSignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingSignupView.swift; sourceTree = "<group>"; };
 		823350962BAE436800D6AF37 /* CommonButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonButtonView.swift; sourceTree = "<group>"; };
 		8239AE1C2BCCC3E3000CB169 /* FortuneDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneDetailView.swift; sourceTree = "<group>"; };
-		8239AE1E2BCCEDAF000CB169 /* Fortune.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fortune.swift; sourceTree = "<group>"; };
 		8239AE202BCCEDF5000CB169 /* FortuneCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneCardView.swift; sourceTree = "<group>"; };
 		8239AE232BCD0260000CB169 /* PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallView.swift; sourceTree = "<group>"; };
 		8247D2F42BAF74C8009CB70B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -123,6 +122,7 @@
 		82A98B2F2BB804940014F782 /* SignInEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInEmailViewModel.swift; sourceTree = "<group>"; };
 		82A98B322BB804CD0014F782 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		82A98B352BB8082E0014F782 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		82CE69472BE583FE00A549EC /* Fortune.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fortune.swift; sourceTree = "<group>"; };
 		82E163F62BD63938006CEA30 /* ProductCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCardView.swift; sourceTree = "<group>"; };
 		82E163F82BD64056006CEA30 /* PaywallDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallDescriptionView.swift; sourceTree = "<group>"; };
 		82E163FA2BD8148E006CEA30 /* FortuneDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneDetailViewModel.swift; sourceTree = "<group>"; };
@@ -165,8 +165,8 @@
 				826DA3E52BC77C2E00CB433E /* FortuneHomeView.swift */,
 				8239AE1C2BCCC3E3000CB169 /* FortuneDetailView.swift */,
 				82E163FA2BD8148E006CEA30 /* FortuneDetailViewModel.swift */,
-				8239AE1E2BCCEDAF000CB169 /* Fortune.swift */,
 				8239AE202BCCEDF5000CB169 /* FortuneCardView.swift */,
+				82CE69472BE583FE00A549EC /* Fortune.swift */,
 			);
 			path = Fortune;
 			sourceTree = "<group>";
@@ -529,7 +529,7 @@
 				826686AA2BA4E7160007B599 /* SignInGoogleHelper.swift in Sources */,
 				82A98B302BB804940014F782 /* SignInEmailViewModel.swift in Sources */,
 				82E163F92BD64056006CEA30 /* PaywallDescriptionView.swift in Sources */,
-				8239AE1F2BCCEDAF000CB169 /* Fortune.swift in Sources */,
+				82CE69482BE583FE00A549EC /* Fortune.swift in Sources */,
 				82A98B2D2BB804450014F782 /* AuthenticationViewModel.swift in Sources */,
 				82E163FD2BD8152F006CEA30 /* FortuneManager.swift in Sources */,
 				825EF8E52BCE2DCF0075465D /* FortuneType.swift in Sources */,

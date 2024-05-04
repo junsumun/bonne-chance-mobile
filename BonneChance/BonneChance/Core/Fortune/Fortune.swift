@@ -2,7 +2,7 @@
 //  Fortune.swift
 //  BonneChance
 //
-//  Created by Junsu Mun on 2024-04-15.
+//  Created by Junsu Mun on 2024-05-03.
 //
 
 import Foundation

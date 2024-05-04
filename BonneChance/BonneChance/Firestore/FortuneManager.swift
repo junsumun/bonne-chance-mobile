@@ -29,9 +29,9 @@ final class FortuneManager {
         }
     }
     
-    func getFortune() async throws -> FortuneData {
+    func getFortune(index: Int) async throws -> FortuneData {
         do {
-            let document = try await fortuneCollection.document("0").getDocument()
+            let document = try await fortuneCollection.document(String(index)).getDocument()
             if document.exists {
                 let fortuneData = try document.data(as: FortuneData.self)
                 return fortuneData
