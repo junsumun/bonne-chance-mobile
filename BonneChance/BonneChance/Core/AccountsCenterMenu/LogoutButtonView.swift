@@ -30,7 +30,7 @@ struct LogoutButtonView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 20, height: 20)
                     .foregroundColor(.black)
-                Text("Log out")
+                Text("Sign out")
                     .font(.subheadline)
                     .foregroundColor(.black)
                 Spacer()
