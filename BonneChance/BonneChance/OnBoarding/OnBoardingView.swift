@@ -112,9 +112,7 @@ struct OnBoardingView: View {
                     Text("By continuing, you agree to our ")
                     + Text("[Terms. ](https://google.ca)").fontWeight(.bold)
                     + Text("You acknowledge receipt and understanding of our ")
-                    + Text("[Privacy Policy ](https://google.ca)").fontWeight(.bold)
-                    + Text("and ")
-                    + Text("[Cookie Notice.](https://google.ca)").fontWeight(.bold)
+                    + Text("[Privacy Policy ](https://junsumun.github.io/bonne-chance-landing-page/privacypolicy/)").fontWeight(.bold)
                 }
                 .multilineTextAlignment(.center)
                 .font(.system(size: 12))
