@@ -28,6 +28,7 @@ struct SideMenuView: View {
             HStack(alignment: .center) {
                 NavigationLink {
                     AccountsCenterView()
+                        .environmentObject(profileViewModel)
                 } label: {
                     Image(systemName: "person")
                         .foregroundColor(.black)

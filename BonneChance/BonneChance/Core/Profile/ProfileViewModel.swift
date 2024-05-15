@@ -28,5 +28,21 @@ final class ProfileViewModel: ObservableObject {
         }
         
     }
+    
+    func updateProfile(firstName: String, lastName: String, gender: Gender, birthdate: String) async {
+        guard let user = user else {
+            return
+        }
+        
+        do {
+            try await UserManager.shared.updateUserProfile(userId: user.userId,
+                                                           firstName: firstName,
+                                                           lastName: lastName,
+                                                           gender: gender,
+                                                           birthdate: birthdate)
+        } catch {
+            print(error)
+        }
+    }
 
 }

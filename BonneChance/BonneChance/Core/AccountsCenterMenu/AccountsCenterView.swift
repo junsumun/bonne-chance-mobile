@@ -11,10 +11,13 @@ struct AccountsCenterView: View {
     
     @StateObject private var viewModel = AccountsCenterViewModel()
     
+    @EnvironmentObject private var profileViewModel: ProfileViewModel
+    
     var body: some View {
         List {
             Section("PROFILE") {
                 ProfileButtonView()
+                    .environmentObject(profileViewModel)
             }
             
             Section("MANAGE ACCOUNT") {
@@ -36,5 +39,6 @@ struct AccountsCenterView: View {
 #Preview {
     NavigationStack {
         AccountsCenterView()
+            .environmentObject(ProfileViewModel())
     }
 }

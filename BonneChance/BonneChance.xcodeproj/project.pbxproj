@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8200041E2BEB1D1D0013BFAB /* UpdateProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8200041D2BEB1D1D0013BFAB /* UpdateProfileView.swift */; };
 		8233508C2BA7F1B500D6AF37 /* SignInAppleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8233508B2BA7F1B500D6AF37 /* SignInAppleHelper.swift */; };
 		823350922BAA57AB00D6AF37 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823350912BAA57AB00D6AF37 /* OnBoardingView.swift */; };
 		823350942BAA771500D6AF37 /* OnBoardingSignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823350932BAA771500D6AF37 /* OnBoardingSignupView.swift */; };
@@ -75,6 +76,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8200041D2BEB1D1D0013BFAB /* UpdateProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileView.swift; sourceTree = "<group>"; };
 		8233508A2BA6B8A500D6AF37 /* BonneChance.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BonneChance.entitlements; sourceTree = "<group>"; };
 		8233508B2BA7F1B500D6AF37 /* SignInAppleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAppleHelper.swift; sourceTree = "<group>"; };
 		823350912BAA57AB00D6AF37 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
@@ -401,6 +403,7 @@
 			children = (
 				82A98B322BB804CD0014F782 /* ProfileView.swift */,
 				825890F12BCA215F00C95B5D /* ProfileViewModel.swift */,
+				8200041D2BEB1D1D0013BFAB /* UpdateProfileView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -539,6 +542,7 @@
 				82A98B2A2BB803F40014F782 /* SettingsViewModel.swift in Sources */,
 				8247D2F82BB40468009CB70B /* Gender.swift in Sources */,
 				825890F22BCA215F00C95B5D /* ProfileViewModel.swift in Sources */,
+				8200041E2BEB1D1D0013BFAB /* UpdateProfileView.swift in Sources */,
 				825890EE2BCA1AEF00C95B5D /* Premium.swift in Sources */,
 				82E164002BD816BF006CEA30 /* FortuneData.swift in Sources */,
 				8266869B2BA0FBEC0007B599 /* ContentView.swift in Sources */,
