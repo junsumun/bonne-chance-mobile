@@ -21,12 +21,15 @@ struct AccountsCenterView: View {
             }
             
             Section("MANAGE ACCOUNT") {
-                LogoutButtonView()
-                
                 if viewModel.authProviders.contains(.email) {
                     ResetPasswordButtonView()
                 }
-//                DeleteAccountButtonView()
+                
+                LogoutButtonView()
+                    .environmentObject(viewModel)
+                
+                DeleteAccountButtonView()
+                    .environmentObject(viewModel)
             }
         }
         .onAppear {

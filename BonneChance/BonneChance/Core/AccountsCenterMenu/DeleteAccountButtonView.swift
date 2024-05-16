@@ -9,10 +9,15 @@ import SwiftUI
 
 struct DeleteAccountButtonView: View {
     
+    @EnvironmentObject private var accountsCenterViewModel: AccountsCenterViewModel
+    
+    @State private var showAlert = false
+    
+    @AppStorage("signed_in") var currentUserSignedIn: Bool?
+    
     var body: some View {
         Button {
-            Task {
-            }
+            showAlert = true
         } label: {
             HStack(alignment: .center) {
                 Image(systemName: "trash")
@@ -28,6 +33,23 @@ struct DeleteAccountButtonView: View {
                     .imageScale(.small)
                     .foregroundColor(.red)
             }
+        }
+        .alert(isPresented: $showAlert) {
+            Alert(
+                title: Text("Delete account"),
+                message: Text("Are you sure you want to delete your account? This action is irreversible."),
+                primaryButton: .destructive(Text("Delete")) {
+                    Task {
+                        do {
+                            try await accountsCenterViewModel.deleteAccount()
+                            currentUserSignedIn = false
+                        } catch {
+                            print(error)
+                        }
+                    }
+                },
+                secondaryButton: .cancel()
+            )
         }
     }
 }

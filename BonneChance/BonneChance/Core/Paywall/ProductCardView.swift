@@ -24,6 +24,7 @@ struct ProductCardView: View {
             Text("\(product?.displayName.dropFirst(1) ?? "")")
                 .font(.title2)
                 .bold()
+            // TODO: Use remote config to swap weekly calculated price with the annual price
 //            Text("\(product?.displayPrice ?? "")")
 //                .font(.caption)
 //            Text("per\(product?.displayName.dropFirst(1).lowercased() ?? "")")

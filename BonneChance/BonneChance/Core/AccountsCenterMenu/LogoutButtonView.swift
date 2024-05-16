@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LogoutButtonView: View {
     
-    @StateObject private var accountsCenterViewModel = AccountsCenterViewModel()
+    @EnvironmentObject private var accountsCenterViewModel: AccountsCenterViewModel
     
     @State private var showAlert = false
     
@@ -31,7 +31,7 @@ struct LogoutButtonView: View {
                 Spacer()
                 Image(systemName: "chevron.forward")
                     .imageScale(.small)
-                    .foregroundColor(.gray)
+                    .foregroundColor(.red)
             }
         }
         .alert(isPresented: $showAlert) {
@@ -56,4 +56,5 @@ struct LogoutButtonView: View {
 
 #Preview {
     LogoutButtonView()
+        .environmentObject(AccountsCenterViewModel())
 }
