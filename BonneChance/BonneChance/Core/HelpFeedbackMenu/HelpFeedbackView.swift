@@ -9,8 +9,8 @@ import SwiftUI
 
 struct HelpFeedbackView: View {
     
-    private let termsURL = "https://junsumun.github.io/bonne-chance-landing-page/ternsofservice/"
-    private let privacyURL = "https://junsumun.github.io/bonne-chance-landing-page/privacypolicy/"
+    private let termsURL = "https://thebonnechance.com/ternsofservice/"
+    private let privacyURL = "https://thebonnechance.com/privacypolicy/"
     
     var body: some View {
         List {

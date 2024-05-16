@@ -110,9 +110,9 @@ struct OnBoardingView: View {
                 // TODO: Change below links to the landing page link
                 Group {
                     Text("By continuing, you agree to our ")
-                    + Text("[Terms. ](https://google.ca)").fontWeight(.bold)
+                    + Text("[Terms. ](https://thebonnechance.com/ternsofservice/)").fontWeight(.bold)
                     + Text("You acknowledge receipt and understanding of our ")
-                    + Text("[Privacy Policy ](https://junsumun.github.io/bonne-chance-landing-page/privacypolicy/)").fontWeight(.bold)
+                    + Text("[Privacy Policy ](https://thebonnechance.com/privacypolicy/)").fontWeight(.bold)
                 }
                 .multilineTextAlignment(.center)
                 .font(.system(size: 12))
