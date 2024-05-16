@@ -26,7 +26,7 @@ struct AccountsCenterView: View {
                 if viewModel.authProviders.contains(.email) {
                     ResetPasswordButtonView()
                 }
-                DeleteAccountButtonView()
+//                DeleteAccountButtonView()
             }
         }
         .onAppear {

@@ -26,7 +26,7 @@ struct UpdateProfileView: View {
             
             VStack(alignment: .leading) {
                 Text("**First name**")
-                    .font(.title)
+                    .font(.system(size: 20))
                     .fontDesign(.serif)
                 
                 TextField("first name", text: $firstName)
@@ -44,7 +44,7 @@ struct UpdateProfileView: View {
             
             VStack(alignment: .leading) {
                 Text("**Last name**")
-                    .font(.title)
+                    .font(.system(size: 20))
                     .fontDesign(.serif)
                 
                 TextField("first name", text: $lastName)
@@ -62,7 +62,7 @@ struct UpdateProfileView: View {
             
             HStack {
                 Text("**Gender**")
-                    .font(.title)
+                    .font(.system(size: 20))
                     .fontDesign(.serif)
                 Spacer()
                 Picker("Gender", selection: $gender) {
@@ -75,7 +75,7 @@ struct UpdateProfileView: View {
             
             HStack {
                 Text("**Birthday**")
-                    .font(.title)
+                    .font(.system(size: 20))
                     .fontDesign(.serif)
                 Spacer()
                 DatePicker("",
@@ -84,7 +84,7 @@ struct UpdateProfileView: View {
                 .datePickerStyle(.compact)
                 .labelsHidden()
             }
-            .padding(.bottom, 15)
+            .padding(.bottom, 30)
             
             Text("Update")
                 .padding(16)

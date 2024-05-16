@@ -11,33 +11,45 @@ struct LogoutButtonView: View {
     
     @StateObject private var accountsCenterViewModel = AccountsCenterViewModel()
     
+    @State private var showAlert = false
+    
     @AppStorage("signed_in") var currentUserSignedIn: Bool?
     
     var body: some View {
         Button {
-            Task {
-                do {
-                    try accountsCenterViewModel.signOut()
-                    currentUserSignedIn = false
-                } catch {
-                    print(error)
-                }
-            }
+            showAlert = true
         } label: {
             HStack(alignment: .center) {
                 Image(systemName: "rectangle.portrait.and.arrow.right")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 20, height: 20)
-                    .foregroundColor(.black)
+                    .foregroundColor(.red)
                 Text("Sign out")
                     .font(.subheadline)
-                    .foregroundColor(.black)
+                    .foregroundColor(.red)
                 Spacer()
                 Image(systemName: "chevron.forward")
                     .imageScale(.small)
                     .foregroundColor(.gray)
             }
+        }
+        .alert(isPresented: $showAlert) {
+            Alert(
+                title: Text("Sign out"),
+                message: Text("Are you sure you want to sign out?"),
+                primaryButton: .destructive(Text("Sign out")) {
+                    Task {
+                        do {
+                            try accountsCenterViewModel.signOut()
+                            currentUserSignedIn = false
+                        } catch {
+                            print(error)
+                        }
+                    }
+                },
+                secondaryButton: .cancel()
+            )
         }
     }
 }
