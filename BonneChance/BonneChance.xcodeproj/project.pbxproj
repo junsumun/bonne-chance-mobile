@@ -15,7 +15,6 @@
 		8239AE1D2BCCC3E3000CB169 /* FortuneDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8239AE1C2BCCC3E3000CB169 /* FortuneDetailView.swift */; };
 		8239AE212BCCEDF5000CB169 /* FortuneCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8239AE202BCCEDF5000CB169 /* FortuneCardView.swift */; };
 		8239AE242BCD0260000CB169 /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8239AE232BCD0260000CB169 /* PaywallView.swift */; };
-		8247D2F52BAF74C8009CB70B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8247D2F42BAF74C8009CB70B /* GoogleService-Info.plist */; };
 		8247D2F82BB40468009CB70B /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8247D2F72BB40468009CB70B /* Gender.swift */; };
 		8248CBFC2BC95FEB007FCEAF /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 8248CBFB2BC95FEB007FCEAF /* FirebaseAnalytics */; };
 		8248CC082BC95FEB007FCEAF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 8248CC072BC95FEB007FCEAF /* FirebaseAuth */; };
@@ -74,6 +73,7 @@
 		82E163FD2BD8152F006CEA30 /* FortuneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E163FC2BD8152F006CEA30 /* FortuneManager.swift */; };
 		82E164002BD816BF006CEA30 /* FortuneData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E163FF2BD816BF006CEA30 /* FortuneData.swift */; };
 		82E452CA2BF591070047E857 /* HelpFeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E452C92BF591070047E857 /* HelpFeedbackView.swift */; };
+		82E452CD2BF5CD920047E857 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82E452CC2BF5CD920047E857 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,7 +86,6 @@
 		8239AE1C2BCCC3E3000CB169 /* FortuneDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneDetailView.swift; sourceTree = "<group>"; };
 		8239AE202BCCEDF5000CB169 /* FortuneCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneCardView.swift; sourceTree = "<group>"; };
 		8239AE232BCD0260000CB169 /* PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallView.swift; sourceTree = "<group>"; };
-		8247D2F42BAF74C8009CB70B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8247D2F72BB40468009CB70B /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		825890ED2BCA1AEF00C95B5D /* Premium.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Premium.swift; sourceTree = "<group>"; };
 		825890EF2BCA1FB800C95B5D /* DBUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBUser.swift; sourceTree = "<group>"; };
@@ -132,6 +131,7 @@
 		82E163FC2BD8152F006CEA30 /* FortuneManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneManager.swift; sourceTree = "<group>"; };
 		82E163FF2BD816BF006CEA30 /* FortuneData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneData.swift; sourceTree = "<group>"; };
 		82E452C92BF591070047E857 /* HelpFeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpFeedbackView.swift; sourceTree = "<group>"; };
+		82E452CC2BF5CD920047E857 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,8 +260,8 @@
 			isa = PBXGroup;
 			children = (
 				8233508A2BA6B8A500D6AF37 /* BonneChance.entitlements */,
-				8247D2F42BAF74C8009CB70B /* GoogleService-Info.plist */,
 				826686A52BA1593F0007B599 /* Info.plist */,
+				82E452CC2BF5CD920047E857 /* GoogleService-Info.plist */,
 				826686112B9FDC690007B599 /* BonneChanceApp.swift */,
 				8266869A2BA0FBEC0007B599 /* ContentView.swift */,
 				826686152B9FDC690007B599 /* Assets.xcassets */,
@@ -521,7 +521,7 @@
 			files = (
 				826686192B9FDC690007B599 /* Preview Assets.xcassets in Resources */,
 				826686162B9FDC690007B599 /* Assets.xcassets in Resources */,
-				8247D2F52BAF74C8009CB70B /* GoogleService-Info.plist in Resources */,
+				82E452CD2BF5CD920047E857 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
