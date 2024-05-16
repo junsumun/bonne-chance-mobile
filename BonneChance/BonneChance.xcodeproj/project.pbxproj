@@ -73,6 +73,7 @@
 		82E163FB2BD8148E006CEA30 /* FortuneDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E163FA2BD8148E006CEA30 /* FortuneDetailViewModel.swift */; };
 		82E163FD2BD8152F006CEA30 /* FortuneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E163FC2BD8152F006CEA30 /* FortuneManager.swift */; };
 		82E164002BD816BF006CEA30 /* FortuneData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E163FF2BD816BF006CEA30 /* FortuneData.swift */; };
+		82E452CA2BF591070047E857 /* HelpFeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E452C92BF591070047E857 /* HelpFeedbackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -130,6 +131,7 @@
 		82E163FA2BD8148E006CEA30 /* FortuneDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneDetailViewModel.swift; sourceTree = "<group>"; };
 		82E163FC2BD8152F006CEA30 /* FortuneManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneManager.swift; sourceTree = "<group>"; };
 		82E163FF2BD816BF006CEA30 /* FortuneData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneData.swift; sourceTree = "<group>"; };
+		82E452C92BF591070047E857 /* HelpFeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpFeedbackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -357,6 +359,7 @@
 		82A98B272BB8037C0014F782 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				82E452C82BF590ED0047E857 /* HelpFeedbackMenu */,
 				8239AE222BCD0254000CB169 /* Paywall */,
 				825890EB2BCA1AC100C95B5D /* Premium */,
 				826DA3F22BC7C8AE00CB433E /* AccountsCenterMenu */,
@@ -426,6 +429,14 @@
 				82E163FF2BD816BF006CEA30 /* FortuneData.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		82E452C82BF590ED0047E857 /* HelpFeedbackMenu */ = {
+			isa = PBXGroup;
+			children = (
+				82E452C92BF591070047E857 /* HelpFeedbackView.swift */,
+			);
+			path = HelpFeedbackMenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -548,6 +559,7 @@
 				8266869B2BA0FBEC0007B599 /* ContentView.swift in Sources */,
 				825890F42BCA221400C95B5D /* PremiumStatusView.swift in Sources */,
 				82A98B332BB804CD0014F782 /* ProfileView.swift in Sources */,
+				82E452CA2BF591070047E857 /* HelpFeedbackView.swift in Sources */,
 				826686122B9FDC690007B599 /* BonneChanceApp.swift in Sources */,
 				826686A82BA400B60007B599 /* Utilities.swift in Sources */,
 				823350922BAA57AB00D6AF37 /* OnBoardingView.swift in Sources */,

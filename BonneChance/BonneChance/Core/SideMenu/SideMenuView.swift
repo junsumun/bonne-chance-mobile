@@ -46,24 +46,25 @@ struct SideMenuView: View {
             
             Spacer()
             
+//            HStack(alignment: .center) {
+//                NavigationLink {
+//                    SettingsView()
+//                } label: {
+//                    Image(systemName: "gearshape")
+//                        .foregroundColor(.black)
+//                        .imageScale(.large)
+//                    Text("Settings")
+//                        .font(.subheadline)
+//                        .foregroundColor(.black)
+//                    Spacer()
+//                    Image(systemName: "chevron.forward")
+//                        .foregroundColor(.gray)
+//                        .imageScale(.small)
+//                }
+//            }
             HStack(alignment: .center) {
                 NavigationLink {
-                    SettingsView()
-                } label: {
-                    Image(systemName: "gearshape")
-                        .foregroundColor(.black)
-                        .imageScale(.large)
-                    Text("Settings")
-                        .font(.subheadline)
-                        .foregroundColor(.black)
-                    Spacer()
-                    Image(systemName: "chevron.forward")
-                        .foregroundColor(.gray)
-                        .imageScale(.small)
-                }
-            }
-            HStack(alignment: .center) {
-                NavigationLink {
+                    HelpFeedbackView()
                 } label: {
                     Image(systemName: "questionmark.bubble")
                         .foregroundColor(.black)
